@@ -12,6 +12,7 @@
 	<!--íconos de la web-->
 	<script src="https://kit.fontawesome.com/1f84f73194.js" crossorigin="anonymous"></script>
 	<script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 	<!--icono, css, js-->
 	<link rel="icon" href="images/SystemLogo.ico">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
@@ -78,10 +79,27 @@
 		</div>
 	</div>
 
+	<div id="WhatsBTN"></div>
+
 	<script src="js/jquery.min.js"></script>
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
+	<script>
+		$(function() {
+			$('#WhatsBTN').floatingWhatsApp({
+			phone: '+51994271287', //WhatsApp numero, formato internacional
+			headerTitle: '💫 Of System', //Popup Titulo
+			popupMessage: 'Hola, Soy Bryan Morán 😎. Dime, en que puedo ayudarte?', //Popup Mensagem
+			showPopup: true, //Desabilitar pop up
+			buttonImage: '<img src="https://rawcdn.githack.com/rafaelbotazini/floating-whatsapp/3d18b26d5c7d430a1ab0b664f8ca6b69014aed68/whatsapp.svg" />', //Button Image
+			//headerColor: 'crimson', //Custom header color
+			//backgroundColor: 'crimson', //Custom background button color
+			position: "right"    
+			});
+		});
+	</script>
+<script type="text/javascript" src="js/whats.js"></script>
 </body>
 
 </html>
