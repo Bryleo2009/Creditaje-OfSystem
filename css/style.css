@@ -12046,3 +12046,82 @@ a[data-toggle="collapse"] {
   color: white;
   font-size: 12px;
 }
+
+
+@media (max-width: 1024px) and (min-width: 767px){
+  .logo {
+    max-width: 30%;
+  }
+  
+  .texto {
+    max-width: 40%;
+  }
+  
+  .conten-logo {
+    position: absolute;
+    top: 35vh;
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 424px){
+  .logo {
+    max-width: 30%;
+  }
+  
+  .texto {
+    max-width: 40%;
+  }
+  
+  .conten-logo {
+    position: absolute;
+    top: 35vh;
+    padding-left: 30px;
+  }
+
+  #sidebar{
+    position: absolute;
+    z-index: 1000;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 425px) {
+  .fondo {
+    width: 150%;
+    height: 100%;
+  }  
+  
+  .logo {
+    max-width: 50%;
+    display: block;
+  }
+  
+  .texto {
+    max-width: 80%;
+  }
+  
+  .conten-logo {
+    position: absolute;
+    top: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #sidebar{
+    position: absolute;
+    z-index: 1000;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .version{
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    text-align: left;
+    color: white;
+    font-size: 12px;
+  }
+}
