@@ -71,7 +71,8 @@ body {
   color: #212529;
   text-align: left;
   background-color: #fff;
-  overflow-y: hidden
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 [tabindex="-1"]:focus {
@@ -12087,9 +12088,8 @@ a[data-toggle="collapse"] {
 }
 
 @media (max-width: 425px) {
-  .fondo {
-    width: 150%;
-    height: 100%;
+  .w-100 {
+    width: 150% !important;
   }  
   
   .logo {
