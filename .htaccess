@@ -1,8 +1,8 @@
 RewriteEngine On
 
 #mostrar siempre www
-RewriteCond %{HTTP_HOST} ^ofsystem.com.pe
-RewriteRule (.*) https://www.ofsystem.com.pe/$1 [R=301,L]
+#RewriteCond %{HTTP_HOST} ^ofsystem.com.pe
+#RewriteRule (.*) https://www.ofsystem.com.pe/$1 [R=301,L]
 
 #bloquear copiar imagenes
 RewriteCond %{HTTP_REFERER} !^$
