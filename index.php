@@ -286,7 +286,7 @@
           <h1>🔭</h1>
           <h2>PÁGINA EN CONSTRUCCIÓN</h2>
           <p>Estamos trabajando para brindarte la mejor experiencia...</p>
-          <a class="btn green" href="creditos.php">Créditos</a>
+          <a class="btn green" href="creditos">Créditos</a>
         </div>
       </div>
     </div>

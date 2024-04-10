@@ -4,7 +4,7 @@
 	<head>
 		<title>Of System</title>
 		<?php require_once('pages/header.php'); ?>
-		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="css/style.css">
 	</head>
 
 	<body>
@@ -17,7 +17,7 @@
 					</button>
 				</div>
 				<div class="p-4">
-					<h1><a href="ofsystem.com.pe" class="logo"><img src="../images/Systen texto 1.png"
+					<h1><a href="ofsystem.com.pe" class="logo"><img src="images/Systen texto 1.png"
 								alt width="200px"></a></h1>
 					<ul class="list-unstyled components mb-5">
 						<li class="active">
@@ -53,14 +53,14 @@
 			<!-- Page Content  -->
 			<div id="content" class="h-full w-full">
 				<div class="fondo">
-					<img class="h-100 w-100" src="../images/Vector 01.png" alt>
+					<img class="h-100 w-100" src="images/Vector 01.png" alt>
 				</div>
 				<div class="conten-logo">
 					<div class="logo">
-						<img class="h-100 w-100" src="../images/Systen.png" alt>
+						<img class="h-100 w-100" src="images/Systen.png" alt>
 					</div>
 					<div class="texto">
-						<img class="w-100" src="../images/Systen texto 1.png" alt>
+						<img class="w-100" src="images/Systen texto 1.png" alt>
 					</div>
 				</div>
 				<div class="version ml-2">
@@ -98,7 +98,7 @@
 				}
 			});
 		</script>
-		<script type="text/javascript" src="../js/whats.js"></script>
+		<script type="text/javascript" src="js/whats.js"></script>
 	</body>
 
 </html>
