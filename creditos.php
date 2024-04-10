@@ -17,11 +17,11 @@
 					</button>
 				</div>
 				<div class="p-4">
-					<h1><a href="www.ofsystem.com.pe" class="logo"><img src="../images/Systen texto 1.png"
+					<h1><a href="ofsystem.com.pe" class="logo"><img src="../images/Systen texto 1.png"
 								alt width="200px"></a></h1>
 					<ul class="list-unstyled components mb-5">
 						<li class="active">
-							<a href="https://www.ofsystem.com.pe"><i class='bx bxs-home'></i> Inicio</a>
+							<a href="https://ofsystem.com.pe"><i class='bx bxs-home'></i> Inicio</a>
 						</li>
 						<!-- <li>
 							<a href="https://github.com/Bryleo2009" target="_blank"><i
@@ -36,7 +36,7 @@
 									class='bx bxl-instagram-alt'></i> Instagram</a>
 						</li>
 						<li>
-							<a href="https://www.ofsystem.com.pe/reservas" target="_blank"><i
+							<a href="https://ofsystem.com.pe/reservas" target="_blank"><i
 									class='bx bxs-calendar-event'></i> Reservas</a>
 						</li>
 					</ul>
