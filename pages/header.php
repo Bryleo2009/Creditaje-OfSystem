@@ -1,3 +1,4 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://kit.fontawesome.com/1f84f73194.js"></script>
 <script
 src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
@@ -10,3 +11,5 @@ rel="stylesheet">
 rel='stylesheet'>
 <link rel="stylesheet"
 href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="icon" href="images/SystemLogo.ico">
+<link rel="stylesheet" href="css/bootstrap.min.css">
