@@ -3,8 +3,7 @@
 
 <head>
   <!--metadatos-->
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
   <meta name="title" content="Of System">
   <meta http-equiv="cache-control" content="no-cache">
   <meta name="description" content="Soluciones web personalizadas para impulsar tu presencia en línea y alcanzar el éxito digital.">

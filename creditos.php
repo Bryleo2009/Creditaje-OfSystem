@@ -4,6 +4,8 @@
 	<head>
 		<title>Of System</title>
 		<?php require_once('pages/header.php'); ?>
+		<link rel="icon" href="images/SystemLogo.ico">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 
@@ -73,6 +75,10 @@
 		<div id="WhatsBTN"></div>
 
 		<?php require_once 'pages/footer.php'; ?>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/popper.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/main.js"></script>
 		<script>
 			$(function() {
 				$('#WhatsBTN').floatingWhatsApp({
