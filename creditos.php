@@ -4,6 +4,7 @@
 	<head>
 		<title>Of System</title>
 		<?php require_once('pages/header.php'); ?>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="icon" href="images/SystemLogo.ico">
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/style.css">
