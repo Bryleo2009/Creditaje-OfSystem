@@ -29,15 +29,8 @@ href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min
 <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
 
-<!-- Android Icons -->
-<link rel="icon" type="image/png" sizes="36x36" href="images/favicon/android-icon-36x36.png">
-<link rel="icon" type="image/png" sizes="48x48" href="images/favicon/android-icon-48x48.png">
-<link rel="icon" type="image/png" sizes="192x192" href="images/favicon/android-icon-192x192.png">
-
 <!-- Favicon Icons -->
-<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
+<link rel="icon" href="images/favicon/favicon.ico">
 
 <!-- Microsoft Icons -->
 <meta name="msapplication-TileImage" content="images/favicon/ms-icon-70x70.png">

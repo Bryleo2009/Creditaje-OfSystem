@@ -73,7 +73,7 @@
 					</div>
 				</div>
 				<div class="version ml-2">
-					<p>Versión 2.3 <br> Última actualización: <span id="last-updated"></span>
+					<p>Versión 2.4
 						<br> Todos los derechos reservados - <b>Of System ®</b> 2022</p>
 				</div>
 			</div>
@@ -94,11 +94,11 @@
 				//backgroundColor: 'crimson', //Custom background button color
 				position: "right"   ,
 				rightPosition: "5px", // Nueva variable para la posición derecha
-        		bottomPosition: "77px" // Nueva variable para la posición inferior  
+        		bottomPosition: "58px" // Nueva variable para la posición inferior  
 				});
 			});
 		</script>
-		<script>
+		<!-- <script>
 			document.addEventListener("DOMContentLoaded", function() {
 				var lastUpdated = document.lastModified;
 				var lastUpdatedElement = document.getElementById("last-updated");
@@ -106,7 +106,7 @@
 				lastUpdatedElement.textContent = lastUpdated;
 				}
 			});
-		</script>
+		</script> -->
 		<script type="text/javascript" src="js/whats.js"></script>
 	</body>
 
