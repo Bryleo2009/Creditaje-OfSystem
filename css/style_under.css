@@ -1,24 +1,48 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans");
 :root {
-  --blue: #0e0620;
+  --blue: #2ccf6d;
   --white: #fff;
   --green: #2ccf6d;
 }
 
-html,
-body {
-  height: 100%;
-}
 
-
-body {
+.fondo {
+  /* Basic dimensions and centering */
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-family: "Nunito Sans";
-  color: var(--blue);
-  font-size: 1em;
+  align-items: center;
+  position: absolute;
+  z-index: -2;
+
+  /* Dark mode colors and gradient */
+  background: #121212; /* Fallback for browsers that don't support gradients */
+  background: linear-gradient(
+    135deg,
+    #121212 25%,
+    #1a1a1a 25%,
+    #1a1a1a 50%,
+    #121212 50%,
+    #121212 75%,
+    #1a1a1a 75%,
+    #1a1a1a
+  );
+  background-size: 40px 40px;
+
+  /* Animation */
+  animation: move 4s linear infinite;
 }
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
 
 button {
   font-family: "Nunito Sans";
@@ -30,23 +54,14 @@ ul {
           padding-inline-start: 35px;
 }
 
-svg {
-  height: 500px;
-  visibility: hidden;
-}
-
 h1 {
-  font-size: 7.5em;
   margin: 15px 0px;
   font-weight: bold;
 }
 
-h2 {
-  font-weight: bold;
-}
 
 .btn {
-  z-index: 1;
+  z-index: 2;
   overflow: hidden;
   background: transparent;
   position: relative;
@@ -57,7 +72,7 @@ h2 {
   letter-spacing: 2px;
   transition: 0.2s ease;
   font-weight: bold;
-  margin: 5px 0px;
+  margin: 25px 0px;
 }
 .btn.green {
   border: 4px solid var(--green);
@@ -83,12 +98,28 @@ h2 {
   width: 100%;
 }
 
-@media screen and (max-width: 768px) {
-  body {
-    display: block;
+
+svg#freepik_stories-under-construction:not(.animated) .animable {
+  opacity: 0;
+}
+
+svg#freepik_stories-under-construction.animated #freepik--Window--inject-68 {
+  animation: 3s Infinite linear floating;
+  animation-delay: 0s;
+}
+
+@keyframes floating {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 
-  .container {
-    margin-bottom: 70px;
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
