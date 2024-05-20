@@ -358,10 +358,26 @@ header {
 /* Metodología sections */
 .metodologia {
     background-color: var(--secondary-color);
-    padding-bottom: 80px;
+    padding-bottom: 115px;
 }
 
+.degradado-4 {
+    background-color: var(--tertiary-color);
+}
 
+.card-metod{
+    width: 196px;
+}
+
+.card-metod>i {
+    font-size: 45px;
+    margin-bottom: 20px;
+    color: var(--placeholder-1-color);
+}
+
+.espaciado > div {
+    margin-top: 90px;
+}
 
 
 
