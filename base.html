@@ -65,28 +65,29 @@
 
     <body>
         <header>
-            <nav class="nav container">
+            <nav class="nav">
                 <div class="logo">
-                    <img src="/images/Systen Logo 1.png" alt="logo of system">
+                    <a href="#home"><img src="/images/Systen Logo 1.png" alt="logo of system"></a>
                 </div>
                 <input type="checkbox" id="menu-toggle" class="menu-toggle">
                 <label for="menu-toggle" class="menu-toggle-label">
                     <i class="fa-solid fa-bars"></i>
+                    <i class="fa-solid fa-times"></i>
                 </label>
                 <ul class="nav-links">
-                    <li><a class="service-link blanco" href="#">Inicio</a></li>
-                    <li><a class="service-link blanco"
-                            href="#">Servicios</a></li>
-                    <li><a class="service-link blanco"
-                            href="#">Portafolio</a></li>
-                    <li><a class="service-link blanco"
-                            href="#">Contacto</a></li>
+                    <li><a class="service-link" href="#home">Inicio</a></li>
+                    <li><a class="service-link" href="#servicios">Servicios</a></li>
+                    <li><a class="service-link" href="#">Metodología</a></li>
+                    <li><a class="service-link" href="#">Beneficios</a></li>
+                    <li><a class="service-link" href="#">Clientes</a></li>
+                    <li><a class="service-link" href="#">Contacto</a></li>
                 </ul>
             </nav>
         </header>
 
         <main>
-            <section class="home">
+            <!--Home-->
+            <section class="home d-flex align-items-center" id="home">
                 <div class="d-flex flex-column align-items-center">
                     <h1 class="blanco center mb-4">
                         Desarrollo de
@@ -97,15 +98,15 @@
                     </h1>
                     <p class="blanco center">Eleva tu presencia digital con una
                         experiencia web que deja una impresión duradera</p>
-                    <button type="button" class="btn-1">SOLICITAR
-                        PRESUPUESTO</button>
+                    <a type="button" class="btn-1" href="#contacto">SOLICITAR
+                        PRESUPUESTO</a>
                 </div>
                 <img src="images/landing/Group 19.png" alt="abst" class="fondo">
             </section>
             <section class="video">
                 <div class="espaciado center">
                     <span class="vector">
-                        <svg width="1034" height="545" viewBox="0 0 1034 545"
+                        <svg  viewBox="0 0 1034 545"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <rect x="63.8293" y="0.25" width="906.341"
                                 height="525.223" rx="16" fill="black" />
@@ -124,38 +125,69 @@
                 </div>                 
             </section>
             <span class="vector">
-                <svg width="1510"  viewBox="0 0 1510 226" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg  viewBox="0 0 1510 226" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M0 133.639L50.3333 161.701C100.667 190.291 201.333 245.625 302 217.958C402.667 190.29 503.333 76.9865 604 63.4164C704.667 49.3193 805.333 133.639 906 154.718C1006.67 175.798 1107.33 133.639 1208 133.639C1308.67 133.639 1409.33 175.798 1459.67 196.878L1510 217.958V-35H1459.67C1409.33 -35 1308.67 -35 1208 -35C1107.33 -35 1006.67 -35 906 -35C805.333 -35 704.667 -35 604 -35C503.333 -35 402.667 -35 302 -35C201.333 -35 100.667 -35 50.3333 -35H0V133.639Z" fill="#100F3C"/>
                 </svg>  
             </span> 
-            <section class="services">
+
+            <!--Servicios-->
+            <section class="servicio" id="servicios">
                 <div class="espaciado center">
-                    <h1 class="degradado degradado-2">Nuestros servicios</h1>
-                    <p class="blanco">Nuestro equipo de expertos en desarrollo web se especializa en la creación de soluciones personalizadas que se adaptan a las necesidades de tu empresa. Desde el diseño de páginas web hasta el desarrollo de aplicaciones web, ofrecemos una amplia gama de servicios que te ayudarán a alcanzar tus objetivos comerciales. Descubre cómo podemos ayudarte a mejorar tu presencia en línea y atraer a más clientes.</p>
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <div class="service">
-                            <div class="service-icon">
-                                <i class="fas fa-laptop-code"></i>
+                    <h1>Una opción, diferentes <span class="degradado degradado-3 ">resultados</span></h1>
+                </div>
+                <div class="d-flex flex-wrap gap-2 justify-content-center mt-5">
+                    <div class="card-service">
+                        <div class="card-cabecera">
+                            <div class="ellipse">
+                                <i class="fa-regular fa-building"></i>
                             </div>
-                            <h2 class="degradado degradado-2">Diseño web</h2>
-                            <p class="blanco">Creamos sitios web atractivos y funcionales que reflejan la esencia de tu marca y atraen a tu audiencia.</p>
+                            <h2>Servicios profesionales</h2>
                         </div>
-                        <div class="service">
-                            <div class="service-icon">
-                                <i class="fas fa-mobile-alt"></i>
-                            </div>
-                            <h2 class="degradado degradado-2">Desarrollo de aplicaciones</h2>
-                            <p class="blanco">Desarrollamos aplicaciones web personalizadas que se adaptan a tus necesidades y objetivos comerciales.</p>
+                        <div class="card-cuerpo">
+                            <h3 class="placeholder-2">Presenta tus servicios profesionales de manera clara y convincente, captando la atención de clientes potenciales y estableciendo tu credibilidad en el mercado.</h3>
                         </div>
-                        <div class="service">
-                            <div class="service-icon">
-                                <i class="fas fa-cogs"></i>
+                        <div class="card-pie">
+                            <a type="button" class="btn-2" href="#contacto">Empezar</a>
+                        </div>
+                    </div>
+                    <div class="card-service">
+                        <div class="card-cabecera">
+                            <div class="ellipse">
+                                <i class="fa-regular fa-credit-card"></i>
                             </div>
-                            <h2 class="degradado degradado-2">Optimización SEO</h2>
+                            <h2>Tienda en línea</h2>
+                        </div>
+                        <div class="card-cuerpo">
+                            <h3 class="placeholder-2">Abre las puertas de tu negocio al mundo digital y permite a tus clientes comprar tus productos o servicios en línea desde la comodidad de sus hogares.</h3>
+                        </div>
+                        <div class="card-pie">
+                            <a type="button" class="btn-2" href="#contacto">Empezar</a>
+                        </div>
+                    </div>
+                    <div class="card-service">
+                        <div class="card-cabecera">
+                            <div class="ellipse">
+                                <i class="fa-regular fa-flag"></i>
+                            </div>
+                            <h2>Landing page</h2>
+                        </div>
+                        <div class="card-cuerpo">
+                            <h3 class="placeholder-2">Captura la atención de tus visitantes y conviértelos en clientes potenciales con una página de aterrizaje optimizada y enfocada en una única oferta o llamada a la acción.</h3>
+                        </div>
+                        <div class="card-pie">
+                            <a type="button" class="btn-2" href="#contacto">Empezar</a>
                         </div>
                     </div>
                 </div>
             </section>
+
+            <!--Metodología-->
+            <section class="metodologia" id="metodologia">
+                <div class="espaciado center">
+                    <h1>Metodología de trabajo</h1>
+                </div>
+            </section>
+                
 
         </main>
 
@@ -178,7 +210,6 @@
     </script>
         <script>
         window.addEventListener('scroll', function() {
-            console.log(window.scrollY);
             const nav = document.querySelector('header');
             if (window.scrollY > 113) { // Cambia el color si el scroll es mayor a 0
                 nav.classList.add('nav-scrolled');
@@ -190,13 +221,13 @@
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 113) {
                     serviceLinks.forEach((link) => {
-                        link.classList.remove('blanco');
-                        link.classList.add('primary');
+                        link.classList.add('service-link-scrolled');
+                        //link.classList.add('primary');
                     });
                 } else {
                     serviceLinks.forEach((link) => {
-                        link.classList.remove('primary');
-                        link.classList.add('blanco');
+                        //link.classList.remove('primary');
+                        link.classList.remove('service-link-scrolled');
                     });
                 }
             });
