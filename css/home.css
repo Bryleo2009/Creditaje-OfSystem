@@ -495,7 +495,6 @@ header {
     align-items: center;
     justify-content: center;
     transition: transform 0.3s ease-in-out;
-
     overflow: hidden;
     position: relative;
   }
@@ -509,6 +508,10 @@ header {
     transition: transform 0.3s ease-in-out;
 }
 
+.slide-track:has(.slide:hover) > :not(:hover){
+    opacity: 0.4;
+}
+
 @keyframes scroll {
     0% {
         -webkit-transform: translateX(0);
@@ -516,8 +519,8 @@ header {
     }
 
     100% {
-        -webkit-transform: translateX(calc(-240px * 0));
-        transform: translateX(calc(-240px * 0));
+        -webkit-transform: translateX(calc(-240px * 2));
+        transform: translateX(calc(-240px * 2));
     }
 }
 
