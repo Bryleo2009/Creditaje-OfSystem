@@ -96,6 +96,10 @@ nav,
     text-align: left;
 }
 
+.justify-content-evenly {
+    justify-content: space-evenly;
+}
+
 p {
     font-family: Alatsi;
     font-weight: Regular;
@@ -512,6 +516,7 @@ header {
     opacity: 0.4;
 }
 
+
 @keyframes scroll {
     0% {
         -webkit-transform: translateX(0);
@@ -534,6 +539,48 @@ header {
     transform: translateY(-14%) scale(0.7);
   }
 
+/* Contacto sections */
+.contacto {
+    background-image: url(../images/landing/Contact.webp);
+    display: flex;
+    align-items: center;
+}
+
+.degradado-6 {
+    background-image: linear-gradient(102deg, #2afadf 0%, #4c83ff 100%);
+}
+
+.frm-contacto  > input {
+    height: 50px;
+    border-radius: 34.5px;
+    border: solid 4px var(--tertiary-color);
+    background-color: var(--white-color);
+    padding-left: 25px;
+    font-size: var(--text-h3);
+    color: var(--placeholder-1-color);
+}
+
+.btn-3 {
+    height: 50px;
+    flex-grow: 0;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: var(--tertiary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--white-color);
+}
+
+.sec-contacto {
+    padding-bottom: 100px;
+}
+
+.text-btn-enviar{
+    display: none;
+}
+
+
 /*********************/
 @media (max-width: 1024px) {
     .container-beneficios {
@@ -555,7 +602,7 @@ header {
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
 
     section>div,
     .container {
@@ -665,5 +712,21 @@ header {
         grid-template-areas:
             "A"
             "B";
+    }
+
+    .row-gap-2 {
+        gap: 2rem;
+    }
+
+    .sec-contacto {
+        padding-bottom: 30px;
+    }
+
+    .icon-btn-enviar {
+        display: none;
+    }
+
+    .text-btn-enviar{
+        display: inline;
     }
 }
