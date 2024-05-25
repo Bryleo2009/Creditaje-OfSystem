@@ -3,20 +3,17 @@
 
 	<head>
 		<title>Of System</title>
-		<meta http-equiv="cache-control" content="no-cache">
+		
 		<meta name="description" content="Soluciones web personalizadas para impulsar tu presencia en línea y alcanzar el éxito digital.">
-		<meta name="keywords" content="desarrollo web, diseño web, programación, sitios web, aplicaciones web, desarrollo de aplicaciones, diseño responsivo, experiencia de usuario, SEO, optimización web, HTML, CSS, JavaScript, PHP, WordPress, comercio electrónico, tiendas en línea, diseño de interfaces, desarrollo frontend, desarrollo backend, mantenimiento web,web development, web design, programming, websites, web applications, app development, responsive design, user experience, SEO, web optimization, HTML, CSS, JavaScript, PHP, WordPress, e-commerce, online stores, interface design, frontend development, backend development, web maintenance.">
-		<meta name="robots" content="index, nofollow">
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<meta name="language" content="Spanish">
-		<meta name="author" content="Bryan A. Morán Vega">
-		<meta name="copyright" content="Of System ®">
-		<meta name="theme-color" content="#302b63">
 		<?php require_once('pages/header.php'); ?>
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 
 	<body>
+		<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CDNJTBN"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 		<div class="wrapper d-flex align-items-stretch">
 			<nav id="sidebar" class="active">
 				<div class="custom-menu">
