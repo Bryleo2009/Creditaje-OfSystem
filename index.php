@@ -19,7 +19,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <header>
       <nav class="nav">
         <div class="logo">
-          <a href="#home"
+          <a href="/"
             ><img src="/images/Systen Logo 1.png" alt="logo of system"
           /></a>
         </div>
@@ -29,7 +29,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <i class="fa-solid fa-times"></i>
         </label>
         <ul class="nav-links gap-2">
-          <li><a class="service-link" href="#home">Inicio</a></li>
+          <li><a class="service-link" href="/">Inicio</a></li>
           <li><a class="service-link" href="#servicios">Servicios</a></li>
           <li><a class="service-link" href="#metodologia">Metodología</a></li>
           <li><a class="service-link" href="#beneficios">Beneficios</a></li>
@@ -415,12 +415,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           <div class="d-flex flex-column gap-1">
             <div class="footer-link d-flex">
-              <a class="primary" href="#home">Inicio</a>
+              <a class="primary" href="/">Inicio</a>
               <a class="primary" href="#servicios">Servicios</a>
               <a class="primary" href="#metodologia">Metodología</a>
               <a class="primary" href="#beneficios">Beneficios</a>
               <a class="primary" href="#clientes">Clientes</a>
-              <a class="primary" href="/creditos.php">Creditaje</a>
+              <a class="primary" href="/creditos">Creditaje</a>
             </div>
             <div class="footer-social gap-2">
               <a class="primary" href="https://www.facebook.com/OfSystem/" target="_blank"
