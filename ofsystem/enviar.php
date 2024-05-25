@@ -67,7 +67,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
 
     //validación de envio
     if (mail($correoDestino, $asunto, $cuerpo, $cabecera)) {
-        $respuesta_reclutador = "correo enviado exitosamente al reclutador" + " nombre:" + $_POST['name'] + " email:" + $_POST['email'] + " servicio:" + $_POST['service'];
+        $respuesta_reclutador = "correo enviado exitosamente al reclutador" ;
     } else {
         $respuesta_reclutador = "correo no enviado al reclutador";
     }
@@ -105,7 +105,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
 
     $respuesta = $respuesta_reclutador . ' / ' . $respuesta_postulante;
 } else {
-    $respuesta = "existen campos vacios";
+    $respuesta = "existen campos vacios" + " nombre:" + $_POST['name'] + " email:" + $_POST['email'] + " servicio:" + $_POST['service'];;
 }
 echo "<script>alert(' . $respuesta . ')</script>";
 echo "<script> setTimeout(\"location.href='" . $redireccion . "'\",1000)</script>";
