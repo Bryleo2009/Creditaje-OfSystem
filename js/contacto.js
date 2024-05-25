@@ -32,6 +32,17 @@ function enviarCorreo() {
                 text: "El correo ha sido enviado con exito a nuestro sistema. Nos pondremos en contacto con usted lo mas pronto posible. Verifica tu bandeja de entrada o spam.",
                 icon: "success"
               });
+
+              //limpiar campos
+                document.getElementById("name").value = "";
+                document.getElementById("email").value = "";
+                document.getElementById("service").value = "";
+
+                //scrolear hasta el inicio de pagina de forma suave
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
         },
         error: function(error) {
             Swal.fire({
