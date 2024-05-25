@@ -10,6 +10,7 @@
     <meta name="author" content="Bryan A. Morán Vega" />
     <meta name="copyright" content="Of System ®" />
     <meta name="theme-color" content="#302b63" />
+    <link rel="stylesheet" href="css/what.css">
     <script
       src="https://kit.fontawesome.com/e3a4a2320e.js"
       crossorigin="anonymous"
@@ -99,6 +100,7 @@
       name="msapplication-square310x310logo"
       content="images/favicon/ms-icon-310x310.png"
     />
+    <script type="text/javascript" src="js/nav.js"></script>
   </head>
 
   <body>
@@ -120,7 +122,7 @@
           <li><a class="service-link" href="#metodologia">Metodología</a></li>
           <li><a class="service-link" href="#beneficios">Beneficios</a></li>
           <li><a class="service-link" href="#clientes">Clientes</a></li>
-          <li><a class="service-link" href="#contacto">Contacto</a></li>
+          <li><a class="service-link btn-contact" href="#contacto">Contacto</a></li>
         </ul>
       </nav>
     </header>
@@ -460,7 +462,7 @@
             <span class="degradado degradado-6">éxito en línea</span>
           </h1>
           <form
-            method="post" id="formContacto"
+            method="post" id="myForm"
             class="mt-5 frm-contacto d-flex flex-wrap justify-content-evenly row-gap-2 align-items-center"
           >
             <input
@@ -501,12 +503,12 @@
             </div>
           <div class="d-flex flex-column gap-1">
             <div class="footer-link d-flex">
-              <a class="primary" href="#home">Inicio</a>
+              <a class="primary" href="/">Inicio</a>
               <a class="primary" href="#servicios">Servicios</a>
               <a class="primary" href="#metodologia">Metodología</a>
               <a class="primary" href="#beneficios">Beneficios</a>
               <a class="primary" href="#clientes">Clientes</a>
-              <a class="primary" href="/creditos.php">Creditaje</a>
+              <a class="primary" href="/creditos">Creditaje</a>
             </div>
             <div class="footer-social gap-2">
               <a class="primary" href="https://www.facebook.com/OfSystem/" target="_blank"
@@ -537,6 +539,25 @@
         </div>
       </section>
     </footer>
+
+    <div id="WhatsBTN"></div>
+			<script>
+				$(function() {
+					$('#WhatsBTN').floatingWhatsApp({
+					phone: '+51907442751', //WhatsApp numero, formato internacional
+					headerTitle: 'Of System 🪄', //Popup Titulo
+					popupMessage: 'Hola! Dime, en que puedo ayudarte?', //Popup Mensagem
+					showPopup: true, //Desabilitar pop up
+					buttonImage: '<img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" />', //Button Image
+					//headerColor: 'crimson', //Custom header color
+					//backgroundColor: 'crimson', //Custom background button color
+					position: "right" ,
+					rightPosition: "26px", // Nueva variable para la posición derecha
+        			bottomPosition: "17px" // Nueva variable para la posición inferior   
+					});
+				});
+			</script>
+			<script type="text/javascript" src="js/whats.js"></script>
     <!-- Load library from the CDN -->
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
@@ -551,31 +572,6 @@
       });
     </script>
     <script>
-      window.addEventListener("scroll", function () {
-        const nav = document.querySelector("header");
-        if (window.scrollY > 113) {
-          // Cambia el color si el scroll es mayor a 0
-          nav.classList.add("nav-scrolled");
-        } else {
-          nav.classList.remove("nav-scrolled");
-        }
-
-        const serviceLinks = document.querySelectorAll(".service-link");
-        window.addEventListener("scroll", () => {
-          if (window.scrollY > 113) {
-            serviceLinks.forEach((link) => {
-              link.classList.add("service-link-scrolled");
-              //link.classList.add('primary');
-            });
-          } else {
-            serviceLinks.forEach((link) => {
-              //link.classList.remove('primary');
-              link.classList.remove("service-link-scrolled");
-            });
-          }
-        });
-      });
-
       document.getElementById("formContacto").addEventListener("submit", function(e) {
         e.preventDefault(); // Evita que el formulario se envíe de manera convencional
         enviarCorreo(); // Llama a la función enviarCorreo()
