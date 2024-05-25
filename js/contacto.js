@@ -6,6 +6,17 @@ function enviarCorreo() {
     var nombre = document.getElementById("name").value;
     var correo = document.getElementById("email").value;
     var mensaje = document.getElementById("service").value;
+
+    //si alguno es nulo
+    if (nombre == "" || correo == "" || mensaje == "") {
+        Swal.fire({
+            title: "Error",
+            text: "Por favor llene todos los campos",
+            icon: "warning"
+          });
+        return;
+    }
+
     var parametros = {
         "name": nombre,
         "email": correo,
