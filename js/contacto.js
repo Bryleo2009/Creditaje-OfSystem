@@ -17,9 +17,16 @@ function enviarCorreo() {
         type: 'post',
         success: function(response) {
             Swal.fire({
-                title: "The Internet?",
-                text: "That thing is still around?",
-                icon: "question"
+                title: "Enviado",
+                text: "El correo ha sido enviado con exito a nuestro sistema " + response,
+                icon: "success"
+              });
+        },
+        error: function(error) {
+            Swal.fire({
+                title: "Error de envio",
+                text: "Hubo un error al enviar el correo, por favor intentelo de nuevo mas tarde " + error.responseText + error,
+                icon: "warning"
               });
         }
     });

@@ -1,5 +1,5 @@
 <?php
-$redireccion = "../index.php";
+$redireccion = "../";
 
 if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'])){
     //variables del formulario
