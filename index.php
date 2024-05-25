@@ -371,7 +371,7 @@
             <span class="degradado degradado-6">éxito en línea</span>
           </h1>
           <form
-            method="post" onsubmit="enviarCorreo(); return false;"
+            method="post" id="myForm"
             class="mt-5 frm-contacto d-flex flex-wrap justify-content-evenly row-gap-2 align-items-center"
           >
             <input
@@ -486,6 +486,11 @@
             });
           }
         });
+      });
+
+      document.getElementById("myForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // Evita que el formulario se envíe de manera convencional
+        enviarCorreo(); // Llama a la función enviarCorreo()
       });
     </script>
   <?php require_once 'pages/footer.php'; ?>
