@@ -10,9 +10,10 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     //$cel = $_POST['telefono'];
     $fecha = date('d/m/Y', time());
     $paterno = "";
+    $correoBase = "Of System <ofsystem.com.pe>";
 
     //variables del e-mail
-    $correoDestino = "Of System <ofsystem.com.pe>";
+    $correoDestino = $correoBase;
     $asunto = "Solicitud de Servicio - " . $servicio;
 
     //cuerpo del e-mail
@@ -84,7 +85,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     $cabecera = "MIME-VERSION: 1.@\r\n";
     $cabecera .= "Content-type: multipart/mixed;";
     $cabecera .= "boundary=\"=O=F=S=Y=S=T=E=M=\"\r\n"; //SE USA COMO SEPARADOR DE PARTES DEL EMAIL
-    $cabecera .= "From: {$correoDestino}";
+    $cabecera .= "From: {$correoBase}";
 
     //Primera parte del cuerpo
     $cuerpo = "--=O=F=S=Y=S=T=E=M=\r\n";
