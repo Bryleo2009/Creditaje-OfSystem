@@ -58,3 +58,14 @@ window.addEventListener("scroll", function () {
       }
     });
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        menuToggle.checked = false;
+      });
+    });
+  });

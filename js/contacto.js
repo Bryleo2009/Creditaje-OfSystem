@@ -13,7 +13,7 @@ function enviarCorreo() {
             title: "Error",
             text: "Por favor llene todos los campos",
             icon: "warning"
-          });
+        });
         return;
     }
 
@@ -26,14 +26,14 @@ function enviarCorreo() {
         data: parametros,
         url: 'ofsystem/enviar.php',
         type: 'post',
-        success: function(response) {
+        success: function (response) {
             Swal.fire({
                 title: "Enviado",
                 text: "El correo ha sido enviado con exito a nuestro sistema. Nos pondremos en contacto con usted lo mas pronto posible. Verifica tu bandeja de entrada o spam.",
                 icon: "success"
-              });
-
-              //limpiar campos
+            }
+            ).then((result) => {
+                //limpiar campos
                 document.getElementById("name").value = "";
                 document.getElementById("email").value = "";
                 document.getElementById("service").value = "";
@@ -43,13 +43,14 @@ function enviarCorreo() {
                     top: 0,
                     behavior: 'smooth'
                 });
+            });
         },
-        error: function(error) {
+        error: function (error) {
             Swal.fire({
                 title: "Error de envio",
                 text: "Hubo un error al enviar el correo, por favor intentelo de nuevo mas tarde.",
                 icon: "warning"
-              });
+            });
         }
     });
 }

@@ -797,6 +797,10 @@ footer {
         display: none;
     }
 
+    .metodologia {
+        padding-top: 80px;
+    }
+
     .container-beneficios {
         grid-template-columns: 100%;
         grid-template-rows: auto;
@@ -856,6 +860,6 @@ footer {
     }
 
     .contacto {
-        padding: 20px;
+        padding: 80px 20px 20px 20px;
     }
 }
