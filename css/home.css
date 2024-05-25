@@ -36,6 +36,7 @@ nav,
     --text-h2-movile: 16px;
     --text-parrafo-movile: 14px;
     --texto-item-movile: 16px;
+    --texto-footer: 12px;
 }
 
 .gap-1 {
@@ -100,6 +101,7 @@ nav,
     justify-content: space-evenly;
 }
 
+
 p {
     font-family: Alatsi;
     font-weight: Regular;
@@ -129,6 +131,10 @@ a:hover {
     text-decoration: none;
 }
 
+.texto-footer {
+    font-size: var(--texto-footer);
+}
+
 /*******************/
 
 /* Nav */
@@ -139,7 +145,7 @@ header {
     width: 100%;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
     background-color: rgba(217, 217, 217, 0.06);
-    padding: 20px;
+    padding: 10px 20px;
     z-index: 999;
 }
 
@@ -580,6 +586,58 @@ header {
     display: none;
 }
 
+/* Footer */
+footer {
+    color: var(--white-color);
+}
+
+.footer > .sec-1 {
+    padding-top: 35px;
+    padding-bottom: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.footer > .sec-2 {
+    background-color: var(--primary-color);
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sec-1 > div > img {
+    width: 100%;
+}
+
+.logo-footer {
+    width: 134px;
+}
+
+.footer-social > a > i {
+    font-size: 22px;
+}
+
+.footer-link {
+    justify-content: end;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: end;
+}
+
+.contact {
+    display: flex;
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
 /*********************/
 @media (max-width: 1024px) {
@@ -728,5 +786,39 @@ header {
 
     .text-btn-enviar{
         display: inline;
+    }
+
+    .footer-link {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+
+    .footer > .sec-1 {
+        justify-content: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    .footer > .sec-2 {
+        flex-direction: column;
+        gap: 1em;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .contact {
+        flex-direction: column;
+        gap: 1em;
+    }
+
+    .clientes{
+        padding-bottom: 70px;
+    }
+
+    .slider{
+        margin-top: 55px;
     }
 }
