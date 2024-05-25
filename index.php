@@ -371,8 +371,7 @@
             <span class="degradado degradado-6">éxito en línea</span>
           </h1>
           <form
-            action="ofsystem/enviar.php"
-            method="post"
+            method="post" onsubmit="enviarCorreo(); return false;"
             class="mt-5 frm-contacto d-flex flex-wrap justify-content-evenly row-gap-2 align-items-center"
           >
             <input
