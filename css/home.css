@@ -558,7 +558,8 @@ header {
     background-image: linear-gradient(102deg, #2afadf 0%, #4c83ff 100%);
 }
 
-.frm-contacto  > input {
+.frm-contacto  > input, .custom-select  {
+    appearance: none;
     height: 50px;
     border-radius: 34.5px;
     border: solid 4px var(--tertiary-color);
@@ -566,8 +567,18 @@ header {
     padding-left: 25px;
     font-size: var(--text-h3);
     color: var(--placeholder-1-color);
+    cursor: pointer;
 }
 
+
+.custom-select-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+  
 .btn-3 {
     height: 50px;
     flex-grow: 0;
