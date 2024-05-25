@@ -460,7 +460,7 @@
             <span class="degradado degradado-6">éxito en línea</span>
           </h1>
           <form
-            method="post" id="myForm"
+            method="post" id="formContacto"
             class="mt-5 frm-contacto d-flex flex-wrap justify-content-evenly row-gap-2 align-items-center"
           >
             <input
@@ -576,7 +576,7 @@
         });
       });
 
-      document.getElementById("myForm").addEventListener("submit", function(e) {
+      document.getElementById("formContacto").addEventListener("submit", function(e) {
         e.preventDefault(); // Evita que el formulario se envíe de manera convencional
         enviarCorreo(); // Llama a la función enviarCorreo()
       });

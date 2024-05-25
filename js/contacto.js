@@ -18,14 +18,14 @@ function enviarCorreo() {
         success: function(response) {
             Swal.fire({
                 title: "Enviado",
-                text: "El correo ha sido enviado con exito a nuestro sistema " + response,
+                text: "El correo ha sido enviado con exito a nuestro sistema. Nos pondremos en contacto con usted lo mas pronto posible. Verifica tu bandeja de entrada o spam.",
                 icon: "success"
               });
         },
         error: function(error) {
             Swal.fire({
                 title: "Error de envio",
-                text: "Hubo un error al enviar el correo, por favor intentelo de nuevo mas tarde " + error.responseText + error,
+                text: "Hubo un error al enviar el correo, por favor intentelo de nuevo mas tarde.",
                 icon: "warning"
               });
         }

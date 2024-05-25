@@ -12,8 +12,8 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     $paterno = "";
 
     //variables del e-mail
-    $correoDestino = "R.R.H.H. <bryleo2009@hotmail.com>";
-    $asunto = "Mail_server Prueba - Reclutador";
+    $correoDestino = "Of System <ofsystem.com.pe>";
+    $asunto = "Solicitud de Servicio - " . $servicio;
 
     //cuerpo del e-mail
     $html_reclutador = require('email/reclutador.php');
@@ -77,14 +77,14 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     /*************E-mail a postulante */
     //variables del e-mail
     $correoDestino = $mail;
-    $asunto = "Mail_server Prueba - Postulante";
-    $remitente = "info@ofsystem.com.pe";
+    $asunto = "Solicitud de Servicio - " . $servicio . " - Of System";
+
 
     //Mensaje en formato Multipart MIME -> cabecera
     $cabecera = "MIME-VERSION: 1.@\r\n";
     $cabecera .= "Content-type: multipart/mixed;";
     $cabecera .= "boundary=\"=O=F=S=Y=S=T=E=M=\"\r\n"; //SE USA COMO SEPARADOR DE PARTES DEL EMAIL
-    $cabecera .= "From: $remitente\r\n";
+    $cabecera .= "From: {$correoDestino}";
 
     //Primera parte del cuerpo
     $cuerpo = "--=O=F=S=Y=S=T=E=M=\r\n";
