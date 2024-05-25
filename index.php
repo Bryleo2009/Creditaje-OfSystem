@@ -371,25 +371,25 @@
             <span class="degradado degradado-6">éxito en línea</span>
           </h1>
           <form
-            action="enviar.php"
+            action="ofsystem/enviar.php"
             method="post"
             class="mt-5 frm-contacto d-flex flex-wrap justify-content-evenly row-gap-2 align-items-center"
           >
             <input
               type="text"
-              name="nombre"
-              class="col-md-5 col-12"
+              name="name"
+              class="col-md-3 col-12"
               placeholder="Nombre"
               required
             />
             <input
               type="email"
-              name="correo"
-              class="col-md-5 col-12"
+              name="email"
+              class="col-md-3 col-12"
               placeholder="Correo"
               required
             />
-            <select class="custom-select col-md-3 col-12" name="service" required>
+              <select class="custom-select col-md-3 col-12" name="service" required>
                 <option selected disabled>Selecciona un servicio</option>
                 <option value="0">Aun no estoy seguro</option>
                 <option value="1">Servicios profesionales</option>
