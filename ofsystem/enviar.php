@@ -78,12 +78,13 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     //variables del e-mail
     $correoDestino = $mail;
     $asunto = "Mail_server Prueba - Postulante";
+    $remitente = "info@ofsystem.com.pe";
 
     //Mensaje en formato Multipart MIME -> cabecera
     $cabecera = "MIME-VERSION: 1.@\r\n";
     $cabecera .= "Content-type: multipart/mixed;";
     $cabecera .= "boundary=\"=O=F=S=Y=S=T=E=M=\"\r\n"; //SE USA COMO SEPARADOR DE PARTES DEL EMAIL
-    $cabecera .= "From: Of System <info@ofsystem.com>";
+    $cabecera .= "From: $remitente\r\n";
 
     //Primera parte del cuerpo
     $cuerpo = "--=O=F=S=Y=S=T=E=M=\r\n";
