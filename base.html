@@ -572,10 +572,16 @@
       });
     </script>
     <script>
-      document.getElementById("formContacto").addEventListener("submit", function(e) {
-        e.preventDefault(); // Evita que el formulario se envíe de manera convencional
-        enviarCorreo(); // Llama a la función enviarCorreo()
-      });
+       var myForm = document.getElementById("myForm");
+        if (myForm) {
+          console.log(myForm)
+          myForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            enviarCorreo();
+          });
+        } else {
+          console.error("El elemento myForm no existe en el documento HTML.");
+        }
     </script>
   </body>
 </html>

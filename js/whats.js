@@ -1,6 +1,5 @@
 !(function (v) {
   v.fn.floatingWhatsApp = function (e) {
-    console.log("e",e)
     var t,
       a,
       i = v.extend(

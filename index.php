@@ -1,3 +1,11 @@
+<?php
+$services = [
+    'Profesional' => 'Servicios profesionales',
+    'Tienda' => 'Tienda en línea',
+    'Landing' => 'Landing page'
+];
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,7 +28,7 @@
   <header>
     <nav class="nav">
       <div class="logo">
-        <a href="#home"><img src="/images/Systen Logo 1.png" alt="logo of system" /></a>
+        <a href="/"><img src="/images/Systen Logo 1.png" alt="logo of system" /></a>
       </div>
       <input type="checkbox" id="menu-toggle" class="menu-toggle" />
       <label for="menu-toggle" class="menu-toggle-label">
@@ -28,7 +36,7 @@
         <i class="fa-solid fa-times"></i>
       </label>
       <ul class="nav-links gap-2">
-        <li><a class="service-link" href="#home">Inicio</a></li>
+        <li><a class="service-link" href="/">Inicio</a></li>
         <li><a class="service-link" href="#servicios">Servicios</a></li>
         <li><a class="service-link" href="#metodologia">Metodología</a></li>
         <li><a class="service-link" href="#beneficios">Beneficios</a></li>
@@ -96,61 +104,39 @@
         </h1>
       </div>
       <div class="d-flex flex-wrap gap-2 justify-content-center mt-5">
+    <?php foreach ($services as $value => $name) : ?>
         <div class="card-service">
-          <div class="card-cabecera">
-            <div class="ellipse">
-              <i class="fa-regular fa-building"></i>
+            <div class="card-cabecera">
+                <div class="ellipse">
+                    <!-- Puedes personalizar los íconos según el servicio -->
+                    <?php if ($value == 'Profesional'): ?>
+                        <i class="fa-regular fa-building"></i>
+                    <?php elseif ($value == 'Tienda'): ?>
+                        <i class="fa-regular fa-credit-card"></i>
+                    <?php elseif ($value == 'Landing'): ?>
+                        <i class="fa-regular fa-flag"></i>
+                    <?php endif; ?>
+                </div>
+                <h2><?php echo $name; ?></h2>
             </div>
-            <h2>Servicios profesionales</h2>
-          </div>
-          <div class="card-cuerpo">
-            <h3 class="placeholder-2">
-              Presenta tus servicios profesionales de manera clara y
-              convincente, captando la atención de clientes potenciales y
-              estableciendo tu credibilidad en el mercado.
-            </h3>
-          </div>
-          <div class="card-pie">
-            <a type="button" class="btn-2" href="#contacto">Empezar</a>
-          </div>
-        </div>
-        <div class="card-service">
-          <div class="card-cabecera">
-            <div class="ellipse">
-              <i class="fa-regular fa-credit-card"></i>
+            <div class="card-cuerpo">
+                <h3 class="placeholder-2">
+                    <!-- Aquí puedes poner descripciones personalizadas para cada servicio -->
+                    <?php if ($value == 'Profesional'): ?>
+                        Presenta tus servicios de manera clara y convincente, captando la atención de clientes y estableciendo tu credibilidad en el mercado competitivo.
+                    <?php elseif ($value == 'Tienda'): ?>
+                        Abre las puertas de tu negocio al mundo digital, permitiendo a tus clientes comprar en línea desde la comodidad de sus hogares y así aumentar tu alcance.
+                    <?php elseif ($value == 'Landing'): ?>
+                        Captura la atención de tus visitantes, convirtiéndolos en clientes potenciales con una página optimizada enfocada en una única oferta o llamada a la acción.
+                    <?php endif; ?>
+                </h3>
             </div>
-            <h2>Tienda en línea</h2>
-          </div>
-          <div class="card-cuerpo">
-            <h3 class="placeholder-2">
-              Abre las puertas de tu negocio al mundo digital y permite a tus
-              clientes comprar tus productos o servicios en línea desde la
-              comodidad de sus hogares.
-            </h3>
-          </div>
-          <div class="card-pie">
-            <a type="button" class="btn-2" href="#contacto">Empezar</a>
-          </div>
-        </div>
-        <div class="card-service">
-          <div class="card-cabecera">
-            <div class="ellipse">
-              <i class="fa-regular fa-flag"></i>
+            <div class="card-pie">
+                <a type="button" class="btn-2" href="#contacto" data-service="<?php echo $value; ?>">Empezar</a>
             </div>
-            <h2>Landing page</h2>
-          </div>
-          <div class="card-cuerpo">
-            <h3 class="placeholder-2">
-              Captura la atención de tus visitantes y conviértelos en clientes
-              potenciales con una página de aterrizaje optimizada y enfocada
-              en una única oferta o llamada a la acción.
-            </h3>
-          </div>
-          <div class="card-pie">
-            <a type="button" class="btn-2" href="#contacto">Empezar</a>
-          </div>
         </div>
-      </div>
+    <?php endforeach; ?>
+</div>
     </section>
 
     <!--Metodología-->
@@ -325,15 +311,15 @@
           Contáctanos y déjanos ser parte de tu
           <span class="degradado degradado-6">éxito en línea</span>
         </h1>
-        <form method="post" id="myForm" class="mt-5 frm-contacto d-flex flex-wrap justify-content-evenly row-gap-2 align-items-center">
+        <form method="post" id="formContacto" class="mt-5 frm-contacto d-flex flex-wrap justify-content-evenly row-gap-2 align-items-center">
           <input type="text" name="name" id="name" class="col-md-3 col-12" placeholder="Nombre" required />
           <input type="email" name="email" id="email" class="col-md-3 col-12" placeholder="Correo" required />
           <select class="custom-select col-md-3 col-12" name="service" id="service" required>
-            <option selected disabled>Selecciona un servicio</option>
-            <option value="Indeciso">Aun no estoy seguro</option>
-            <option value="Profesional">Servicios profesionales</option>
-            <option value="Tienda">Tienda en línea</option>
-            <option value="Landing">Landing page</option>
+              <option value="" disabled selected>Selecciona un servicio</option>
+              <option value="Indeciso">Aun no estoy seguro</option>
+              <?php foreach ($services as $value => $name) : ?>
+                  <option value="<?php echo $value; ?>"><?php echo $name; ?></option>
+              <?php endforeach; ?>
           </select>
           <button type="submit" class="btn-3 col-md-1 col-5">
             <i class="icon-btn-enviar fa-solid fa-angles-right"></i>
@@ -386,25 +372,41 @@
   </footer>
 
   <div id="WhatsBTN"></div>
-  <script>
-    $(function() {
-      $('#WhatsBTN').floatingWhatsApp({
-        phone: '+51907442751', //WhatsApp numero, formato internacional
-        headerTitle: 'Of System 💫', //Popup Titulo
-        popupMessage: 'Hola! Dime, en que puedo ayudarte?', //Popup Mensagem
-        showPopup: true, //Desabilitar pop up
-        buttonImage: '<img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" />', //Button Image
-        //headerColor: 'crimson', //Custom header color
-        //backgroundColor: 'crimson', //Custom background button color
-        position: "right",
-        rightPosition: "26px", // Nueva variable para la posición derecha
-        bottomPosition: "17px" // Nueva variable para la posición inferior   
-      });
-    });
-  </script>
-  <script type="text/javascript" src="js/whats.js"></script>
-  <!-- Load library from the CDN -->
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+
+
+  <?php require_once 'pages/footer.php'; ?>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.btn-2').forEach(button => {
+                button.addEventListener('click', function() {
+                    const serviceValue = this.getAttribute('data-service');
+                    document.getElementById('service').value = serviceValue;
+                });
+            });
+        });
+    </script>
+
+			<script>
+				$(function() {
+					$('#WhatsBTN').floatingWhatsApp({
+					phone: '+51907442751', //WhatsApp numero, formato internacional
+					headerTitle: 'Of System 💫', //Popup Titulo
+					popupMessage: 'Hola! Dime, en que puedo ayudarte?', //Popup Mensagem
+					showPopup: true, //Desabilitar pop up
+					buttonImage: '<img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" />', //Button Image
+					//headerColor: 'crimson', //Custom header color
+					//backgroundColor: 'crimson', //Custom background button color
+					position: "right" ,
+					rightPosition: "10px", // Nueva variable para la posición derecha
+        			bottomPosition: "60px" // Nueva variable para la posición inferior   
+					});
+				});
+			</script>
+			<script type="text/javascript" src="js/whats.js"></script>
+    <!-- Load library from the CDN -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
 
   <!-- Setup and start animation! -->
@@ -423,7 +425,6 @@
       enviarCorreo(); // Llama a la función enviarCorreo()
     });
   </script>
-  <?php require_once 'pages/footer.php'; ?>
 </body>
 
 </html>
