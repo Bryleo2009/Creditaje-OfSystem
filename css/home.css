@@ -550,6 +550,7 @@ header {
     background-image: url(../images/landing/Contact.webp);
     display: flex;
     align-items: center;
+    padding: 100px;
 }
 
 .degradado-6 {
@@ -820,5 +821,9 @@ footer {
 
     .slider{
         margin-top: 55px;
+    }
+
+    .contacto {
+        padding: 20px;
     }
 }

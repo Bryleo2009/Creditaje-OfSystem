@@ -17,8 +17,10 @@ href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,90
 rel="stylesheet">
 <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
 rel='stylesheet'>
-<link rel="stylesheet"
-href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <!-- Apple Touch Icons -->
 <link rel="apple-touch-icon" sizes="57x57" href="images/favicon/apple-icon-57x57.png">
