@@ -41,7 +41,8 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     $cuerpo .= "charset=UTF-8\r\n";
     $cuerpo .= "Content-Transfer-Encoding: 8bit\r\n";
     $cuerpo .= "\r\n";
-    $cuerpo .= $html_reclutador;
+    //$cuerpo .= $html_reclutador;
+    $cuerpo .= "<h1>Nombre: {$nombre}</h1>";
 
     $cuerpo .= "\r\n";
 
@@ -90,7 +91,8 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     $cuerpo .= "charset=UTF-8\r\n";
     $cuerpo .= "Content-Transfer-Encoding: 8bit\r\n";
     $cuerpo .= "\r\n";
-    $cuerpo .= $html_postulante;
+    //$cuerpo .= $html_postulante;
+    $cuerpo .= "<h1>Nombre: {$nombre}</h1>";
 
     $cuerpo .= "\r\n";
 
