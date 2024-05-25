@@ -67,7 +67,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
 
     //validación de envio
     if (mail($correoDestino, $asunto, $cuerpo, $cabecera)) {
-        $respuesta_reclutador = "correo enviado exitosamente al reclutador";
+        $respuesta_reclutador = "correo enviado exitosamente al reclutador" + " nombre:" + $_POST['name'] + " email:" + $_POST['email'] + " servicio:" + $_POST['service'];
     } else {
         $respuesta_reclutador = "correo no enviado al reclutador";
     }
