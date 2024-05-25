@@ -391,10 +391,10 @@
             />
               <select class="custom-select col-md-3 col-12" name="service" id="service" required>
                 <option selected disabled>Selecciona un servicio</option>
-                <option value="0">Aun no estoy seguro</option>
-                <option value="1">Servicios profesionales</option>
-                <option value="2">Tienda en línea</option>
-                <option value="3">Landing page</option>
+                <option value="Indeciso">Aun no estoy seguro</option>
+                <option value="Profesional">Servicios profesionales</option>
+                <option value="Tienda">Tienda en línea</option>
+                <option value="Landing">Landing page</option>
               </select>
             <button type="submit" class="btn-3 col-md-1 col-5">
               <i class="icon-btn-enviar fa-solid fa-angles-right"></i>
