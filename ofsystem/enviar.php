@@ -10,7 +10,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     //$cel = $_POST['telefono'];
     $fecha = date('d/m/Y', time());
     $paterno = "";
-    $correoBase = "Of System <ofsystem.com.pe>";
+    $correoBase = "Of System <info@ofsystem.com.pe>";
 
     //variables del e-mail
     $correoDestino = $correoBase;
