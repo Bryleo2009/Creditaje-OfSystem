@@ -107,5 +107,5 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
 } else {
     $respuesta = "existen campos vacios";
 }
-//echo "<script>alert(' . $respuesta . ')</script>";
-echo "<script> setTimeout(\"location.href='" . $redireccion . "'\",100)</script>";
+echo "<script>alert(' . $respuesta . ')</script>";
+echo "<script> setTimeout(\"location.href='" . $redireccion . "'\",1000)</script>";
