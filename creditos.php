@@ -27,7 +27,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					alt="logo of system" width="200px"></a></h1>
 					<ul class="list-unstyled components mb-5">
 						<li class="active">
-							<a href="https://ofsystem.com.pe"><i class='bx bxs-home'></i> Inicio</a>
+							<a href="/"><i class='bx bxs-home'></i> Inicio</a>
 						</li>
 						<!-- <li>
 							<a href="https://github.com/Bryleo2009" target="_blank"><i
