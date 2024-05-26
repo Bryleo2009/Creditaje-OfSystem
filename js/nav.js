@@ -36,10 +36,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
 window.addEventListener("scroll", function () {
     const nav = document.querySelector("header");
+    const logo = document.getElementById("logo");
+
     if (window.scrollY > 113) {
-      // Cambia el color si el scroll es mayor a 0
+      logo.src = "/images/logo/texto-logo-v1.png"; // Cambia al logo v3
       nav.classList.add("nav-scrolled");
     } else {
+      logo.src = "/images/logo/texto-logo-white.png"; // Vuelve al logo original
       nav.classList.remove("nav-scrolled");
     }
 

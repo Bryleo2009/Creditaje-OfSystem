@@ -17,3 +17,21 @@
   });
 
 })(jQuery);
+
+document.addEventListener('DOMContentLoaded', function() {
+	document.querySelectorAll('.btn-2').forEach(button => {
+	  button.addEventListener('click', function() {
+		const serviceValue = this.getAttribute('data-service');
+		document.getElementById('service').value = serviceValue;
+	  });
+	});
+  });
+
+  const yearElement = document.getElementById('year');
+  const currentYear = new Date().getFullYear();
+  yearElement.textContent = `© ${currentYear} Of System. Todos los derechos reservados.`;
+  
+  document.getElementById("formContacto").addEventListener("submit", function(e) {
+	e.preventDefault(); // Evita que el formulario se envíe de manera convencional
+	enviarCorreo(); // Llama a la función enviarCorreo()
+  });

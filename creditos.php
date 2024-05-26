@@ -23,8 +23,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</button>
 				</div>
 				<div class="p-4">
-					<h1><a href="ofsystem.com.pe" class="logo"><img src="images/Systen texto 1.png"
-								alt width="200px"></a></h1>
+					<h1><a href="ofsystem.com.pe" class="logo"><img src="images/logo/texto-logo-white.png"
+					alt="logo of system" width="200px"></a></h1>
 					<ul class="list-unstyled components mb-5">
 						<li class="active">
 							<a href="https://ofsystem.com.pe"><i class='bx bxs-home'></i> Inicio</a>
@@ -63,10 +63,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div class="conten-logo">
 					<div class="logo">
-						<img class="h-100 w-100" src="images/Systen.png" alt>
+						<img class="h-100 w-100" src="images/logo/logo-v2.png" alt="logo of system">
 					</div>
 					<div class="texto">
-						<img class="w-100" src="images/Systen texto 1.png" alt>
+						<img class="w-100" src="images/logo/texto-v1.png" alt="texto of system">
 					</div>
 				</div>
 				<div class="version ml-2">

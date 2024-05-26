@@ -1,8 +1,8 @@
 <?php
 $services = [
-    'Profesional' => 'Servicios profesionales',
-    'Tienda' => 'Tienda en línea',
-    'Landing' => 'Landing page'
+  'Profesional' => 'Servicios profesionales',
+  'Tienda' => 'Tienda en línea',
+  'Landing' => 'Landing page'
 ];
 ?>
 
@@ -28,7 +28,7 @@ $services = [
   <header>
     <nav class="nav">
       <div class="logo">
-        <a href="/"><img src="/images/Systen Logo 1.png" alt="logo of system" /></a>
+        <a href="/"><img id="logo" src="/images/logo/texto-logo-white.png" alt="logo of system" /></a>
       </div>
       <input type="checkbox" id="menu-toggle" class="menu-toggle" />
       <label for="menu-toggle" class="menu-toggle-label">
@@ -50,6 +50,9 @@ $services = [
     <!--Home-->
     <section class="home d-flex align-items-center" id="home">
       <div class="d-flex flex-column align-items-center">
+        <div class="logo-2">
+          <img src="images/logo/logo-white.png" alt="logo of system" />
+        </div>
         <h1 class="blanco center mb-4">
           Desarrollo de
           <span id="element" class="degradado degradado-1"></span>
@@ -104,39 +107,39 @@ $services = [
         </h1>
       </div>
       <div class="d-flex flex-wrap gap-2 justify-content-center mt-5">
-    <?php foreach ($services as $value => $name) : ?>
-        <div class="card-service">
+        <?php foreach ($services as $value => $name) : ?>
+          <div class="card-service">
             <div class="card-cabecera">
-                <div class="ellipse">
-                    <!-- Puedes personalizar los íconos según el servicio -->
-                    <?php if ($value == 'Profesional'): ?>
-                        <i class="fa-regular fa-building"></i>
-                    <?php elseif ($value == 'Tienda'): ?>
-                        <i class="fa-regular fa-credit-card"></i>
-                    <?php elseif ($value == 'Landing'): ?>
-                        <i class="fa-regular fa-flag"></i>
-                    <?php endif; ?>
-                </div>
-                <h2><?php echo $name; ?></h2>
+              <div class="ellipse">
+                <!-- Puedes personalizar los íconos según el servicio -->
+                <?php if ($value == 'Profesional') : ?>
+                  <i class="fa-regular fa-building"></i>
+                <?php elseif ($value == 'Tienda') : ?>
+                  <i class="fa-regular fa-credit-card"></i>
+                <?php elseif ($value == 'Landing') : ?>
+                  <i class="fa-regular fa-flag"></i>
+                <?php endif; ?>
+              </div>
+              <h2><?php echo $name; ?></h2>
             </div>
             <div class="card-cuerpo">
-                <h3 class="placeholder-2">
-                    <!-- Aquí puedes poner descripciones personalizadas para cada servicio -->
-                    <?php if ($value == 'Profesional'): ?>
-                        Presenta tus servicios de manera clara y convincente, captando la atención de clientes y estableciendo tu credibilidad en el mercado competitivo.
-                    <?php elseif ($value == 'Tienda'): ?>
-                        Abre las puertas de tu negocio al mundo digital, permitiendo a tus clientes comprar en línea desde la comodidad de sus hogares y así aumentar tu alcance.
-                    <?php elseif ($value == 'Landing'): ?>
-                        Captura la atención de tus visitantes, convirtiéndolos en clientes potenciales con una página optimizada enfocada en una única oferta o llamada a la acción.
-                    <?php endif; ?>
-                </h3>
+              <h3 class="placeholder-2">
+                <!-- Aquí puedes poner descripciones personalizadas para cada servicio -->
+                <?php if ($value == 'Profesional') : ?>
+                  Presenta tus servicios de manera clara y convincente, captando la atención de clientes y estableciendo tu credibilidad en el mercado competitivo.
+                <?php elseif ($value == 'Tienda') : ?>
+                  Abre las puertas de tu negocio al mundo digital, permitiendo a tus clientes comprar en línea desde la comodidad de sus hogares y así aumentar tu alcance.
+                <?php elseif ($value == 'Landing') : ?>
+                  Captura la atención de tus visitantes, convirtiéndolos en clientes potenciales con una página optimizada enfocada en una única oferta o llamada a la acción.
+                <?php endif; ?>
+              </h3>
             </div>
             <div class="card-pie">
-                <a type="button" class="btn-2" href="#contacto" data-service="<?php echo $value; ?>">Empezar</a>
+              <a type="button" class="btn-2" href="#contacto" data-service="<?php echo $value; ?>">Empezar</a>
             </div>
-        </div>
-    <?php endforeach; ?>
-</div>
+          </div>
+        <?php endforeach; ?>
+      </div>
     </section>
 
     <!--Metodología-->
@@ -315,11 +318,11 @@ $services = [
           <input type="text" name="name" id="name" class="col-md-3 col-12" placeholder="Nombre" required />
           <input type="email" name="email" id="email" class="col-md-3 col-12" placeholder="Correo" required />
           <select class="custom-select col-md-3 col-12" name="service" id="service" required>
-              <option value="" disabled selected>Selecciona un servicio</option>
-              <option value="Indeciso">Aun no estoy seguro</option>
-              <?php foreach ($services as $value => $name) : ?>
-                  <option value="<?php echo $value; ?>"><?php echo $name; ?></option>
-              <?php endforeach; ?>
+            <option value="" disabled selected>Selecciona un servicio</option>
+            <option value="Indeciso">Aun no estoy seguro</option>
+            <?php foreach ($services as $value => $name) : ?>
+              <option value="<?php echo $value; ?>"><?php echo $name; ?></option>
+            <?php endforeach; ?>
           </select>
           <button type="submit" class="btn-3 col-md-1 col-5">
             <i class="icon-btn-enviar fa-solid fa-angles-right"></i>
@@ -334,7 +337,7 @@ $services = [
     <section class="footer">
       <div class="sec-1">
         <div class="logo-footer">
-          <img src="/images/landing/System.png" alt />
+          <img src="/images/logo/logo-v1.png" alt />
         </div>
         <div class="d-flex flex-column gap-1">
           <div class="footer-link d-flex">
@@ -362,10 +365,20 @@ $services = [
             <h3 class="m-0">+51 907 442 751</h3>
           </div>
         </div>
+        <div class="s-footer-social-copy">
+          <script>
+            var creditaje = 'ofsystem';
+            var link = 'https://bryleo2009.github.io/Creditaje-OfSystem/';
+            var text = '© All rights reserved - 2024';
+            window.onload = document.write(
+              '<' + creditaje + '>' +
+              '<a href=' + '"' + link + '"' + 'target="_blank" >' + text +
+              '</a>' +
+              '</' + creditaje + '>');
+          </script>
+        </div>
         <div class="termino texto-footer">
-          <h3 class="m-0">
-            © 2021 Of System. Todos los derechos reservados.
-          </h3>
+          <h3 class="m-0" id="year"></h3>
         </div>
       </div>
     </section>
@@ -376,40 +389,7 @@ $services = [
 
 
   <?php require_once 'pages/footer.php'; ?>
-
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.querySelectorAll('.btn-2').forEach(button => {
-                button.addEventListener('click', function() {
-                    const serviceValue = this.getAttribute('data-service');
-                    document.getElementById('service').value = serviceValue;
-                });
-            });
-        });
-    </script>
-
-			<script>
-				$(function() {
-					$('#WhatsBTN').floatingWhatsApp({
-					phone: '+51907442751', //WhatsApp numero, formato internacional
-					headerTitle: 'Of System 💫', //Popup Titulo
-					popupMessage: 'Hola! Dime, en que puedo ayudarte?', //Popup Mensagem
-					showPopup: true, //Desabilitar pop up
-					buttonImage: '<img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" />', //Button Image
-					//headerColor: 'crimson', //Custom header color
-					//backgroundColor: 'crimson', //Custom background button color
-					position: "right" ,
-					rightPosition: "10px", // Nueva variable para la posición derecha
-        			bottomPosition: "60px" // Nueva variable para la posición inferior   
-					});
-				});
-			</script>
-			<script type="text/javascript" src="js/whats.js"></script>
-    <!-- Load library from the CDN -->
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-
-
-  <!-- Setup and start animation! -->
+  
   <script>
     var typed = new Typed("#element", {
       strings: ["páginas", "experiencias", "aplicaciones", "soluciones"],
@@ -418,13 +398,22 @@ $services = [
       loop: true,
       showCursor: false,
     });
-  </script>
-  <script>
-    document.getElementById("formContacto").addEventListener("submit", function(e) {
-      e.preventDefault(); // Evita que el formulario se envíe de manera convencional
-      enviarCorreo(); // Llama a la función enviarCorreo()
+    $(function() {
+      $('#WhatsBTN').floatingWhatsApp({
+        phone: '+51907442751', //WhatsApp numero, formato internacional
+        headerTitle: 'Of System 💫', //Popup Titulo
+        popupMessage: 'Hola! Dime, en que puedo ayudarte?', //Popup Mensagem
+        showPopup: true, //Desabilitar pop up
+        buttonImage: '<img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" />', //Button Image
+        //headerColor: 'crimson', //Custom header color
+        //backgroundColor: 'crimson', //Custom background button color
+        position: "right",
+        rightPosition: "10px", // Nueva variable para la posición derecha
+        bottomPosition: "60px" // Nueva variable para la posición inferior   
+      });
     });
   </script>
+  <script type="text/javascript" src="js/whats.js"></script>
 </body>
 
 </html>
