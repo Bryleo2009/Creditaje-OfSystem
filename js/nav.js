@@ -39,10 +39,14 @@ window.addEventListener("scroll", function () {
     const logo = document.getElementById("logo");
 
     if (window.scrollY > 113) {
-      logo.src = "/images/logo/texto-logo-v1.png"; // Cambia al logo v3
+      if (window.innerWidth <= 769) {
+        logo.src = "/images/logo/texto-logo-v2.png"; // Cambia al logo v1
+      } else {
+        logo.src = "/images/logo/texto-logo-v1.png"; // Cambia al logo v2
+      }
       nav.classList.add("nav-scrolled");
     } else {
-      logo.src = "/images/logo/texto-logo-white.png"; // Vuelve al logo original
+      logo.src = "/images/logo/texto-logo-v2.png"; // Vuelve al logo original
       nav.classList.remove("nav-scrolled");
     }
 

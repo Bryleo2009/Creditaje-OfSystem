@@ -33,7 +33,7 @@ a:not([href]):not([tabindex]):focus {
 #sidebar {
   min-width: 270px;
   max-width: 270px;
-  background: #505050;
+  background: #333;
   color: #fff;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;

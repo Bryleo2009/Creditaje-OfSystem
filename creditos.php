@@ -23,7 +23,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 					</button>
 				</div>
 				<div class="p-4">
-					<h1><a href="ofsystem.com.pe" class="logo"><img src="images/logo/texto-logo-white.png"
+					<h1><a href="/" class="logo"><img src="images/logo/texto-logo-white.png"
 					alt="logo of system" width="200px"></a></h1>
 					<ul class="list-unstyled components mb-5">
 						<li class="active">
@@ -71,7 +71,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div class="version ml-2">
 					<p>Versión 2.4
-						<br> Todos los derechos reservados - <b>Of System ®</b> 2022</p>
+						<br> <span id="year"></span></p>
 				</div>
 			</div>
 		</div>

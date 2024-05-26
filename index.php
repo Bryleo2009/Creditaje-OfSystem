@@ -28,7 +28,7 @@ $services = [
   <header>
     <nav class="nav">
       <div class="logo">
-        <a href="/"><img id="logo" src="/images/logo/texto-logo-white.png" alt="logo of system" /></a>
+        <a href="/"><img id="logo" src="/images/logo/texto-logo-v2.png" alt="logo of system" /></a>
       </div>
       <input type="checkbox" id="menu-toggle" class="menu-toggle" />
       <label for="menu-toggle" class="menu-toggle-label">

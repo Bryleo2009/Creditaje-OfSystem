@@ -733,6 +733,10 @@ footer {
         font-size: var(--text-h3-movile);
     }
 
+    .logo img {
+        width: 170px;
+    }
+
     .nav-links {
         position: fixed;
         top: 0;
