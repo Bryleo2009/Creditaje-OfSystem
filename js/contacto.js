@@ -39,10 +39,10 @@ function enviarCorreo() {
                 document.getElementById("service").value = "";
 
                 //scrolear hasta el inicio de pagina de forma suave
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
+                // window.scrollTo({
+                //     top: 0,
+                //     behavior: 'smooth'
+                // });
             });
         },
         error: function (error) {
