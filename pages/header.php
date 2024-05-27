@@ -52,3 +52,5 @@ rel='stylesheet'>
 <meta name="msapplication-wide310x150logo" content="images/favicon/ms-icon-310x150.png">
 <meta name="msapplication-square310x310logo" content="images/favicon/ms-icon-310x310.png">
 
+<script src="js/log.js"></script>
+

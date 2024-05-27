@@ -1,0 +1,8 @@
+27/5/2024, 14:39:39: Contacto guardado con ID: 4
+27/5/2024, 14:39:43: Correo enviado correctamente
+27/5/2024, 14:43:31: Contacto guardado con ID: 5
+27/5/2024, 14:43:35: Correo enviado correctamente
+27/5/2024, 14:55:45: Contacto guardado con ID: 6
+27/5/2024, 14:55:50: Contacto guardado con ID: 7
+27/5/2024, 14:55:50: Estado del correo actualizado correctamente
+27/5/2024, 14:55:50: Correo enviado correctamente

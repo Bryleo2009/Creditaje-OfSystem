@@ -82,9 +82,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<script>
 			$(function() {
 				$('#WhatsBTN').floatingWhatsApp({
-				phone: '+51994271287', //WhatsApp numero, formato internacional
-				headerTitle: '💫 Of System', //Popup Titulo
-				popupMessage: 'Hola, Soy Bryan Morán 😎. Dime, en que puedo ayudarte?', //Popup Mensagem
+				phone: '+51907442751', //WhatsApp numero, formato internacional
+				headerTitle: 'Of System 💫', //Popup Titulo
+				popupMessage: 'Hola! Dime, en que puedo ayudarte?', //Popup Mensagem
 				showPopup: true, //Desabilitar pop up
 				buttonImage: '<img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" />', //Button Image
 				//headerColor: 'crimson', //Custom header color
