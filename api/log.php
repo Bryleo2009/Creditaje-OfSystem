@@ -28,6 +28,28 @@ if (isset($data['log'])) {
 
     echo json_encode(["status" => "success", "message" => "Log guardado correctamente"]);
 } else {
-    echo json_encode(["status" => "error", "message" => "Datos incompletos"]);
+    // Obtener los datos POST
+    $data = $_POST['data'];
+//conveirtelo en array
+    $data = json_encode($data);
+
+  // Decodificar el JSON a un array asociativo de PHP
+$dataArray = json_decode($data, true);
+
+// Verificar si la decodificación fue exitosa y si el campo 'log' está presente
+if (json_last_error() === JSON_ERROR_NONE && isset($dataArray['log'])) {
+    $log = $dataArray['log'];
+
+
+    if($log !== ""){
+        file_put_contents($filepath, $log . PHP_EOL, FILE_APPEND | LOCK_EX);
+    }
+    
+
+    // Responder con un mensaje de éxito
+    echo json_encode(["status" => "success", "message" => "Log guardado correctamente"]);
+} else {
+    // Responder con un mensaje de error si la decodificación falló o el campo 'log' no está presente
+    echo json_encode(["status" => "error", "message" => "Datos del log incompletos o JSON inválido"]);
 }
-?>
+}

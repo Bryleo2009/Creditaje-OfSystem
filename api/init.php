@@ -38,6 +38,7 @@ $sql_tb_frm_contacto = "CREATE TABLE IF NOT EXISTS tb_frm_contacto (
     estado BOOLEAN NOT NULL DEFAULT 1,
     estado_corre VARCHAR(5) NOT NULL,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_lectura TIMESTAMP NULL,
     FOREIGN KEY (estado_corre) REFERENCES tb_estado_correo(id)
 )";
 
@@ -54,7 +55,7 @@ if ($conn->query($sql_tb_frm_contacto) === TRUE) {
 }
 
 //insertar datos en la tabla tb_estado_correo
-$sql_insert_estado_correo = "INSERT INTO tb_estado_correo (id, descripcion, estado) VALUES
+/*$sql_insert_estado_correo = "INSERT INTO tb_estado_correo (id, descripcion, estado) VALUES
 ('SENT', 'Enviado', 1),
 ('NOSEN', 'No enviado', 1),
 ('READ', 'Leido', 1)";
@@ -64,7 +65,7 @@ if ($conn->query($sql_insert_estado_correo) === TRUE) {
 } else {
     echo "Error al insertar datos en la tabla: " . $conn->error;
 }
-
+*/
 
 $conn->close();
 ?>

@@ -28,20 +28,64 @@ if ($conn->connect_error) {
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (isset($data['id']) && isset($data['estado_correo'])) {
+
     $id = $conn->real_escape_string($data['id']);
     $estado_correo = $conn->real_escape_string($data['estado_correo']);
 
-    // SQL para actualizar el estado del correo
-    $sql = "UPDATE tb_frm_contacto SET estado_corre = '$estado_correo' WHERE id = '$id'";
+    // Verifica primero si el id existe
+    $sql = "SELECT * FROM tb_frm_contacto WHERE id = $id";
 
-    if ($conn->query($sql) === TRUE) {
-        echo json_encode(["status" => "success", "message" => "Estado del correo actualizado correctamente"]);
+    $result = $conn->query($sql);
+
+    if ($result === FALSE) {
+        echo json_encode(["status" => "error", "message" => "Error en la consulta de selección: " . $conn->error]);
+        exit;
+    }
+
+    if ($result->num_rows > 0) {
+        // Verificar el nombre correcto de la columna y actualizar la tabla
+        $sql_update = "UPDATE tb_frm_contacto SET estado_corre = '$estado_correo' WHERE id = '$id'";
+
+        if ($conn->query($sql_update) === TRUE) {
+            echo json_encode(["status" => "success", "message" => "Estado del correo con ID-$id actualizado correctamente"]);
+        } else {
+            echo json_encode(["status" => "error", "message" => "Error al actualizar el estado del correo con ID-$id: " . $conn->error]);
+        }
     } else {
-        echo json_encode(["status" => "error", "message" => "Error al actualizar el estado del correo: " . $conn->error]);
+        echo json_encode(["status" => "error", "message" => "No se encontró ningún registro con el ID-$id proporcionado"]);
     }
 } else {
-    echo json_encode(["status" => "error", "message" => "Datos incompletos"]);
+    $data = $_POST['data'];
+    if (isset($data['id']) && isset($data['estado_correo'])) {
+
+        $id = $conn->real_escape_string($data['id']);
+        $estado_correo = $conn->real_escape_string($data['estado_correo']);
+
+        // Verifica primero si el id existe
+        $sql = "SELECT * FROM tb_frm_contacto WHERE id = $id";
+
+        $result = $conn->query($sql);
+
+        if ($result === FALSE) {
+            echo json_encode(["status" => "error", "message" => "Error en la consulta de selección: " . $conn->error]);
+            exit;
+        }
+
+        if ($result->num_rows > 0) {
+            // Verificar el nombre correcto de la columna y actualizar la tabla
+            $sql_update = "UPDATE tb_frm_contacto SET estado_corre = '$estado_correo', fecha_lectura = current_timestamp() WHERE id = '$id'";
+
+            if ($conn->query($sql_update) === TRUE) {
+                echo json_encode(["status" => "success", "message" => "Estado del correo con ID-$id actualizado correctamente"]);
+            } else {
+                echo json_encode(["status" => "error", "message" => "Error al actualizar el estado del correo con ID-$id: " . $conn->error]);
+            }
+        } else {
+            echo json_encode(["status" => "error", "message" => "No se encontró ningún registro con el ID-$id proporcionado"]);
+        }
+    } else {
+        echo json_encode(["status" => "error", "message" => "Datos incompletos", "data" => $data]);
+    }
 }
 
 $conn->close();
-?>
