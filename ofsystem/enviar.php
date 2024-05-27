@@ -1,11 +1,12 @@
 <?php
 $redireccion = "../";
 
-if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'])){
+if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'])  && !empty($_POST['idCliente'])){
     //variables del formulario
     $nombre = $_POST['name'];
     $mail = $_POST['email'];
     $servicio = $_POST['service'];
+    $idCliente = $_POST['idCliente'];
     //$mensaje = $_POST['msg'];
     //$cel = $_POST['telefono'];
     $fecha = date('d/m/Y', time());
@@ -43,7 +44,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     $cuerpo .= "Content-Transfer-Encoding: 8bit\r\n";
     $cuerpo .= "\r\n";
     //$cuerpo .= $html_reclutador;
-    $cuerpo .= "<h1>Nombre: {$nombre}</h1>";
+    $cuerpo .= "<h1>Nombre: {$nombre} - idCliente {$idCliente}</h1>";
 
     $cuerpo .= "\r\n";
 
@@ -94,7 +95,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     $cuerpo .= "Content-Transfer-Encoding: 8bit\r\n";
     $cuerpo .= "\r\n";
     //$cuerpo .= $html_postulante;
-    $cuerpo .= "<h1>Nombre: {$nombre}</h1>";
+    $cuerpo .= "<h1>Nombre: {$nombre}  - idCliente {$idCliente}</h1>";
 
     $cuerpo .= "\r\n";
 

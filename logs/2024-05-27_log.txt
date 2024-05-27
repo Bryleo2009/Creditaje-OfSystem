@@ -6,3 +6,6 @@
 27/5/2024, 14:55:50: Contacto guardado con ID: 7
 27/5/2024, 14:55:50: Estado del correo actualizado correctamente
 27/5/2024, 14:55:50: Correo enviado correctamente
+27/5/2024, 15:10:55: Contacto a[bryan.moran_vega@hotmail.com] guardado con ID: 10
+27/5/2024, 15:11:00: Estado del correo del ID-10 actualizado correctamente
+27/5/2024, 15:11:00: Correo enviado correctamente

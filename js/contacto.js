@@ -18,22 +18,24 @@ function enviarCorreo() {
         return;
     }
 
-    var parametros = {
-        "name": nombre,
-        "email": correo,
-        "service": mensaje
-    };
 
-    // Envío del correo
-    $.ajax({
-        data: parametros,
-        url: 'ofsystem/enviar.php',
-        type: 'post',
-        success: function (response) {
-            // Llamar a enviarContacto y luego actualizarEstadoCorreo con el ID devuelto
-            enviarContacto(nombre, correo, mensaje)
-                .then(function (idContact) {
-                    // Llamar a actualizarEstadoCorreo con el ID del contacto y el nuevo estado
+    // Llamar a enviarContacto para crear el cliente y obtener su ID
+    nuevoContacto(nombre, correo, mensaje)
+        .then(function (idContact) {
+            // Envío del correo
+            var parametros = {
+                "name": nombre,
+                "email": correo,
+                "service": mensaje,
+                "idCliente": idContact
+            };
+
+            $.ajax({
+                data: parametros,
+                url: 'ofsystem/enviar.php',
+                type: 'post',
+                success: function (response) {
+                    // Llamar a actualizarEstadoCorreo con el ID del cliente y el nuevo estado
                     actualizarEstadoCorreo(idContact, 'SENT')
                         .then(function () {
                             // Registro de éxito
@@ -59,32 +61,33 @@ function enviarCorreo() {
                                 icon: "warning"
                             });
                         });
-                })
-                .catch(function (error) {
-                    // Manejar error de enviarContacto
-                    registrarLog("Error al enviar el correo: " + error);
+                },
+                error: function (error) {
+                    // Manejar error de enviar correo
+                    registrarLog("Error al enviar correo: " + error);
                     Swal.fire({
                         title: "Error de envío",
                         text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde.",
                         icon: "warning"
                     });
-                });
-        },
-        error: function (error) {
-            // Manejar error de enviar correo
-            registrarLog("Error al enviar correo: " + error);
+                }
+            });
+        })
+        .catch(function (error) {
+            // Manejar error de enviarContacto
+            registrarLog("Error al enviar el correo: " + error);
             Swal.fire({
                 title: "Error de envío",
                 text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde.",
                 icon: "warning"
             });
-        }
-    });
+        });
+
 
 }
 
 
-async function enviarContacto(nombre, email, servicio) {
+async function nuevoContacto(nombre, email, servicio) {
     const response = await fetch('/api/guardar_contacto.php', {
         method: 'POST',
         headers: {
