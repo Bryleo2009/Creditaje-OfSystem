@@ -35,17 +35,23 @@ if (isset($_GET['id_cliente'])) {
             echo 'Error al decodificar la respuesta JSON o el campo "message" no existe';
         }
 
-        $_POST['data'] = $data;
-        ob_start();
-        include($log);
-        $response = ob_get_clean();
+        
         //echo $response;
         
         // Devolver la imagen al navegador
         header('Content-Type: image/png'); // Establece el tipo MIME como imagen PNG
         readfile($rutaImagenes);
+    } else {
+        $data['log'] = "La imagen no se encuentra en $rutaImagenes";
     }
+} else {
+    $data['log'] = "No se proporcionó el parámetro 'id_cliente'";
 }
+
+$_POST['data'] = $data;
+ob_start();
+include($log);
+$response = ob_get_clean();
 
 // Si la imagen no se encuentra o no se proporciona el parámetro 'id_cliente', devuelve un código de estado 404
 http_response_code(404);
