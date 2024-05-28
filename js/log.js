@@ -1,7 +1,5 @@
 function registrarLog(mensaje) {
-    const ahora = new Date();
-    const fechaHora = ahora.toLocaleString();
-    const log = `${fechaHora}: ${mensaje}\n`;
+    const log = `${mensaje}\n`;
 
     // Enviar el log al servidor para ser guardado en el archivo
     fetch('/api/log.php', {

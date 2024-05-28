@@ -1,6 +1,6 @@
 <?php
 // Ruta donde se almacenan las imágenes
-$rutaImagenes = dirname(__DIR__) .'\images\logo\logo-v1.png';
+$rutaImagenes = 'ofsystem.com.pe/images/logo/logo-v1.png';
 
 $log = __DIR__ . '/log.php';
 $data['log'] = "";
