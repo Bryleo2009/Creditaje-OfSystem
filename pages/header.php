@@ -39,6 +39,7 @@ rel='stylesheet'>
 <link rel="apple-touch-icon" sizes="120x120" href="images/favicon/apple-icon-120x120.png">
 <link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-icon-152x152.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-icon-180x180.png">
+<meta name="title" content="Of System">
 
 <!-- Favicon Icons -->
 <link rel="icon" href="images/favicon/favicon.ico">

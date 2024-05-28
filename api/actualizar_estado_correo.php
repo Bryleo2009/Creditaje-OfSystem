@@ -78,8 +78,9 @@ if (isset($data['id']) && isset($data['estado_correo'])) {
             if($result->num_rows > 0){
                 exit;
             }
-            // Verificar el nombre correcto de la columna y actualizar la tabla
-            $sql_update = "UPDATE tb_frm_contacto SET estado_corre = '$estado_correo', fecha_lectura = current_timestamp() WHERE id = '$id'";
+            //actualiza el estado y fecha de lectura con la fecha peruana
+            $sql_update = "UPDATE tb_frm_contacto SET estado_corre = 'READ', fecha_lectura = NOW() WHERE id = '$id'";
+           
 
             if ($conn->query($sql_update) === TRUE) {
                 echo json_encode(["status" => "success", "message" => "Estado del correo con ID-$id actualizado correctamente"]);
