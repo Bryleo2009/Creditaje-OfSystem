@@ -1,6 +1,6 @@
 <?php
 // Ruta donde se almacenan las imágenes
-$rutaImagenes = 'ofsystem.com.pe/images/logo/logo-v1.png';
+$rutaImagenes = 'https://ofsystem.com.pe/images/logo/logo-v1.png';
 
 $log = __DIR__ . '/log.php';
 $data['log'] = "";
@@ -10,9 +10,6 @@ if (isset($_GET['id_cliente'])) {
     // Nombre de la imagen solicitada
     $idCliente = $_GET['id_cliente'];
 
-    // Verificar si la imagen existe
-    if (file_exists($rutaImagenes)) {
-        // Definir la ruta del archivo
         $file = __DIR__ . '/actualizar_estado_correo.php';
         $data['id'] = $idCliente;
         $data['estado_correo'] = 'READ';
@@ -41,9 +38,7 @@ if (isset($_GET['id_cliente'])) {
         // Devolver la imagen al navegador
         header('Content-Type: image/png'); // Establece el tipo MIME como imagen PNG
         readfile($rutaImagenes);
-    } else {
-        $data['log'] = "La imagen no se encuentra en $rutaImagenes";
-    }
+
 } else {
     $data['log'] = "No se proporcionó el parámetro 'id_cliente'";
 }

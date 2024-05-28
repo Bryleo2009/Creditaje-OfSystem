@@ -1,14 +1,1 @@
-27/5/2024, 18:10:04: Contacto c[bryan.moran_vega@hotmail.com] guardado con ID: 4
-27/5/2024, 18:10:05: Contacto c[bryan.moran_vega@hotmail.com] guardado con ID: 5
-27/5/2024, 18:10:14: Estado del correo del ID-4 actualizado correctamente
-27/5/2024, 18:10:14: Correo enviado correctamente
-27/5/2024, 18:10:14: Estado del correo del ID-5 actualizado correctamente
-27/5/2024, 18:10:14: Correo enviado correctamente
-No se encontró ningún registro con el ID-15 proporcionado
-Estado del correo con ID-1 actualizado correctamente
-Estado del correo con ID-5 actualizado correctamente
-Estado del correo con ID-5 actualizado correctamente
-Estado del correo con ID-5 actualizado correctamente
-Estado del correo con ID-5 actualizado correctamente
-Estado del correo con ID-2 actualizado correctamente
-Estado del correo con ID-2 actualizado correctamente
+27/05/2024 21:47:53: Estado del correo con ID-8 actualizado correctamente

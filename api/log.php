@@ -1,5 +1,6 @@
 <?php
 header("Content-Type: application/json");
+date_default_timezone_set('America/Lima');
 
 // Función para leer el archivo config.env
 require_once 'config_helper.php';
@@ -13,12 +14,11 @@ if (!file_exists($logDirectory)) {
 }
 
 // Obtener la fecha y hora actual para el nombre del archivo de registro
-$now = new DateTime();
-$filename = $now->format('Y-m-d') . '_log.txt';
+$filename = date('Y-m-d', time()). '_log.txt';
 $filepath = $logDirectory . $filename;
 
 //fecha y hora local peruana
-date_default_timezone_set('America/Lima');
+
 $fecha = date('d/m/Y H:i:s', time());
 
 
@@ -26,7 +26,7 @@ $fecha = date('d/m/Y H:i:s', time());
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (isset($data['log'])) {
-    $log = $fecha + ": "  + $data['log'];
+    $log = $fecha . ": "  . $data['log'];
 
     // Escribir el log en el archivo de registro
     file_put_contents($filepath, $log, FILE_APPEND | LOCK_EX);
@@ -45,7 +45,7 @@ if (isset($data['log'])) {
     if (json_last_error() === JSON_ERROR_NONE && isset($dataArray['log'])) {
 
         if ($dataArray['log'] !== "") {
-            $log = $fecha + ": "  + $dataArray['log'];
+            $log = $fecha . ": " .$dataArray['log'];
             file_put_contents($filepath, $log . PHP_EOL, FILE_APPEND | LOCK_EX);
         }
 
