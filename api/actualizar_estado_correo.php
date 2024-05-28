@@ -72,6 +72,12 @@ if (isset($data['id']) && isset($data['estado_correo'])) {
         }
 
         if ($result->num_rows > 0) {
+            //verifica si ya se actualizo el estado del correo
+            $sql = "SELECT * FROM tb_frm_contacto WHERE id = $id AND estado_corre = 'READ'";
+            $result = $conn->query($sql);
+            if($result->num_rows > 0){
+                exit;
+            }
             // Verificar el nombre correcto de la columna y actualizar la tabla
             $sql_update = "UPDATE tb_frm_contacto SET estado_corre = '$estado_correo', fecha_lectura = current_timestamp() WHERE id = '$id'";
 
