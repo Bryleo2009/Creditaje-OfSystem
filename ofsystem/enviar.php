@@ -19,7 +19,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
 
     //cuerpo del e-mail
     $html_reclutador = require('email/reclutador.php');
-    $html_postulante = require('email/postulante.php');
+    $html_postulante = require('email/cliente.php');
 
     /*
     //variables del archivo
@@ -94,8 +94,8 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     $cuerpo .= "charset=UTF-8\r\n";
     $cuerpo .= "Content-Transfer-Encoding: 8bit\r\n";
     $cuerpo .= "\r\n";
-    //$cuerpo .= $html_postulante;
-    $cuerpo .= "<h1>Nombre: {$nombre}  - idCliente {$idCliente}</h1>";
+    $cuerpo .= $html_postulante;
+    //$cuerpo .= "<h1>Nombre: {$nombre}  - idCliente {$idCliente}</h1>";
 
     $cuerpo .= "\r\n";
 
