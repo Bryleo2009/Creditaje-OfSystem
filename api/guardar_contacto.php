@@ -31,9 +31,10 @@ if (isset($data['name']) && isset($data['email']) && isset($data['service'])) {
     $nombre = $conn->real_escape_string($data['name']);
     $email = $conn->real_escape_string($data['email']);
     $servicio = $conn->real_escape_string($data['service']);
-
+    date_default_timezone_set('America/Lima');
+    $fecha = date('Y-m-d H:i:s');
     // SQL para insertar el registro
-    $sql = "INSERT INTO tb_frm_contacto (nombre, email, servicio, estado_corre, fecha_registro) VALUES ('$nombre', '$email', '$servicio', 'NOSEN', current_timestamp())";
+    $sql = "INSERT INTO tb_frm_contacto (nombre, email, servicio, estado_corre, fecha_registro) VALUES ('$nombre', '$email', '$servicio', 'NOSEN', '$fecha')";
 
     if ($conn->query($sql) === TRUE) {
         $insert_id = $conn->insert_id;

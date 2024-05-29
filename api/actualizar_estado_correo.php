@@ -31,6 +31,8 @@ if (isset($data['id']) && isset($data['estado_correo'])) {
 
     $id = $conn->real_escape_string($data['id']);
     $estado_correo = $conn->real_escape_string($data['estado_correo']);
+    date_default_timezone_set('America/Lima');
+    $fecha = date('Y-m-d H:i:s');
 
     // Verifica primero si el id existe
     $sql = "SELECT * FROM tb_frm_contacto WHERE id = $id";
@@ -79,7 +81,7 @@ if (isset($data['id']) && isset($data['estado_correo'])) {
                 exit;
             }
             //actualiza el estado y fecha de lectura con la fecha peruana
-            $sql_update = "UPDATE tb_frm_contacto SET estado_corre = 'READ', fecha_lectura = NOW() WHERE id = '$id'";
+            $sql_update = "UPDATE tb_frm_contacto SET estado_corre = 'READ', fecha_lectura = '$fecha' WHERE id = '$id'";
            
 
             if ($conn->query($sql_update) === TRUE) {
