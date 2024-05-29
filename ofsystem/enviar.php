@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: application/json");
 $redireccion = "../";
 
 $log = __DIR__ . '/../api/log.php';
@@ -111,20 +112,20 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     }
 
     $respuesta = $respuesta_reclutador . ' | ' . $respuesta_postulante;
+    echo json_encode(["status" => "success", "message" => $respuesta]);
     // $data['log'] = $respuesta;
     // $_POST['data'] = $data;
     // ob_start();
     // include($log);
     // $response = ob_get_clean();
-    echo $respuesta;
 } else {
     $respuesta = "existen campos vacios" . " nombre:" . $_POST['name'] . " email:" . $_POST['email'] . " servicio:" . $_POST['service'];
+    echo json_encode(["status" => "error", "message" => $respuesta]);
     // $data['log'] = $respuesta;
     // $_POST['data'] = $data;
     // ob_start();
     // include($log);
     // $response = ob_get_clean();
-    echo $respuesta;
 }
 
 

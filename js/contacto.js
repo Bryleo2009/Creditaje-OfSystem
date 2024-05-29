@@ -35,6 +35,7 @@ function enviarCorreo() {
                 url: 'ofsystem/enviar.php',
                 type: 'post',
                 success: function (response) {
+                    console.log(response);
                     registrarLog(response);
                     // Llamar a actualizarEstadoCorreo con el ID del cliente y el nuevo estado
                     actualizarEstadoCorreo(idContact, 'SENT')
@@ -60,6 +61,7 @@ function enviarCorreo() {
                         });
                 },
                 error: function (error) {
+                    console.log(error);
                     registrarLog(error);
                     Swal.fire({
                         title: "Error de envío",
