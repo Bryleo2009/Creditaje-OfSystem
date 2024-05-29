@@ -61,7 +61,7 @@ function enviarCorreo() {
                 error: function (error) {
                     Swal.fire({
                         title: "Error de envío",
-                        text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde.",
+                        text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde1.",
                         icon: "warning"
                     });
                 }
@@ -69,8 +69,8 @@ function enviarCorreo() {
         })
         .catch(function (error) {
             Swal.fire({
-                title: "Error de envío",
-                text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde.",
+                title: "Error de envio",
+                text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde2.",
                 icon: "warning"
             });
         });
