@@ -14,7 +14,7 @@ if (!file_exists($logDirectory)) {
 }
 
 // Obtener la fecha y hora actual para el nombre del archivo de registro
-$filename = date('Y-m-d', time()). '_log.txt';
+$filename = date('Y-m-d', time()). '_ofsystem.log';
 $filepath = $logDirectory . $filename;
 
 //fecha y hora local peruana

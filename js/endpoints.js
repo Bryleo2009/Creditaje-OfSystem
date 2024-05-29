@@ -33,3 +33,24 @@ async function actualizarEstadoCorreo(idCliente, nuevoEstado) {
         registrarLog(`Error al actualizar estado del correo del ID-${idCliente}: ${result.message}`);
     }
 }
+
+//crear una para session.php mandale email y password encryp
+async function iniciarSesion(email, password) {
+    const response = await fetch('/api/session.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email, password: password })
+    });
+
+    const result = await response.json();
+    if (result.status === 'success') {
+        //registrarLog(`Sesión iniciada correctamente`);
+        return result;
+    } else {
+        //registrarLog(`Error al iniciar sesión: ${result.message}`);
+        return result.message;
+    }
+}
+
