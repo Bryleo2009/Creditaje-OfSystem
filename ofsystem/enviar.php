@@ -110,9 +110,14 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
         $respuesta_postulante = "correo no enviado a [$correoDestino]";
     }
 
-    $data['log'] = $respuesta_reclutador . ' | ' . $respuesta_postulante;
+    $respuesta = $respuesta_reclutador . ' | ' . $respuesta_postulante;
+    $data['log'] = $respuesta;
+    echo $respuesta;
 } else {
-    $data['log'] = "existen campos vacios" . " nombre:" . $_POST['name'] . " email:" . $_POST['email'] . " servicio:" . $_POST['service'];
+    $respuesta = "existen campos vacios" . " nombre:" . $_POST['name'] . " email:" . $_POST['email'] . " servicio:" . $_POST['service'];
+    $data['log'] = $respuesta;
+
+    echo $respuesta;
 }
 
 
