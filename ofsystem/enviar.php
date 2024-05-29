@@ -1,6 +1,9 @@
 <?php
 $redireccion = "../";
 
+$log = __DIR__ . '/../api/log.php';
+$data['log'] = "";
+
 if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'])  && !empty($_POST['idCliente'])){
     //variables del formulario
     $nombre = $_POST['name'];
@@ -10,7 +13,6 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     //$mensaje = $_POST['msg'];
     //$cel = $_POST['telefono'];
     $fecha = date('d/m/Y', time());
-    $paterno = "";
     $correoBase = "Of System <info@ofsystem.com.pe>";
 
     //variables del e-mail
@@ -35,7 +37,7 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
     $cabecera = "MIME-VERSION: 1.@\r\n";
     $cabecera .= "Content-type: multipart/mixed;";
     $cabecera .= "boundary=\"=O=F=S=Y=S=T=E=M=\"\r\n"; //SE USA COMO SEPARADOR DE PARTES DEL EMAIL
-    $cabecera .= "From: {$nombre} {$paterno} <$mail>";
+    $cabecera .= "From: {$nombre} <$mail>";
 
     //Primera parte del cuerpo
     $cuerpo = "--=O=F=S=Y=S=T=E=M=\r\n";
@@ -70,16 +72,16 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
 
     //validación de envio
     if (mail($correoDestino, $asunto, $cuerpo, $cabecera)) {
-        $respuesta_reclutador = "correo enviado exitosamente al reclutador" ;
+        $respuesta_reclutador = "correo enviado exitosamente a [$correoDestino]" ;
     } else {
-        $respuesta_reclutador = "correo no enviado al reclutador";
+        $respuesta_reclutador = "correo no enviado a [$correoDestino]";
     }
 
 
     /*************E-mail a postulante */
     //variables del e-mail
-    $correoDestino = $mail;
-    $asunto = "Solicitud de Servicio - " . $servicio . " - Of System";
+    $correoDestino = "$nombre <$mail>";
+    $asunto = "Solicitud de Servicio";
 
 
     //Mensaje en formato Multipart MIME -> cabecera
@@ -103,19 +105,18 @@ if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['service'
 
     //validación de envio
     if (mail($correoDestino, $asunto, $cuerpo, $cabecera)) {
-        $respuesta_postulante = "correo enviado exitosamente al postulante";
+        $respuesta_postulante = "correo enviado exitosamente a [$correoDestino]";
     } else {
-        $respuesta_postulante = "correo no enviado al postulante";
+        $respuesta_postulante = "correo no enviado a [$correoDestino]";
     }
 
-    $respuesta = $respuesta_reclutador . ' / ' . $respuesta_postulante;
-    echo $respuesta;
+    $data['log'] = $respuesta_reclutador . ' | ' . $respuesta_postulante;
 } else {
-    $respuesta = "existen campos vacios" . " nombre:" . $_POST['name'] . " email:" . $_POST['email'] . " servicio:" . $_POST['service'];
-    echo $respuesta;
+    $data['log'] = "existen campos vacios" . " nombre:" . $_POST['name'] . " email:" . $_POST['email'] . " servicio:" . $_POST['service'];
 }
-/*} else {
-    $respuesta = "existen campos vacios" + " nombre:" + $_POST['name'] + " email:" + $_POST['email'] + " servicio:" + $_POST['service'];;
-}
-echo "<script>alert(' . $respuesta . ')</script>";
-echo "<script> setTimeout(\"location.href='" . $redireccion . "'\",1000)</script>";*/
+
+
+$_POST['data'] = $data;
+ob_start();
+include($log);
+$response = ob_get_clean();

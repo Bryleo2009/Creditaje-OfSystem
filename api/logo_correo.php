@@ -25,16 +25,11 @@ if (isset($_GET['id_cliente'])) {
 
         // Verificar si la decodificación fue exitosa y si el campo 'message' existe
         if (json_last_error() === JSON_ERROR_NONE && isset($response_data['message'])) {
-            // Imprimir solo el mensaje
-            //echo $response_data['message'];
             $data['log'] = $response_data['message'];
         } else {
             echo 'Error al decodificar la respuesta JSON o el campo "message" no existe';
         }
 
-        
-        //echo $response;
-        
         // Devolver la imagen al navegador
         header('Content-Type: image/png'); // Establece el tipo MIME como imagen PNG
         readfile($rutaImagenes);
