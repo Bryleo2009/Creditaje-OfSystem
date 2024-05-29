@@ -86,9 +86,9 @@ if (isset($data['id']) && isset($data['estado_correo'])) {
            
 
             if ($conn->query($sql_update) === TRUE) {
-                echo json_encode(["status" => "success", "message" => "Estado del correo con ID-$id actualizado correctamente"]);
+                echo json_encode(["status" => "success", "message" => "Estado del correo con ID-$id actualizado correctamente a READ"]);
             } else {
-                echo json_encode(["status" => "error", "message" => "Error al actualizar el estado del correo con ID-$id: " . $conn->error]);
+                echo json_encode(["status" => "error", "message" => "Error al actualizar el estado a READ del correo con ID-$id: " . $conn->error]);
             }
         } else {
             echo json_encode(["status" => "error", "message" => "No se encontró ningún registro con el ID-$id proporcionado"]);
