@@ -18,6 +18,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Redirigir a la página de inicio de sesión o a cualquier otra página después de cerrar sesión
-header("Location: ../admin-back.php"); // Reemplaza "login.php" con la ruta de tu página de inicio de sesión
+header("Location: ../admin-back"); // Reemplaza "login.php" con la ruta de tu página de inicio de sesión
 exit;
 ?>

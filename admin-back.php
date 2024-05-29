@@ -53,7 +53,7 @@
         
         // Verificar la respuesta del servidor
         if (response.status === 'success') {
-            window.location.href = 'pages/admin.php';
+            window.location.href = 'pages/admin';
         } else {
             console.log(response);
             Swal.fire({

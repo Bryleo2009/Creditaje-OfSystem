@@ -4,7 +4,7 @@ session_start(); // Iniciar la sesión
 // Verificar si la sesión está activa
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     // Redirigir a la página de inicio de sesión o mostrar un mensaje de error
-    header("Location: ../admin-back.php"); // Reemplaza "login.php" con la ruta de tu página de inicio de sesión
+    header("Location: ../admin-back"); // Reemplaza "login.php" con la ruta de tu página de inicio de sesión
     exit; // Detener la ejecución del código restante
 }
 
