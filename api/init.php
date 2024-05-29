@@ -51,6 +51,21 @@ $sql_tb_usuario = "CREATE TABLE IF NOT EXISTS tb_usuario (
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
+//crear tabla de referer
+$sql_tb_referer = "CREATE TABLE IF NOT EXISTS referer_log (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    referer VARCHAR(255) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    counter INT DEFAULT 1
+)";
+
+if ($conn->query($sql_tb_referer) === TRUE) {
+    echo "Tabla Referer creada exitosamente\n";
+} else {
+    echo "Error al crear la tabla: " . $conn->error . "\n";
+}
+
 if ($conn->query($sql_tb_usuario) === TRUE) {
     echo "Tabla Usuario creada exitosamente\n";
 } else {
@@ -81,7 +96,7 @@ $password = password_hash($pass, PASSWORD_DEFAULT);
 //password_verify($pass, $password);
 
 
-
+/*
 $sql_insert_usuario = "INSERT INTO tb_usuario (email, password) VALUES
 ('$user', '$password')";
 
