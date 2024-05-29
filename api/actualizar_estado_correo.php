@@ -24,6 +24,9 @@ if ($conn->connect_error) {
     die(json_encode(["status" => "error", "message" => "Conexión fallida: " . $conn->connect_error]));
 }
 
+date_default_timezone_set('America/Lima');
+$fecha = date('Y-m-d H:i:s');
+
 // Obtener los datos enviados en el cuerpo de la solicitud
 $data = json_decode(file_get_contents("php://input"), true);
 
@@ -31,8 +34,6 @@ if (isset($data['id']) && isset($data['estado_correo'])) {
 
     $id = $conn->real_escape_string($data['id']);
     $estado_correo = $conn->real_escape_string($data['estado_correo']);
-    date_default_timezone_set('America/Lima');
-    $fecha = date('Y-m-d H:i:s');
 
     // Verifica primero si el id existe
     $sql = "SELECT * FROM tb_frm_contacto WHERE id = $id";
