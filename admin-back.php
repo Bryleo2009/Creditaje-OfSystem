@@ -53,12 +53,6 @@
         
         // Verificar la respuesta del servidor
         if (response.status === 'success') {
-            //swal de bienvenida
-            Swal.fire({
-                title: "Bienvenido",
-                text: response,
-                icon: "success"
-            });
             window.location.href = 'pages/admin.php';
         } else {
             console.log(response);
