@@ -35,42 +35,45 @@ function enviarCorreo() {
                 url: 'ofsystem/enviar.php',
                 type: 'post',
                 success: function (response) {
-                    // // Llamar a actualizarEstadoCorreo con el ID del cliente y el nuevo estado
-                    // actualizarEstadoCorreo(idContact, 'SENT')
-                    //     .then(function () {
-                    //         // Mostrar mensaje de éxito al usuario
-                    //         Swal.fire({
-                    //             title: "Enviado",
-                    //             text: "El correo ha sido enviado con éxito a nuestro sistema. Nos pondremos en contacto contigo lo más pronto posible. Verifica tu bandeja de entrada o spam.",
-                    //             icon: "success"
-                    //         }).then((result) => {
-                    //             // Limpiar campos del formulario
-                    //             document.getElementById("name").value = "";
-                    //             document.getElementById("email").value = "";
-                    //             document.getElementById("service").value = "";
-                    //         });
-                    //     })
-                    //     .catch(function (error) {
-                    //         Swal.fire({
-                    //             title: "Error de envío",
-                    //             text: "Hubo un error al actualizar el estado del correo, por favor inténtalo de nuevo más tarde.",
-                    //             icon: "warning"
-                    //         });
-                    //     });
+                    registrarLog(response);
+                    // Llamar a actualizarEstadoCorreo con el ID del cliente y el nuevo estado
+                    actualizarEstadoCorreo(idContact, 'SENT')
+                        .then(function () {
+                            // Mostrar mensaje de éxito al usuario
+                            Swal.fire({
+                                title: "Enviado",
+                                text: "El correo ha sido enviado con éxito a nuestro sistema. Nos pondremos en contacto contigo lo más pronto posible. Verifica tu bandeja de entrada o spam.",
+                                icon: "success"
+                            }).then((result) => {
+                                // Limpiar campos del formulario
+                                document.getElementById("name").value = "";
+                                document.getElementById("email").value = "";
+                                document.getElementById("service").value = "";
+                            });
+                        })
+                        .catch(function (error) {
+                            Swal.fire({
+                                title: "Error de envío",
+                                text: "Hubo un error al actualizar el estado del correo, por favor inténtalo de nuevo más tarde.",
+                                icon: "warning"
+                            });
+                        });
                 },
                 error: function (error) {
+                    registrarLog(error);
                     Swal.fire({
                         title: "Error de envío",
-                        text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde1.",
+                        text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde.",
                         icon: "warning"
                     });
                 }
             });
         })
         .catch(function (error) {
+            registrarLog(error);
             Swal.fire({
                 title: "Error de envio",
-                text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde2.",
+                text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde.",
                 icon: "warning"
             });
         });
