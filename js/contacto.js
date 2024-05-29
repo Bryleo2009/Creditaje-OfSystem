@@ -35,7 +35,6 @@ function enviarCorreo() {
                 url: 'ofsystem/enviar.php',
                 type: 'post',
                 success: function (response) {
-                    console.log(response.message);
                     registrarLog(response.message);
                     // Llamar a actualizarEstadoCorreo con el ID del cliente y el nuevo estado
                     actualizarEstadoCorreo(idContact, 'SENT')
