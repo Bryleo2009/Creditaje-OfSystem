@@ -86,7 +86,7 @@ include 'api/referer.php';
             <path d="M441.788 517.888H592.212C592.212 526.266 585.421 533.057 577.044 533.057H456.956C448.579 533.057 441.788 526.266 441.788 517.888Z" fill="#77767B" />
           </svg>
         </span>
-        <div class="d-flex flex-column mt-5">
+        <div class="d-flex flex-column mt-5" data-aos="zoom-in">
           <h1 class="degradado degradado-2">¡Tú marca, tus reglas!</h1>
           <p class="blanco">
             Tener una presencia en línea efectiva es un desafío. Destacar
@@ -117,7 +117,7 @@ include 'api/referer.php';
       </div>
       <div class="d-flex flex-wrap gap-2 justify-content-center mt-5">
         <?php foreach ($services as $value => $name) : ?>
-          <div class="card-service">
+          <div class="card-service" <?php if ($value == 'Profesional') : ?> data-aos="fade-up-right" <?php elseif ($value == 'Tienda') : ?> data-aos="fade-up" <?php elseif ($value == 'Landing') : ?> data-aos="fade-up-left" <?php endif; ?>>
             <div class="card-cabecera">
               <div class="ellipse">
                 <!-- Puedes personalizar los íconos según el servicio -->
@@ -162,27 +162,27 @@ include 'api/referer.php';
           desarrollo web fluida y eficiente.
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-2 align-items-start">
-          <div class="card-metod">
+          <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-magnifying-glass-chart"></i>
             <h2>Reunión y<br />análisis</h2>
             <h3 class="placeholder-2">Comprendiendo tus necesidades</h3>
           </div>
-          <div class="card-metod">
+          <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-pen-ruler"></i>
             <h2>Diseño<br />estratégico</h2>
             <h3 class="placeholder-2">Creando atractivo visual</h3>
           </div>
-          <div class="card-metod">
+          <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-code"></i>
             <h2>Desarrollo<br />especializado</h2>
             <h3 class="placeholder-2">Construyendo funcionalidad óptima</h3>
           </div>
-          <div class="card-metod">
+          <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-bug-slash"></i>
             <h2>Pruebas y<br />optimización</h2>
             <h3 class="placeholder-2">Garantizando calidad y rendimiento</h3>
           </div>
-          <div class="card-metod">
+          <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-rocket"></i>
             <h2>Lanzamiento<br />exitoso</h2>
             <h3 class="placeholder-2">
@@ -209,14 +209,14 @@ include 'api/referer.php';
             </p>
           </div>
           <div class="B d-flex flex-column gap-2">
-            <div class="item-benefic d-flex gap-1 align-items-center">
+            <div class="item-benefic d-flex gap-1 align-items-center" data-aos="fade-right">
               <div class="ellipse">
                 <i class="fa-solid fa-code"></i>
                 <!-- <i class="fa-solid fa-eye"></i> -->
               </div>
               <h2 class="m-0 left pr-2">Mejora en SEO y visibilidad</h2>
             </div>
-            <div class="item-benefic d-flex gap-1 align-items-center">
+            <div class="item-benefic d-flex gap-1 align-items-center" data-aos="fade-right">
               <div class="ellipse">
                 <i class="fa-solid fa-code"></i>
                 <!-- <i class="fa-solid fa-envelope"></i> -->
@@ -225,21 +225,21 @@ include 'api/referer.php';
                 Generación de correos, dominios y hosting
               </h2>
             </div>
-            <div class="item-benefic d-flex gap-1 align-items-center">
+            <div class="item-benefic d-flex gap-1 align-items-center" data-aos="fade-right">
               <div class="ellipse">
                 <i class="fa-solid fa-code"></i>
                 <!-- <i class="fa-solid fa-bolt"></i> -->
               </div>
               <h2 class="m-0 left pr-2">Carga eficiente y rápida</h2>
             </div>
-            <div class="item-benefic d-flex gap-1 align-items-center">
+            <div class="item-benefic d-flex gap-1 align-items-center" data-aos="fade-right">
               <div class="ellipse">
                 <i class="fa-solid fa-code"></i>
                 <!-- <i class="fa-solid fa-lock"></i> -->
               </div>
               <h2 class="m-0 left pr-2">Seguridad y SSL</h2>
             </div>
-            <div class="item-benefic d-flex gap-1 align-items-center">
+            <div class="item-benefic d-flex gap-1 align-items-center" data-aos="fade-right">
               <div class="ellipse">
                 <i class="fa-solid fa-code"></i>
                 <!-- <i class="fa-solid fa-wand-magic-sparkles"></i> -->
@@ -277,7 +277,7 @@ include 'api/referer.php';
             Explora nuestra galería de diseños exclusivos y descubre los
             increíbles modelos que hemos creado para nuestros clientes.
           </p>
-          <div class="slider">
+          <div class="slider" data-aos="zoom-out-up">
             <div class="slide-track">
               <div class="slide">
                 <img src="images/landing/cap (1).png" alt />
@@ -398,7 +398,7 @@ include 'api/referer.php';
 
 
   <?php require_once 'pages/footer.php'; ?>
-  
+
   <script>
     var typed = new Typed("#element", {
       strings: ["páginas", "experiencias", "aplicaciones", "soluciones"],
@@ -423,6 +423,12 @@ include 'api/referer.php';
     });
   </script>
   <script type="text/javascript" src="js/whats.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+    });
+  </script>
 </body>
 
 </html>
