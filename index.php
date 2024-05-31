@@ -18,7 +18,7 @@ include 'api/referer.php';
 include('translations/load_translation.php');
 
 // Establece el idioma actual (puedes obtenerlo de una cookie, sesión, etc.)
-$current_language = 'es';
+$current_language = 'en';
 
 // Carga las traducciones para el idioma actual
 $translations = load_translation($current_language);
