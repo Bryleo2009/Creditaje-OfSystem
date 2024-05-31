@@ -13,6 +13,16 @@ header("Pragma: no-cache");
 // Incluir el archivo referer.php
 include 'api/referer.php';
 
+
+// Incluye la función para cargar traducciones
+include('translations/load_translation.php');
+
+// Establece el idioma actual (puedes obtenerlo de una cookie, sesión, etc.)
+$current_language = 'es';
+
+// Carga las traducciones para el idioma actual
+$translations = load_translation($current_language);
+
 ?>
 
 <!DOCTYPE html>
@@ -45,12 +55,12 @@ include 'api/referer.php';
         <i class="fa-solid fa-times"></i>
       </label>
       <ul class="nav-links gap-2">
-        <li><a class="service-link" href="/">Inicio</a></li>
-        <li><a class="service-link" href="#servicios">Servicios</a></li>
-        <li><a class="service-link" href="#metodologia">Metodología</a></li>
-        <li><a class="service-link" href="#beneficios">Beneficios</a></li>
-        <li><a class="service-link" href="#clientes">Clientes</a></li>
-        <li><a class="service-link btn-contact" href="#contacto">Contacto</a></li>
+        <li><a class="service-link" href="/"><?php echo $translations['inicio']; ?></a></li>
+        <li><a class="service-link" href="#servicios"><?php echo $translations['servicios']; ?></a></li>
+        <li><a class="service-link" href="#metodologia"><?php echo $translations['metodologia']; ?></a></li>
+        <li><a class="service-link" href="#beneficios"><?php echo $translations['beneficios']; ?></a></li>
+        <li><a class="service-link" href="#clientes"><?php echo $translations['clientes']; ?></a></li>
+        <li><a class="service-link btn-contact" href="#contacto"><?php echo $translations['contacto']; ?></a></li>
       </ul>
     </nav>
   </header>
@@ -63,17 +73,16 @@ include 'api/referer.php';
           <img src="images/logo/logo-white.png" alt="logo of system" />
         </div>
         <h1 class="blanco center mb-4">
-          Desarrollo de
+        <?php echo $translations['desarrollo']; ?>
           <span id="element" class="degradado degradado-1"></span>
-          <span class="degradado degradado-1">web</span><br />
-          <span class="degradado degradado-1">personalizadas</span>
-          que reflejan la esencia de tu empresa
+          <span class="degradado degradado-1"><?php echo $translations['web']; ?></span><br />
+          <span class="degradado degradado-1"><?php echo $translations['personalizadas']; ?></span>
+          <?php echo $translations['reflejo']; ?>
         </h1>
         <p class="blanco center">
-          Eleva tu presencia digital con una experiencia web que deja una
-          impresión duradera
+        <?php echo $translations['presencia']; ?>
         </p>
-        <a type="button" class="btn-1" href="#contacto">SOLICITAR PRESUPUESTO</a>
+        <a type="button" class="btn-1" href="#contacto"><?php echo $translations['presupuesto']; ?></a>
       </div>
       <img src="images/landing/Group 19.png" alt="abst" class="fondo" />
     </section>
