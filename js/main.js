@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const yearElement = document.getElementById('year');
   const currentYear = new Date().getFullYear();
-  yearElement.textContent = `Todos los derechos reservados - Of System © ${currentYear} `;
+  yearElement.textContent = `- Of System © ${currentYear} `;
   
   document.getElementById("formContacto").addEventListener("submit", function(e) {
 	e.preventDefault(); // Evita que el formulario se envíe de manera convencional

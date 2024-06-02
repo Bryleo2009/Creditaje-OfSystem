@@ -80,7 +80,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div class="version ml-2">
 					<p>Versión 2.4
-						<br> <span id="year"></span></p>
+						<br>Todos los derechos reservados <span id="year"></span></p>
 				</div>
 			</div>
 		</div>

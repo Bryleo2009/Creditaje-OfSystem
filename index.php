@@ -1,10 +1,4 @@
 <?php
-$services = [
-  'Profesional' => 'Servicios profesionales',
-  'Tienda' => 'Tienda en línea',
-  'Landing' => 'Landing page'
-];
-
 // Encabezados para evitar el caché
 header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
 header("Cache-Control: post-check=0, pre-check=0", false);
@@ -17,11 +11,25 @@ include 'api/referer.php';
 // Incluye la función para cargar traducciones
 include('translations/load_translation.php');
 
-// Establece el idioma actual (puedes obtenerlo de una cookie, sesión, etc.)
-$current_language = 'en';
+// obten el idioma actual del navegador
+$current_language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
 // Carga las traducciones para el idioma actual
 $translations = load_translation($current_language);
+
+if ($current_language == 'es') {
+  $services = [
+    'Profesional' => 'Servicios profesionales',
+    'Tienda' => 'Tienda en línea',
+    'Landing' => 'Landing page'
+  ];
+} else {
+  $services = [
+    'Profesional' => 'Professional services',
+    'Tienda' => 'Online store',
+    'Landing' => 'Landing page'
+  ];
+}
 
 ?>
 
@@ -30,7 +38,11 @@ $translations = load_translation($current_language);
 
 <head>
   <!--metadatos-->
-  <meta name="description" content="Soluciones web personalizadas para impulsar tu presencia en línea y alcanzar el éxito digital.">
+  <?php if ($current_language == 'es') : ?>
+    <meta name="description" content="Soluciones web personalizadas para impulsar tu presencia en línea y alcanzar el éxito digital.">
+  <?php else : ?>
+    <meta name="description" content="Custom web solutions to boost your online presence and achieve digital success.">
+  <?php endif; ?>
   <?php require_once('pages/header.php'); ?>
   <script type="text/javascript" src="js/nav.js"></script>
   <link rel="stylesheet" href="css/home.css" />
@@ -73,14 +85,26 @@ $translations = load_translation($current_language);
           <img src="images/logo/logo-white.png" alt="logo of system" />
         </div>
         <h1 class="blanco center mb-4">
-        <?php echo $translations['desarrollo']; ?>
-          <span id="element" class="degradado degradado-1"></span>
-          <span class="degradado degradado-1"><?php echo $translations['web']; ?></span><br />
+          <?php echo $translations['desarrollo']; ?>
+          <?php 
+            if($current_language == 'es'){
+              ?>
+              <span id="element" class="degradado degradado-1"></span>
+              <span class="degradado degradado-1"><?php echo $translations['web']; ?></span><br />
+              <?php
+            } else {
+              ?>
+              <span class="degradado degradado-1"><?php echo $translations['web']; ?></span>
+              <span id="element" class="degradado degradado-1"></span><br />
+              <?php
+            }
+            ?>
+          
           <span class="degradado degradado-1"><?php echo $translations['personalizadas']; ?></span>
           <?php echo $translations['reflejo']; ?>
         </h1>
         <p class="blanco center">
-        <?php echo $translations['presencia']; ?>
+          <?php echo $translations['presencia']; ?>
         </p>
         <a type="button" class="btn-1" href="#contacto"><?php echo $translations['presupuesto']; ?></a>
       </div>
@@ -96,16 +120,8 @@ $translations = load_translation($current_language);
           </svg>
         </span>
         <div class="d-flex flex-column mt-5" data-aos="zoom-in">
-          <h1 class="degradado degradado-2">¡Tú marca, tus reglas!</h1>
-          <p class="blanco">
-            Tener una presencia en línea efectiva es un desafío. Destacar
-            entre la competencia y atraer la atención de tu audiencia puede
-            ser complicado. En nuestra empresa, abordamos esos desafíos.
-            Trabajamos de cerca contigo para transformar tus ideas en
-            experiencias web sofisticadas y atractivas. Nuestra metodología
-            meticulosa garantiza resultados de calidad que superan tus
-            expectativas. Destaca, atrae y convierte a los visitantes en
-            clientes con nuestra solución personalizada.
+          <h1 class="degradado degradado-2"><?php echo $translations['marca']; ?></h1>
+          <p class="blanco"><?php echo $translations['parrafo_marca']; ?>
           </p>
         </div>
       </div>
@@ -120,8 +136,8 @@ $translations = load_translation($current_language);
     <section class="servicio" id="servicios">
       <div class="espaciado center">
         <h1>
-          Una opción, diferentes
-          <span class="degradado degradado-3">resultados</span>
+          <?php echo $translations['una_opcion']; ?>
+          <span class="degradado degradado-3"><?php echo $translations['resultados']; ?></span>
         </h1>
       </div>
       <div class="d-flex flex-wrap gap-2 justify-content-center mt-5">
@@ -144,16 +160,16 @@ $translations = load_translation($current_language);
               <h3 class="placeholder-2">
                 <!-- Aquí puedes poner descripciones personalizadas para cada servicio -->
                 <?php if ($value == 'Profesional') : ?>
-                  Presenta tus servicios de manera clara y convincente, captando la atención de clientes y estableciendo tu credibilidad en el mercado competitivo.
+                  <?php echo $translations['profesional']; ?>
                 <?php elseif ($value == 'Tienda') : ?>
-                  Abre las puertas de tu negocio al mundo digital, permitiendo a tus clientes comprar en línea desde la comodidad de sus hogares y así aumentar tu alcance.
+                  <?php echo $translations['tienda']; ?>
                 <?php elseif ($value == 'Landing') : ?>
-                  Captura la atención de tus visitantes, convirtiéndolos en clientes potenciales con una página optimizada enfocada en una única oferta o llamada a la acción.
+                  <?php echo $translations['landing']; ?>
                 <?php endif; ?>
               </h3>
             </div>
             <div class="card-pie">
-              <a type="button" class="btn-2" href="#contacto" data-service="<?php echo $value; ?>">Empezar</a>
+              <a type="button" class="btn-2" href="#contacto" data-service="<?php echo $value; ?>"><?php echo $translations['emprezar']; ?></a>
             </div>
           </div>
         <?php endforeach; ?>
@@ -164,38 +180,37 @@ $translations = load_translation($current_language);
     <section class="metodologia" id="metodologia">
       <div class="espaciado center">
         <h1>
-          Tu sitio web en <span class="degradado degradado-4">5 pasos</span>
+          <?php echo $translations['tu_web']; ?><span class="degradado degradado-4"><?php echo $translations['5_pasos']; ?></span>
         </h1>
         <p>
-          Nuestra metodología paso a paso garantiza una experiencia de
-          desarrollo web fluida y eficiente.
+          <?php echo $translations['nuestra_metodologia']; ?>
         </p>
         <div class="d-flex flex-wrap justify-content-center gap-2 align-items-start">
           <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-magnifying-glass-chart"></i>
-            <h2>Reunión y<br />análisis</h2>
-            <h3 class="placeholder-2">Comprendiendo tus necesidades</h3>
+            <h2><?php echo $translations['reunion']; ?><br /><?php echo $translations['analisis']; ?></h2>
+            <h3 class="placeholder-2"><?php echo $translations['necesidades']; ?></h3>
           </div>
           <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-pen-ruler"></i>
-            <h2>Diseño<br />estratégico</h2>
-            <h3 class="placeholder-2">Creando atractivo visual</h3>
+            <h2><?php echo $translations['diseño']; ?><br /><?php echo $translations['estrategico']; ?></h2>
+            <h3 class="placeholder-2"><?php echo $translations['atractivo']; ?></h3>
           </div>
           <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-code"></i>
-            <h2>Desarrollo<br />especializado</h2>
-            <h3 class="placeholder-2">Construyendo funcionalidad óptima</h3>
+            <h2><?php echo $translations['desarrollo_1']; ?><br /><?php echo $translations['especialidad']; ?></h2>
+            <h3 class="placeholder-2"><?php echo $translations['contruccion']; ?></h3>
           </div>
           <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-bug-slash"></i>
-            <h2>Pruebas y<br />optimización</h2>
-            <h3 class="placeholder-2">Garantizando calidad y rendimiento</h3>
+            <h2><?php echo $translations['pruebas']; ?><br /><?php echo $translations['optimizacion']; ?></h2>
+            <h3 class="placeholder-2"><?php echo $translations['calidad']; ?></h3>
           </div>
           <div class="card-metod" data-aos="zoom-out">
             <i class="fa-solid fa-rocket"></i>
-            <h2>Lanzamiento<br />exitoso</h2>
+            <h2><?php echo $translations['lanzamiento']; ?><br /><?php echo $translations['exitoso']; ?></h2>
             <h3 class="placeholder-2">
-              Poniendo tu página web en línea y listo para impactar
+              <?php echo $translations['en_linea']; ?>
             </h3>
           </div>
         </div>
@@ -207,14 +222,9 @@ $translations = load_translation($current_language);
       <div class="espaciado center">
         <div class="container-beneficios">
           <div class="A beneficio-sec beneficio-text">
-            <h1 class="left">Valor y Eficiencia Garantizados</h1>
+            <h1 class="left"><?php echo $translations['valor']; ?></h1>
             <p class="placeholder-1 left">
-              Al contratarnos, te brindamos beneficios exclusivos que
-              impulsarán tu presencia en línea. Trabajamos siguiendo una
-              metodología ágil basada en Scrum para ofrecerte resultados
-              superiores y óptimos rendimientos. Además, te aseguramos
-              soluciones de hospedaje confiables y de alta velocidad para una
-              experiencia excepcional.
+              <?php echo $translations['nuestros_benedicios']; ?>
             </p>
           </div>
           <div class="B d-flex flex-column gap-2">
@@ -223,7 +233,7 @@ $translations = load_translation($current_language);
                 <i class="fa-solid fa-code"></i>
                 <!-- <i class="fa-solid fa-eye"></i> -->
               </div>
-              <h2 class="m-0 left pr-2">Mejora en SEO y visibilidad</h2>
+              <h2 class="m-0 left pr-2"> <?php echo $translations['seo']; ?></h2>
             </div>
             <div class="item-benefic d-flex gap-1 align-items-center" data-aos="fade-right">
               <div class="ellipse">
@@ -231,7 +241,7 @@ $translations = load_translation($current_language);
                 <!-- <i class="fa-solid fa-envelope"></i> -->
               </div>
               <h2 class="m-0 left pr-2">
-                Generación de correos, dominios y hosting
+                <?php echo $translations['hosting']; ?>
               </h2>
             </div>
             <div class="item-benefic d-flex gap-1 align-items-center" data-aos="fade-right">
@@ -239,14 +249,14 @@ $translations = load_translation($current_language);
                 <i class="fa-solid fa-code"></i>
                 <!-- <i class="fa-solid fa-bolt"></i> -->
               </div>
-              <h2 class="m-0 left pr-2">Carga eficiente y rápida</h2>
+              <h2 class="m-0 left pr-2"><?php echo $translations['carga']; ?></h2>
             </div>
             <div class="item-benefic d-flex gap-1 align-items-center" data-aos="fade-right">
               <div class="ellipse">
                 <i class="fa-solid fa-code"></i>
                 <!-- <i class="fa-solid fa-lock"></i> -->
               </div>
-              <h2 class="m-0 left pr-2">Seguridad y SSL</h2>
+              <h2 class="m-0 left pr-2"><?php echo $translations['seguridad']; ?></h2>
             </div>
             <div class="item-benefic d-flex gap-1 align-items-center" data-aos="fade-right">
               <div class="ellipse">
@@ -254,7 +264,7 @@ $translations = load_translation($current_language);
                 <!-- <i class="fa-solid fa-wand-magic-sparkles"></i> -->
               </div>
               <h2 class="m-0 left pr-2">
-                Experiencia intuitiva, diseño impactante
+                <?php echo $translations['experiencia']; ?>
               </h2>
             </div>
           </div>
@@ -278,15 +288,15 @@ $translations = load_translation($current_language);
     <section class="clientes" id="clientes">
       <div class="espaciado center">
         <div>
-          <h1 class="blanco">
-            Nuestros <span class="degradado degradado-5">Diseños</span> para
-            Clientes Satisfechos
-          </h1>
-          <p class="blanco">
-            Explora nuestra galería de diseños exclusivos y descubre los
-            increíbles modelos que hemos creado para nuestros clientes.
-          </p>
-          <div class="slider" data-aos="zoom-out-up">
+          <div data-aos="zoom-out-up">
+            <h1 class="blanco">
+              <?php echo $translations['nuestros_1']; ?><span class="degradado degradado-5"><?php echo $translations['diseños_1']; ?></span><?php echo $translations['para_clientes']; ?>
+            </h1>
+            <p class="blanco">
+              <?php echo $translations['explora']; ?>
+            </p>
+          </div>
+          <div class="slider">
             <div class="slide-track">
               <div class="slide">
                 <img src="images/landing/cap (1).png" alt />
@@ -329,22 +339,34 @@ $translations = load_translation($current_language);
     <section class="contacto" id="contacto">
       <div class="espaciado center sec-contacto">
         <h1 class="blanco">
-          Contáctanos y déjanos ser parte de tu
-          <span class="degradado degradado-6">éxito en línea</span>
+          <?php echo $translations['parte_de']; ?>
+          <span class="degradado degradado-6"><?php echo $translations['exito']; ?></span>
         </h1>
         <form method="post" id="formContacto" class="mt-5 frm-contacto d-flex flex-wrap justify-content-evenly row-gap-2 align-items-center">
-          <input type="text" name="name" id="name" class="col-md-3 col-12" placeholder="Nombre" required />
-          <input type="email" name="email" id="email" class="col-md-3 col-12" placeholder="Correo" required />
+          <input type="text" name="name" id="name" class="col-md-3 col-12"
+          <?php if ($current_language == 'es') : ?>
+            placeholder="Nombre"
+          <?php else : ?>
+            placeholder="Name"
+          <?php endif; ?>
+           required />
+          <input type="email" name="email" id="email" class="col-md-3 col-12" 
+          <?php if ($current_language == 'es') : ?>
+            placeholder="Correo"
+          <?php else : ?>
+            placeholder="Email"
+          <?php endif; ?>
+          required />
           <select class="custom-select col-md-3 col-12" name="service" id="service" required>
-            <option value="" disabled selected>Selecciona un servicio</option>
-            <option value="Indeciso">Aun no estoy seguro</option>
+            <option value="" disabled selected><?php echo $translations['selecciona']; ?></option>
+            <option value="Indeciso"><?php echo $translations['indeciso']; ?></option>
             <?php foreach ($services as $value => $name) : ?>
               <option value="<?php echo $value; ?>"><?php echo $name; ?></option>
             <?php endforeach; ?>
           </select>
           <button type="submit" class="btn-3 col-md-1 col-5">
             <i class="icon-btn-enviar fa-solid fa-angles-right"></i>
-            <span class="text-btn-enviar">Enviar</span>
+            <span class="text-btn-enviar"><?php echo $translations['enviar']; ?></span>
           </button>
         </form>
       </div>
@@ -359,12 +381,12 @@ $translations = load_translation($current_language);
         </div>
         <div class="d-flex flex-column gap-1">
           <div class="footer-link d-flex">
-            <a class="primary" href="/">Inicio</a>
-            <a class="primary" href="#servicios">Servicios</a>
-            <a class="primary" href="#metodologia">Metodología</a>
-            <a class="primary" href="#beneficios">Beneficios</a>
-            <a class="primary" href="#clientes">Clientes</a>
-            <a class="primary" href="/creditos">Creditaje</a>
+            <a class="primary" href="/"><?php echo $translations['inicio']; ?></a>
+            <a class="primary" href="#servicios"><?php echo $translations['servicios']; ?></a>
+            <a class="primary" href="#metodologia"><?php echo $translations['metodologia']; ?></a>
+            <a class="primary" href="#beneficios"><?php echo $translations['beneficios']; ?></a>
+            <a class="primary" href="#clientes"><?php echo $translations['clientes']; ?></a>
+            <a class="primary" href="/creditos"><?php echo $translations['creditaje']; ?></a>
           </div>
           <div class="footer-social gap-2">
             <a class="primary" href="https://www.facebook.com/OfSystem/" target="_blank"><i class='bx bxl-facebook-circle'></i></a>
@@ -396,7 +418,7 @@ $translations = load_translation($current_language);
           </script>
         </div>
         <div class="termino texto-footer">
-          <h3 class="m-0" id="year"></h3>
+          <h3><?php echo $translations['derechos']; ?><span id="year"></span></h3>
         </div>
       </div>
     </section>
@@ -409,18 +431,31 @@ $translations = load_translation($current_language);
   <?php require_once 'pages/footer.php'; ?>
 
   <script>
-    var typed = new Typed("#element", {
-      strings: ["páginas", "experiencias", "aplicaciones", "soluciones"],
-      typeSpeed: 70,
-      backDelay: 2500,
-      loop: true,
-      showCursor: false,
-    });
+  <?php if ($current_language == 'es') : ?>
+    var stringsArray = ["web", "experiences", "aplicaciones", "soluciones"];
+  <?php else : ?>
+    var stringsArray = ["pages", "experiences", "applications", "solutions"];
+  <?php endif; ?>
+
+  var typed = new Typed("#element", {
+    strings: stringsArray,
+    typeSpeed: 70,
+    backDelay: 2500,
+    loop: true,
+    showCursor: false,
+  });
+
+  <?php if ($current_language == 'es') : ?>
+    var mensaje = "Hola! Dime, en que puedo ayudarte?";
+  <?php else : ?>
+    var mensaje = "Hi! Tell me, how can I help you?";
+  <?php endif; ?>
+
     $(function() {
       $('#WhatsBTN').floatingWhatsApp({
         phone: '+51907442751', //WhatsApp numero, formato internacional
         headerTitle: 'Of System 💫', //Popup Titulo
-        popupMessage: 'Hola! Dime, en que puedo ayudarte?', //Popup Mensagem
+        popupMessage: mensaje, //Popup Mensagem
         showPopup: true, //Desabilitar pop up
         buttonImage: '<img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" />', //Button Image
         //headerColor: 'crimson', //Custom header color
