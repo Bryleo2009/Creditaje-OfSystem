@@ -12,7 +12,7 @@ include 'api/referer.php';
 include('translations/load_translation.php');
 
 // obten el idioma actual del navegador
-$current_language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+$current_language = 'en';
 
 // Carga las traducciones para el idioma actual
 $translations = load_translation($current_language);
