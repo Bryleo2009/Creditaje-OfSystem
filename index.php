@@ -285,10 +285,10 @@ if ($current_language == 'es') {
     </span>
 
     <!--Clientes-->
-    <!-- <section class="clientes" id="clientes">
+    <section class="clientes" id="clientes">
       <div class="espaciado center">
         <div>
-          <div data-aos="zoom-out-up">
+          <div data-aos="zoom-in">
             <h1 class="blanco">
               <?php echo $translations['nuestros_1']; ?><span class="degradado degradado-5"><?php echo $translations['diseños_1']; ?></span><?php echo $translations['para_clientes']; ?>
             </h1>
@@ -333,7 +333,7 @@ if ($current_language == 'es') {
           </div>
         </div>
       </div>
-    </section> -->
+    </section>
 
     <!--Contacto-->
     <section class="contacto" id="contacto">
