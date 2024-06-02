@@ -424,7 +424,7 @@ if ($current_language == 'es') {
     </section>
   </footer>
 
-  <div id="WhatsBTN"></div>
+  <!-- <div id="WhatsBTN"></div> -->
 
 
 
