@@ -285,7 +285,7 @@ if ($current_language == 'es') {
     </span>
 
     <!--Clientes-->
-    <section class="clientes" id="clientes">
+    <!-- <section class="clientes" id="clientes">
       <div class="espaciado center">
         <div>
           <div data-aos="zoom-out-up">
@@ -333,7 +333,7 @@ if ($current_language == 'es') {
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!--Contacto-->
     <section class="contacto" id="contacto">
@@ -424,7 +424,7 @@ if ($current_language == 'es') {
     </section>
   </footer>
 
-  <!-- <div id="WhatsBTN"></div> -->
+  <div id="WhatsBTN"></div>
 
 
 
