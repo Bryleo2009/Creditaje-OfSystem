@@ -12,7 +12,7 @@ include 'api/referer.php';
 include('translations/load_translation.php');
 
 // obten el idioma actual del navegador
-$current_language = 'en';
+$current_language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 
 // Carga las traducciones para el idioma actual
 $translations = load_translation($current_language);
@@ -457,7 +457,7 @@ if ($current_language == 'es') {
         headerTitle: 'Of System 💫', //Popup Titulo
         popupMessage: mensaje, //Popup Mensagem
         showPopup: true, //Desabilitar pop up
-        buttonImage: '<img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" />', //Button Image
+        buttonImage: '<span class="d-flex justify-content-center align-align-items-center" style="font-size: 36px; color: white"><i class=\'bx bxl-whatsapp\'></i></span>', //Button Image
         //headerColor: 'crimson', //Custom header color
         //backgroundColor: 'crimson', //Custom background button color
         position: "right",

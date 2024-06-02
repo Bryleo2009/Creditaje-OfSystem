@@ -54,5 +54,6 @@ return [
     'exito' => 'online success',
     'selecciona' => 'Select a service',
     'indeciso' => 'I\'m not sure yet',
-    'enviar' => 'Send'
+    'enviar' => 'Send',
+    'derechos' => 'All rights reserved '
 ];

@@ -95,7 +95,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				headerTitle: 'Of System 💫', //Popup Titulo
 				popupMessage: 'Hola! Dime, en que puedo ayudarte?', //Popup Mensagem
 				showPopup: true, //Desabilitar pop up
-				buttonImage: '<img src="https://static-00.iconduck.com/assets.00/whatsapp-icon-2048x2048-64wjztht.png" />', //Button Image
+				buttonImage: '<span class="d-flex justify-content-center align-align-items-center" style="font-size: 36px; color: white"><i class=\'bx bxl-whatsapp\'></i></span>', //Button Image
 				//headerColor: 'crimson', //Custom header color
 				//backgroundColor: 'crimson', //Custom background button color
 				position: "right"   ,
