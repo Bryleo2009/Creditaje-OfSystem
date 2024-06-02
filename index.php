@@ -108,7 +108,7 @@ if ($current_language == 'es') {
         </p>
         <a type="button" class="btn-1" href="#contacto"><?php echo $translations['presupuesto']; ?></a>
       </div>
-      <img src="images/landing/Group 19.png" alt="abst" class="fondo" />
+      <img src="images/landing/Group 19.webp" alt="abst" class="fondo" />
     </section>
     <section class="video">
       <div class="espaciado center">
@@ -299,35 +299,35 @@ if ($current_language == 'es') {
           <div class="slider">
             <div class="slide-track">
               <div class="slide">
-                <img src="images/landing/cap (1).png" alt />
+                <img src="images/landing/cap (1).webp" alt />
               </div>
               <div class="slide">
-                <img src="images/landing/cap (2).png" alt />
+                <img src="images/landing/cap (2).webp" alt />
               </div>
               <div class="slide">
-                <img src="images/landing/cap (5).png" alt />
+                <img src="images/landing/cap (5).webp" alt />
               </div>
               <div class="slide">
-                <img src="images/landing/cap (8).png" alt />
+                <img src="images/landing/cap (8).webp" alt />
               </div>
               <div class="slide">
-                <img src="images/landing/cap (9).png" alt />
+                <img src="images/landing/cap (9).webp" alt />
               </div>
 
               <div class="slide">
-                <img src="images/landing/cap (1).png" alt />
+                <img src="images/landing/cap (1).webp" alt />
               </div>
               <div class="slide">
-                <img src="images/landing/cap (2).png" alt />
+                <img src="images/landing/cap (2).webp" alt />
               </div>
               <div class="slide">
-                <img src="images/landing/cap (5).png" alt />
+                <img src="images/landing/cap (5).webp" alt />
               </div>
               <div class="slide">
-                <img src="images/landing/cap (8).png" alt />
+                <img src="images/landing/cap (8).webp" alt />
               </div>
               <div class="slide">
-                <img src="images/landing/cap (9).png" alt />
+                <img src="images/landing/cap (9).webp" alt />
               </div>
             </div>
           </div>
@@ -377,7 +377,7 @@ if ($current_language == 'es') {
     <section class="footer">
       <div class="sec-1">
         <div class="logo-footer">
-          <img src="/images/logo/logo-v1.png" alt />
+          <img src="/images/logo/logo-v1.webp" alt />
         </div>
         <div class="d-flex flex-column gap-1">
           <div class="footer-link d-flex">
