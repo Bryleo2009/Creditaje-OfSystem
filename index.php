@@ -377,7 +377,7 @@ if ($current_language == 'es') {
     <section class="footer">
       <div class="sec-1">
         <div class="logo-footer">
-          <img src="/images/logo/logo-v1.webp" alt />
+          <img src="/images/logo/logo-v1.png" alt />
         </div>
         <div class="d-flex flex-column gap-1">
           <div class="footer-link d-flex">
