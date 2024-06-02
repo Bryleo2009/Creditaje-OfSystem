@@ -142,7 +142,7 @@ if ($current_language == 'es') {
       </div>
       <div class="d-flex flex-wrap gap-2 justify-content-center mt-5">
         <?php foreach ($services as $value => $name) : ?>
-          <div class="card-service" <?php if ($value == 'Profesional') : ?> data-aos="fade-up-right" <?php elseif ($value == 'Tienda') : ?> data-aos="fade-up" <?php elseif ($value == 'Landing') : ?> data-aos="fade-up-left" <?php endif; ?>>
+          <div class="card-service" data-aos="fade-up">
             <div class="card-cabecera">
               <div class="ellipse">
                 <!-- Puedes personalizar los íconos según el servicio -->

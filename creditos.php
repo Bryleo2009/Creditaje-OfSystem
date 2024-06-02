@@ -68,7 +68,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			<!-- Page Content  -->
 			<div id="content" class="h-full w-full">
 				<div class="fondo">
-					<img class="h-100 w-100" src="images/Vector 01.webp" alt>
+					<img class="h-100 w-100" src="images/fondo_credito.webp" alt>
 				</div>
 				<div class="conten-logo">
 					<div class="logo">
