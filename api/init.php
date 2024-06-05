@@ -69,59 +69,100 @@ $sql_tb_cliente = "CREATE TABLE IF NOT EXISTS tb_cliente (
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )";
 
-//crear tabla ticket, comentarios de tickect, estado de ticket , prioridad de ticket , categoria del tcket , archivos adjuntos
+$sql_tb_estado_ticket = "CREATE TABLE IF NOT EXISTS tb_ticket_estado (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(500) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1
+)";
+
+$sql_tb_prioridad_ticket = "CREATE TABLE IF NOT EXISTS tb_ticket_prioridad (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(500) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1
+)";
+
+$sql_tb_categoria_ticket = "CREATE TABLE IF NOT EXISTS tb_ticket_categoria(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(500) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1
+)";
+
 $sql_tb_ticket = "CREATE TABLE IF NOT EXISTS tb_ticket (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
     asunto VARCHAR(500) NOT NULL,
     descripcion TEXT NOT NULL,
-    prioridad VARCHAR(50) NOT NULL,
-    categoria VARCHAR(50) NOT NULL,
-    estado VARCHAR(50) NOT NULL,
+    prioridad INT NOT NULL,
+    categoria INT NOT NULL,
+    estado INT NOT NULL,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (cliente_id) REFERENCES tb_cliente(id)
+    FOREIGN KEY (cliente_id) REFERENCES tb_cliente(id),
+    FOREIGN KEY (prioridad) REFERENCES tb_ticket_prioridad(id),
+    FOREIGN KEY (categoria) REFERENCES tb_ticket_categoria(id),
+    FOREIGN KEY (estado) REFERENCES tb_ticket_estado(id)
 )";
 
-$sql_tb_comentario = "CREATE TABLE IF NOT EXISTS tb_comentario_ticket (
+
+//en comentario asocialo con un cliente
+$sql_tb_comentario_ticket = "CREATE TABLE IF NOT EXISTS tb_ticket_comentario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ticket_id INT NOT NULL,
     comentario TEXT NOT NULL,
+    cliente_id INT NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (ticket_id) REFERENCES tb_ticket(id)
+    FOREIGN KEY (ticket_id) REFERENCES tb_ticket(id),
+    FOREIGN KEY (cliente_id) REFERENCES tb_cliente(id)
 )";
 
-$sql_tb_estado_ticket = "CREATE TABLE IF NOT EXISTS tb_estado_ticket (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    descripcion VARCHAR(500) NOT NULL,
-    estado BOOLEAN NOT NULL DEFAULT 1
-)";
-
-$sql_tb_prioridad_ticket = "CREATE TABLE IF NOT EXISTS tb_prioridad_ticket (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    descripcion VARCHAR(500) NOT NULL,
-    estado BOOLEAN NOT NULL DEFAULT 1
-)";
-
-$sql_tb_categoria_ticket = "CREATE TABLE IF NOT EXISTS tb_categoria_ticket (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    descripcion VARCHAR(500) NOT NULL,
-    estado BOOLEAN NOT NULL DEFAULT 1
-)";
-
-$sql_tb_archivo_adjunto = "CREATE TABLE IF NOT EXISTS tb_archivo_adjunto (
+$sql_tb_archivo_adjunto = "CREATE TABLE IF NOT EXISTS tb_ticket_archivo_adjunto (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ticket_id INT NOT NULL,
-    archivo VARCHAR(500) NOT NULL,
+    archivo TEXT NOT NULL,
     estado BOOLEAN NOT NULL DEFAULT 1,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (ticket_id) REFERENCES tb_ticket(id)
 )";
 
+if ($conn->query($sql_tb_estado_ticket) === TRUE) {
+    echo "Tabla Estado Ticket creada exitosamente\n";
+} else {
+    echo "Error al crear la tabla: " . $conn->error . "\n";
+}
 
+if ($conn->query($sql_tb_prioridad_ticket) === TRUE) {
+    echo "Tabla Prioridad Ticket creada exitosamente\n";
+} else {
+    echo "Error al crear la tabla: " . $conn->error . "\n";
+}
+
+if ($conn->query($sql_tb_categoria_ticket) === TRUE) {
+    echo "Tabla Categoria Ticket creada exitosamente\n";
+} else {
+    echo "Error al crear la tabla: " . $conn->error . "\n";
+}
 
 if ($conn->query($sql_tb_cliente) === TRUE) {
     echo "Tabla Cliente creada exitosamente\n";
+} else {
+    echo "Error al crear la tabla: " . $conn->error . "\n";
+}
+
+if ($conn->query($sql_tb_ticket) === TRUE) {
+    echo "Tabla Ticket creada exitosamente\n";
+} else {
+    echo "Error al crear la tabla: " . $conn->error . "\n";
+}
+
+if ($conn->query($sql_tb_comentario_ticket) === TRUE) {
+    echo "Tabla Comentario Ticket creada exitosamente\n";
+} else {
+    echo "Error al crear la tabla: " . $conn->error . "\n";
+}
+
+if ($conn->query($sql_tb_archivo_adjunto) === TRUE) {
+    echo "Tabla Archivo Adjunto creada exitosamente\n";
 } else {
     echo "Error al crear la tabla: " . $conn->error . "\n";
 }
@@ -184,6 +225,43 @@ if ($conn->query($sql_insert_estado_correo) === TRUE) {
     echo "Error al insertar datos en la tabla: " . $conn->error;
 }
 */
+
+//insetar 1 datos en ticket, estado, prioridad, categoria, comentario, archivo adjunto
+/*$sql_insert_estado_ticket = "INSERT INTO tb_ticket_estado (descripcion, estado) VALUES
+('Abierto', 1),
+('Cerrado', 1),
+('En Proceso', 1),
+('Pendiente', 1)";
+
+if ($conn->query($sql_insert_estado_ticket) === TRUE) {
+    echo "Datos insertados en la tabla Estado Ticket\n";
+} else {
+    echo "Error al insertar datos en la tabla: " . $conn->error . "\n";
+}
+
+$sql_insert_prioridad_ticket = "INSERT INTO tb_ticket_prioridad (descripcion, estado) VALUES
+('Alta', 1),
+('Baja', 1),
+('Media', 1)";
+
+if ($conn->query($sql_insert_prioridad_ticket) === TRUE) {
+    echo "Datos insertados en la tabla Prioridad Ticket\n";
+} else {
+    echo "Error al insertar datos en la tabla: " . $conn->error . "\n";
+}
+
+$sql_insert_categoria_ticket = "INSERT INTO tb_ticket_categoria (descripcion, estado) VALUES
+('Soporte', 1),
+('Ventas', 1),
+('Reclamos', 1)";
+
+if ($conn->query($sql_insert_categoria_ticket) === TRUE) {
+    echo "Datos insertados en la tabla Categoria Ticket\n";
+} else {
+    echo "Error al insertar datos en la tabla: " . $conn->error . "\n";
+}
+*/
+
 
 $conn->close();
 ?>

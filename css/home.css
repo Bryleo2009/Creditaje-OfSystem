@@ -62,7 +62,7 @@ nav,
 }
 
 .blanco {
-    color: var(--white-color);
+    color: var(--white-color) !important;
 }
 
 .negro {

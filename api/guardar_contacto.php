@@ -41,9 +41,11 @@ if (isset($data['name']) && isset($data['email']) && isset($data['service'])) {
         echo json_encode(["status" => "success", "message" => "Registro guardado exitosamente", "id" => $insert_id]);
     } else {
         echo json_encode(["status" => "error", "message" => "Error al guardar el registro: " . $conn->error]);
+        http_response_code(500);
     }
 } else {
     echo json_encode(["status" => "error", "message" => "Datos incompletos"]);
+    http_response_code(500);
 }
 
 $conn->close();

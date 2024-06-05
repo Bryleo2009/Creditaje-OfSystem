@@ -83,7 +83,6 @@ if (isset($data['id']) && isset($data['estado_correo'])) {
             }
             //actualiza el estado y fecha de lectura con la fecha peruana
             $sql_update = "UPDATE tb_frm_contacto SET estado_corre = 'READ', fecha_lectura = '$fecha' WHERE id = '$id'";
-           
 
             if ($conn->query($sql_update) === TRUE) {
                 echo json_encode(["status" => "success", "message" => "Estado del correo con ID-$id actualizado correctamente a READ"]);
