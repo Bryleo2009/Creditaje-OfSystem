@@ -60,6 +60,72 @@ $sql_tb_referer = "CREATE TABLE IF NOT EXISTS referer_log (
     counter INT DEFAULT 1
 )";
 
+//crear tabla cliente
+$sql_tb_cliente = "CREATE TABLE IF NOT EXISTS tb_cliente (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(500) NOT NULL,
+    email VARCHAR(300) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+
+//crear tabla ticket, comentarios de tickect, estado de ticket , prioridad de ticket , categoria del tcket , archivos adjuntos
+$sql_tb_ticket = "CREATE TABLE IF NOT EXISTS tb_ticket (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT NOT NULL,
+    asunto VARCHAR(500) NOT NULL,
+    descripcion TEXT NOT NULL,
+    prioridad VARCHAR(50) NOT NULL,
+    categoria VARCHAR(50) NOT NULL,
+    estado VARCHAR(50) NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_actualizacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (cliente_id) REFERENCES tb_cliente(id)
+)";
+
+$sql_tb_comentario = "CREATE TABLE IF NOT EXISTS tb_comentario_ticket (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ticket_id INT NOT NULL,
+    comentario TEXT NOT NULL,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ticket_id) REFERENCES tb_ticket(id)
+)";
+
+$sql_tb_estado_ticket = "CREATE TABLE IF NOT EXISTS tb_estado_ticket (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(500) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1
+)";
+
+$sql_tb_prioridad_ticket = "CREATE TABLE IF NOT EXISTS tb_prioridad_ticket (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(500) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1
+)";
+
+$sql_tb_categoria_ticket = "CREATE TABLE IF NOT EXISTS tb_categoria_ticket (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    descripcion VARCHAR(500) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1
+)";
+
+$sql_tb_archivo_adjunto = "CREATE TABLE IF NOT EXISTS tb_archivo_adjunto (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ticket_id INT NOT NULL,
+    archivo VARCHAR(500) NOT NULL,
+    estado BOOLEAN NOT NULL DEFAULT 1,
+    fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ticket_id) REFERENCES tb_ticket(id)
+)";
+
+
+
+if ($conn->query($sql_tb_cliente) === TRUE) {
+    echo "Tabla Cliente creada exitosamente\n";
+} else {
+    echo "Error al crear la tabla: " . $conn->error . "\n";
+}
+
 if ($conn->query($sql_tb_referer) === TRUE) {
     echo "Tabla Referer creada exitosamente\n";
 } else {

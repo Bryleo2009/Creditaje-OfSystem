@@ -1,0 +1,21 @@
+{
+    "name": "bryle/creditos",
+    "description": "Un proyecto para la gestión de créditos",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Bryle\\Creditos\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Bryleo",
+            "email": "bryleo2009@hotmail.com"
+        }
+    ],
+    "require": {
+        "cloudinary/cloudinary_php": "^2.14",
+        "guzzlehttp/guzzle": "^7.8"
+    },
+    "license": "proprietary"
+}
