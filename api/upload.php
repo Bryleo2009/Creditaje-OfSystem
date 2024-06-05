@@ -14,8 +14,8 @@ if (isset($_FILES['file'])) {
     // Ruta temporal del archivo cargado
     $tmpFilePath = $_FILES['file']['tmp_name'];
 
-    // Subir el archivo a Cloudinary
-    $uploadResult = $cloudinaryService->uploadImage($tmpFilePath, 'archivo_subido');
+    // Subir el archivo a Cloudinary con el nombre original
+    $uploadResult = $cloudinaryService->uploadImage($tmpFilePath, $_FILES['file']['name']);
 
     // Mostrar la URL del archivo subido
     if ($uploadResult && isset($uploadResult['secure_url'])) {
