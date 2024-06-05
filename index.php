@@ -432,7 +432,7 @@ if ($current_language == 'es') {
 
   <script>
   <?php if ($current_language == 'es') : ?>
-    var stringsArray = ["web", "experiences", "aplicaciones", "soluciones"];
+    var stringsArray = ["páginas", "experiencias", "aplicaciones", "soluciones"];
   <?php else : ?>
     var stringsArray = ["pages", "experiences", "applications", "solutions"];
   <?php endif; ?>
