@@ -23,12 +23,17 @@ if ($conn->connect_error) {
     die(json_encode(["status" => "error", "message" => "Conexión fallida: " . $conn->connect_error]));
 }
 
-
-if (isset($_GET['rpktc'])) {
+if (isset($data['rpktc'])) {
+    $id = $conn->real_escape_string($data['rpktc']);
+} else if (isset($_GET['rpktc'])) {
     $id = $_GET['rpktc'];
+} else {
+    $sql = "SELECT true";
+}
+
     //tiene la forma id + 'CTL' separa el id
     $id = explode('CTL', $id)[0];
-    if(is_numeric($id)){
+    if (is_numeric($id)) {
         $sql = "SELECT 
         tt.id, tt.asunto, tt.descripcion, tt.fecha_registro,
         tc.id as cliente_id, tc.nombre as cliente_nombre,
@@ -70,25 +75,32 @@ if (isset($_GET['rpktc'])) {
     where tc.id = $id
     GROUP BY tt.id;";
     }
-}else {
-    $sql = "SELECT true";
-}
+
 
 $result = $conn->query($sql);
 
 if ($result) {
     $data = $result->fetch_all(MYSQLI_ASSOC);
 
-    $archivos = $data[0]['archivos'];
-    $archivos = json_decode($archivos);
-    $comentarios = $data[0]['comentarios'];
-    //comentarios es un arr conveirtelo a json
-    $comentarios = json_decode($comentarios);
-    echo json_encode(["status" => "success", "data" => $archivos]);
+    if ($data[0]['archivos']) {
+        $archivos = $data[0]['archivos'];
+        $archivos = json_decode($archivos);
+        $data[0]['archivos'] = $archivos;
+    } else {
+        $data[0]['archivos'] = [];
+    }
+
+    if ($data[0]['comentarios']) {
+        $comentarios = $data[0]['comentarios'];
+        $comentarios = json_decode($comentarios);
+        $data[0]['comentarios'] = $comentarios;
+    } else {
+        $data[0]['comentarios'] = [];
+    }
+    echo json_encode(["status" => "success", "data" => $data]);
 } else {
     echo json_encode(["status" => "error", "message" => "Error al obtener los datos: " . $conn->error]);
     http_response_code(500);
 }
 
 $conn->close();
-?>

@@ -48,7 +48,6 @@ $(document).ready(function() {
 //coger parametro id de la ruta
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('rpktc');
-console.log(id);
 listarCliente(id).then(response => {
     if (response.status === 'success') {
         const data = response.data;
@@ -63,6 +62,8 @@ listarCliente(id).then(response => {
         registrarLog(error.message);
     }
 });
+
+
 
 
 //llama a la funcion async function listarPrioridades() y si la respuesta es success, entonces sus valores jsn usalos para llenar el select
@@ -101,3 +102,4 @@ document.getElementById('descripcion').addEventListener('input', function() {
     this.style.height = 'auto'; // Restablece la altura a automática
     this.style.height = (this.scrollHeight) + 'px'; // Ajusta la altura según el contenido
 });
+

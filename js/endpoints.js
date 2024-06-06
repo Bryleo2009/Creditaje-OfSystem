@@ -91,8 +91,9 @@ async function listarCategorias() {
 
 //listar cliente modifica para que no sea asincrona
 async function listarCliente(id) {
+    console.log("desde cliente",id);
     //enviar a listar_cliente.php por metodo get
-    const response = await fetch('/api/listar_cliente.php?rpktc=' + id + 'CTL', {
+    const response = await fetch('/api/listar_cliente.php?rpktc=' + id, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -104,5 +105,23 @@ async function listarCliente(id) {
         return result;
     } else {
         registrarLog(`Error al listar cliente: ${result.message}`);
+    }
+}
+
+//listar tickets
+async function listarTickets(id) {
+    console.log("desde ticket",id);
+    const response = await fetch('/api/listar_ticket.php?rpktc=' + id, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    });
+
+    const result = await response.json();
+    if (result.status === 'success') {
+        return result;
+    } else {
+        registrarLog(`Error al listar tickets: ${result.message}`);
     }
 }
