@@ -1,0 +1,287 @@
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):hover,
+a:not([href]):not([tabindex]):focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus {
+  outline: 0;
+}
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+
+#sidebar {
+  min-width: 270px;
+  max-width: 270px;
+  background: #333;
+  color: #fff;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+}
+
+#sidebar .h6 {
+  color: #fff;
+}
+
+#sidebar.active {
+  margin-left: -270px;
+}
+
+#sidebar.active .custom-menu {
+  margin-right: -50px;
+
+}
+
+#sidebar h1 {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+#sidebar h1 .logo {
+  color: #fff;
+}
+
+#sidebar ul.components {
+  padding: 0;
+}
+
+#sidebar ul li {
+  font-size: 16px;
+}
+
+#sidebar ul li>ul {
+  margin-left: 10px;
+}
+
+#sidebar ul li>ul li {
+  font-size: 14px;
+}
+
+#sidebar ul li a {
+  padding: 10px 0;
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#sidebar ul li a:hover {
+  color: #fff;
+}
+
+#sidebar ul li.active>a {
+  background: transparent;
+  color: #fff;
+}
+
+
+
+#sidebar .custom-menu {
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  margin-right: -20px;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+
+#sidebar .custom-menu .btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+#sidebar .custom-menu .btn.btn-primary {
+  background: white;
+  border-color: white;
+  color: #000;
+}
+
+#sidebar .custom-menu .btn.btn-primary:hover,
+#sidebar .custom-menu .btn.btn-primary:focus {
+  background: #0069FF !important;
+  border-color: #0069FF !important;
+  color: white;
+}
+
+/**/
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.fondo {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.conten-logo {
+  position: absolute;
+  top: 40vh;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-width: 20%;
+}
+
+.texto {
+  max-width: 30%;
+}
+
+.version{
+  position: absolute;
+  bottom: 0;
+  right: 5px;
+  text-align: right;
+  color: white;
+  font-size: 12px;
+}
+
+
+@media (max-width: 1024px) and (min-width: 767px){
+  .fondo img {
+    width: 120% !important;
+  }
+  
+  .logo {
+    max-width: 30%;
+  }
+  
+  .texto {
+    max-width: 40%;
+  }
+  
+  .conten-logo {
+    position: absolute;
+    top: 35vh;
+    padding-left: 30px;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 424px){
+  .logo {
+    max-width: 30%;
+  }
+  
+  .texto {
+    max-width: 40%;
+  }
+  
+  .conten-logo {
+    position: absolute;
+    top: 35vh;
+    padding-left: 30px;
+  }
+
+  #sidebar{
+    position: absolute;
+    z-index: 1000;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 425px) {
+
+  body {
+    overflow-x: hidden;
+    overflow-y: hidden !important;
+  }
+
+  .fondo img {
+    width: 150% !important;
+  }
+  
+  .logo {
+    max-width: 50%;
+    display: block;
+  }
+  
+  .texto {
+    max-width: 80%;
+  }
+  
+  .conten-logo {
+    position: absolute;
+    top: 35vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #sidebar{
+    position: absolute;
+    z-index: 1000;
+    height: 100vh;
+    width: 100%;
+  }
+
+  .version{
+    position: absolute;
+    bottom: 0;
+    left: 5px;
+    text-align: left;
+    color: white;
+    font-size: 12px;
+  }
+}
+
+/****/
+.floating-wpp-head span {
+  padding: 15px !important;
+  font-size: 15px !important;
+}
+
+.floating-wpp .floating-wpp-popup.active .floating-wpp-message {
+  opacity: 1;
+  transition-delay: .2s;
+  margin: 17px 0px 17px 0px;
+}
+
+.floating-wpp .floating-wpp-input-message textarea {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: none;
+  margin: 10px 0;
+  width: 100%;
+  max-width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  resize: none;
+}
+
+.floating-wpp .floating-wpp-popup.active .floating-wpp-message {
+  opacity: 1;
+  transition-delay: .2s;
+  margin: 17px 0px 17px 0px;
+  font-weight: 400;
+}
+
+.floating-wpp{position:fixed;bottom:15px;left:15px;font-size:14px;transition:bottom .2s}.floating-wpp .floating-wpp-button{position:relative;border-radius:50%;box-shadow:1px 1px 4px rgba(60,60,60,.4);transition:box-shadow .2s;cursor:pointer;overflow:hidden}.floating-wpp .floating-wpp-button img,.floating-wpp .floating-wpp-button svg{position:absolute;width:100%;height:auto;object-fit:cover;top:50%;left:50%;transform:translate3d(-50%,-50%,0)}.floating-wpp:hover{bottom:17px}.floating-wpp:hover .floating-wpp-button{box-shadow:1px 2px 8px rgba(60,60,60,.4)}.floating-wpp .floating-wpp-popup{border-radius:6px;background-color:#E5DDD5;position:absolute;overflow:hidden;padding:0;box-shadow:1px 2px 8px rgba(60,60,60,.25);width:0;height:0;bottom:0;opacity:0;transition:bottom .1s ease-out,opacity .2s ease-out;transform-origin:bottom}.floating-wpp .floating-wpp-popup.active{padding:0 12px 12px;width:260px;height:auto;bottom:82px;opacity:1}.floating-wpp .floating-wpp-popup .floating-wpp-message{background-color:#fff;padding:8px;border-radius:0 5px 5px;box-shadow:1px 1px 1px rgba(0,0,0,.15);opacity:0;transition:opacity .2s}.floating-wpp .floating-wpp-popup.active .floating-wpp-message{opacity:1;transition-delay:.2s}.floating-wpp .floating-wpp-popup .floating-wpp-head{text-align:right;color:#fff;margin:0 -15px 10px;padding:6px 12px;display:flex;justify-content:space-between;cursor:pointer}.floating-wpp .floating-wpp-input-message{background-color:#fff;margin:10px -15px -15px;padding:0 15px;display:flex;align-items:center}.floating-wpp .floating-wpp-input-message textarea{border:1px solid #ccc;border-radius:4px;box-shadow:none;padding:8px;margin:10px 0;width:100%;max-width:100%;font-family:inherit;font-size:inherit;resize:none}.floating-wpp .floating-wpp-btn-send{margin-left:12px;font-size:0;cursor:pointer}

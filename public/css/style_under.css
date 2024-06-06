@@ -1,0 +1,125 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans");
+:root {
+  --blue: #2ccf6d;
+  --white: #fff;
+  --green: #2ccf6d;
+}
+
+
+.fondo {
+  /* Basic dimensions and centering */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: -2;
+
+  /* Dark mode colors and gradient */
+  background: #121212; /* Fallback for browsers that don't support gradients */
+  background: linear-gradient(
+    135deg,
+    #121212 25%,
+    #1a1a1a 25%,
+    #1a1a1a 50%,
+    #121212 50%,
+    #121212 75%,
+    #1a1a1a 75%,
+    #1a1a1a
+  );
+  background-size: 40px 40px;
+
+  /* Animation */
+  animation: move 4s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+
+button {
+  font-family: "Nunito Sans";
+}
+
+ul {
+  list-style-type: none;
+  -webkit-padding-start: 35px;
+          padding-inline-start: 35px;
+}
+
+h1 {
+  margin: 15px 0px;
+  font-weight: bold;
+}
+
+
+.btn {
+  z-index: 2;
+  overflow: hidden;
+  background: transparent;
+  position: relative;
+  padding: 8px 50px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1em;
+  letter-spacing: 2px;
+  transition: 0.2s ease;
+  font-weight: bold;
+  margin: 25px 0px;
+}
+.btn.green {
+  border: 4px solid var(--green);
+  color: var(--blue);
+}
+.btn.green:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 100%;
+  background: var(--green);
+  z-index: -1;
+  transition: 0.2s ease;
+}
+.btn.green:hover {
+  color: var(--white);
+  background: var(--green);
+  transition: 0.2s ease;
+}
+.btn.green:hover:before {
+  width: 100%;
+}
+
+
+svg#freepik_stories-under-construction:not(.animated) .animable {
+  opacity: 0;
+}
+
+svg#freepik_stories-under-construction.animated #freepik--Window--inject-68 {
+  animation: 3s Infinite linear floating;
+  animation-delay: 0s;
+}
+
+@keyframes floating {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

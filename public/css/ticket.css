@@ -1,0 +1,67 @@
+body{
+    background-color: #f5f5f5;
+    font-size: 14px;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background-color: #333;
+    padding: 10px 20px;
+    z-index: 999;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+
+.container-fluid {
+    max-width: 1286px;
+}
+
+.nav-link {
+    color: #fff;
+    margin-right:25px ;
+}
+
+main {
+    padding-top: 140px;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+}
+
+.container {
+    margin: 10px auto;
+    padding: 30px;
+    background-color: #e9e9e9;
+    border-radius: 25px;
+}
+
+select {
+    width: 100%; /* Establece el ancho al 100% */
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem; /* Relleno interno */
+    font-size: 16px; /* Tamaño de fuente */
+    border: 1px solid #ccc; /* Borde con color gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    background-color: #f9f9f9; /* Color de fondo */
+}
+
+textarea {
+    resize: none; /* Evita que el usuario redimensione el textarea manualmente */
+    overflow: hidden; /* Oculta el desbordamiento de contenido */
+    transition: height 0.3s; /* Agrega transición suave al cambio de altura */
+}
