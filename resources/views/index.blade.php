@@ -288,7 +288,7 @@ if ($current_language == 'es') {
     <section class="clientes" id="clientes">
       <div class="espaciado center">
         <div>
-          <div data-aos="zoom-in">
+          <div>
             <h1 class="blanco">
               <?php echo $translations['nuestros_1']; ?><span class="degradado degradado-5"><?php echo $translations['diseños_1']; ?></span><?php echo $translations['para_clientes']; ?>
             </h1>
