@@ -1,7 +1,7 @@
+const csrfToken = getCsrfToken();
+
 
 async function nuevoContacto(nombre, email, servicio) {
-    const csrfToken = getCsrfToken();
-
     //manda solicitud axaj a la url /api/frm_contacto
     const response = await fetch('/api/contacto', {
         method: 'POST',
@@ -19,26 +19,28 @@ async function nuevoContacto(nombre, email, servicio) {
         return result.message;
     }
     else {
-        logMessage(`Error al crear nuevo contacto: ${result.message}`);
+        logMessage('error',`Error al crear nuevo contacto: ${result.message}`);
     }
 }
 
 async function actualizarEstadoCorreo(idCliente, nuevoEstado) {
-    const response = await fetch('/api/actualizar_estado_correo.php', {
-        method: 'POST',
+    const response = await fetch(`/api/contacto/${idCliente}`, {
+        method: 'PUT',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': csrfToken
         },
-        body: JSON.stringify({ id: idCliente, estado_correo: nuevoEstado })
+        body: JSON.stringify({ estado_correo: nuevoEstado })
     });
 
     const result = await response.json();
     if (result.status === 'success') {
-        registrarLog(`Estado del correo del ID-${idCliente} actualizado correctamente`);
+        logMessage('info',`Estado del correo del ID-${idCliente} actualizado correctamente`);
     } else {
-        registrarLog(`Error al actualizar estado del correo del ID-${idCliente}: ${result.message}`);
+        logMessage('error',`Error al actualizar estado del correo del ID-${idCliente}: ${result.message}`);
     }
 }
+
 
 //crear una para session.php mandale email y password encryp
 async function iniciarSesion(email, password) {

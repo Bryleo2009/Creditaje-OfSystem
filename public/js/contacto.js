@@ -43,7 +43,8 @@ function enviarCorreo() {
                 success: function (response) {
                     console.log(response);
                     // Llamar a actualizarEstadoCorreo con el ID del cliente y el nuevo estado
-                    /*actualizarEstadoCorreo(idContact, 'SENT')
+                    idContact = idContact + 'CLT';
+                    actualizarEstadoCorreo(idContact, 'SENT')
                         .then(function () {
                             // Mostrar mensaje de éxito al usuario
                             Swal.fire({
@@ -63,7 +64,7 @@ function enviarCorreo() {
                                 text: "Hubo un error al actualizar el estado del correo, por favor inténtalo de nuevo más tarde.",
                                 icon: "warning"
                             });
-                        });*/
+                        });
                 },
                 error: function (error) {
                     logMessage('error',error.message);

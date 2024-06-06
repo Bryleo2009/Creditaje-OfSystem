@@ -9,18 +9,23 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/moran_vega', function () {return view('pages.perfil');});
 Route::get('/creditos', function () {return view('pages.creditaje');});
-Route::post('/api/frm_contacto', [Correo::class, 'enviarFrmContacto'])->name('correo.frm_contacto');
+// Route::post('/api/frm_contacto', [Correo::class, 'enviarFrmContacto'])->name('correo.frm_contacto');
 Route::post('/log', [LogController::class, 'store']);
 
-//crud de contacto
+//crud de contacto | ofsys -> id + CLT
 Route::prefix('api')->group(function () {
     Route::controller(ContactoController::class)->group(function () {
         Route::post('/contacto', 'guardar');
         Route::get('/contacto', 'listar');
-        Route::get('/contacto/{id}', 'listarId');
-        Route::put('/contacto/{id}', 'actualizar');
-        Route::delete('/contacto/{id}', 'eliminar');
+        Route::get('/contacto/{ofsys}', 'listarId');
+        Route::put('/contacto/{ofsys}', 'actualizar'); // Corregido
+        Route::delete('/contacto/{ofsys}', 'eliminar');
+    });
+
+    Route::controller(Correo::class)->group(function () {
+        Route::post('/frm_contacto', 'enviarFrmContacto');
     });
 });
 

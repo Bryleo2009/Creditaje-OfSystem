@@ -5,8 +5,8 @@
     php artisan migrate:fresh --seed  
 
 ## Ver las rutas
-
-
+    php artisan route:list
+    
 ## Crear controller
     php artisan make:controller QRController 
 
