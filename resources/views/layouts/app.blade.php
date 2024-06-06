@@ -62,7 +62,7 @@
     
     <script src="{{ asset('js/log.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Tu Aplicación</title>
+    <title>Of System</title>
 </head>
 <body>
     @yield('content')
