@@ -35,3 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	e.preventDefault(); // Evita que el formulario se envíe de manera convencional
 	enviarCorreo(); // Llama a la función enviarCorreo()
   });
+
+  document.getElementById("formTicket").addEventListener("submit", function(e) {
+	e.preventDefault(); // Evita que el formulario se envíe de manera convencional
+	enviarTicket(); // Llama a la función enviarCorreo()
+  });

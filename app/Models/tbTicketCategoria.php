@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class tbTicketCategoria extends Model
 {
     use HasFactory;
+    protected $table = 'tb_ticket_categoria';
+    protected $fillable = ['id','descripcion', 'estado'];
+
 }

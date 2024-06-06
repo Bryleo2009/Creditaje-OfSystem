@@ -11,17 +11,18 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    background-color: #333;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25) !important;
+    background-color: #333 !important;
     padding: 10px 20px;
     z-index: 999;
 }
 
-.nav {
+.nav, .navbar  {
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
+    background-color: #333 !important;
 }
 
 
@@ -33,6 +34,11 @@ header {
 .nav-link {
     color: #fff;
     margin-right:25px ;
+}
+
+.nav-link:hover {
+    color: #5582fd !important;
+    border-bottom: 5px solid #439775;
 }
 
 main {
@@ -64,4 +70,57 @@ textarea {
     resize: none; /* Evita que el usuario redimensione el textarea manualmente */
     overflow: hidden; /* Oculta el desbordamiento de contenido */
     transition: height 0.3s; /* Agrega transición suave al cambio de altura */
+}
+
+.custom-file {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    margin-bottom: 0;
+   
+}
+
+.custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    margin: 0;
+    opacity: 0;
+    cursor: pointer !important;
+}
+
+.custom-file-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
 }

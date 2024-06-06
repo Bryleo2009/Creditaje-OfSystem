@@ -12,6 +12,7 @@ class tbFrmContacto extends Model
     protected $table = 'tb_frm_contacto';
 
     protected $fillable = [
+        'id',
         'nombre',
         'email',
         'servicio',

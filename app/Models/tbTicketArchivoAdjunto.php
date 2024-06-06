@@ -12,10 +12,10 @@ class tbTicketArchivoAdjunto extends Model
     protected $table = 'tb_ticket_archivo_adjunto';
 
     protected $fillable = [
+        'id',
         'ticket_id',
         'ruta',
         'estado',
-        'fecha_registro',
         'nombre',
     ];
 

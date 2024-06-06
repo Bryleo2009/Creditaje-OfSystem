@@ -12,6 +12,7 @@ class tbTicket extends Model
     protected $table = 'tb_ticket';
 
     protected $fillable = [
+        'id',
         'cliente_id',
         'asunto',
         'descripcion',

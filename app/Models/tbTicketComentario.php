@@ -12,11 +12,11 @@ class tbTicketComentario extends Model
     protected $table = 'tb_ticket_comentario';
 
     protected $fillable = [
+        'id',
         'ticket_id',
         'comentario',
         'cliente_id',
         'estado',
-        'fecha_registro'
     ];
 
     public function ticket()

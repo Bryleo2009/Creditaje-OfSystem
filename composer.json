@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "cloudinary-labs/cloudinary-laravel": "^2.1",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9"
     },
@@ -22,10 +23,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        },
-        "files": [
-            "app/Helpers/EncryptionHelper.php"
-         ]
+        }
     },
     "autoload-dev": {
         "psr-4": {
