@@ -61,6 +61,7 @@
     <meta name="msapplication-square310x310logo" content="{{ asset('images/favicon/ms-icon-310x310.png') }}">
     
     <script src="{{ asset('js/log.js') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Tu Aplicación</title>
 </head>
 <body>
@@ -76,6 +77,9 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script>
+      <?php (!isset($current_language) || $current_language == 'undefined') ? $current_language = 'es' : $current_language ?>
+
+
         <?php if ($current_language == 'es') : ?>
           var stringsArray = ["páginas", "experiencias", "aplicaciones", "soluciones"];
         <?php else : ?>
@@ -95,7 +99,6 @@
         <?php else : ?>
           var mensaje = "Hi! Tell me, how can I help you?";
         <?php endif; ?>
-      
           $(function() {
             $('#WhatsBTN').floatingWhatsApp({
               phone: '+51907442751', //WhatsApp numero, formato internacional

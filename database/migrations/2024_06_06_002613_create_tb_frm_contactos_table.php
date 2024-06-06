@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('email', 300);
             $table->string('servicio', 150);
             $table->tinyInteger('estado')->default(1);
-            $table->string('estado_corre', 5);
+            $table->string('estado_correo', 5);
             $table->timestamp('fecha_lectura')->nullable();
             $table->timestamps(); // Adds 'created_at' and 'updated_at' columns
 
-            $table->foreign('estado_corre')->references('id')->on('tb_estado_correo');
+            $table->foreign('estado_correo')->references('id')->on('tb_estado_correo');
         });
     }
 

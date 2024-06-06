@@ -2,7 +2,6 @@
 //y los envie a un archivo php para que este envie el correo
 //y devuelva un mensaje de confirmacion
 function enviarCorreo() {
-    console.log("enviando correo");
     var nombre = document.getElementById("name").value;
     var correo = document.getElementById("email").value;
     var mensaje = document.getElementById("service").value;
@@ -14,7 +13,6 @@ function enviarCorreo() {
             text: "Por favor llene todos los campos",
             icon: "warning"
         });
-        registrarLog("Error al enviar correo: campos vacios");
         return;
     }
 
@@ -24,20 +22,28 @@ function enviarCorreo() {
         .then(function (idContact) {
             // Envío del correo
             var parametros = {
-                "name": nombre,
+                "nombre": nombre,
                 "email": correo,
-                "service": mensaje,
+                "servicio": mensaje,
                 "idCliente": idContact
             };
 
+            const csrfToken = getCsrfToken();
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': csrfToken
+                }
+            });
+
             $.ajax({
                 data: parametros,
-                url: 'ofsystem/enviar.php',
+                url: '/api/frm_contacto',
                 type: 'post',
                 success: function (response) {
-                    registrarLog(response.message);
+                    console.log(response);
                     // Llamar a actualizarEstadoCorreo con el ID del cliente y el nuevo estado
-                    actualizarEstadoCorreo(idContact, 'SENT')
+                    /*actualizarEstadoCorreo(idContact, 'SENT')
                         .then(function () {
                             // Mostrar mensaje de éxito al usuario
                             Swal.fire({
@@ -57,10 +63,10 @@ function enviarCorreo() {
                                 text: "Hubo un error al actualizar el estado del correo, por favor inténtalo de nuevo más tarde.",
                                 icon: "warning"
                             });
-                        });
+                        });*/
                 },
                 error: function (error) {
-                    registrarLog(error.message);
+                    logMessage('error',error.message);
                     Swal.fire({
                         title: "Error de envío",
                         text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde.",
@@ -70,7 +76,7 @@ function enviarCorreo() {
             });
         })
         .catch(function (error) {
-            registrarLog(error);
+            logMessage('error',error);
             Swal.fire({
                 title: "Error de envio",
                 text: "Hubo un error al enviar el correo, por favor inténtalo de nuevo más tarde.",

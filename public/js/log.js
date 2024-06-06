@@ -1,13 +1,26 @@
-function registrarLog(mensaje) {
-    const log = `${mensaje}\n`;
+function getCsrfToken() {
+    return document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+}
 
-    // Enviar el log al servidor para ser guardado en el archivo
-    fetch('/api/log.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ log: log })
-    })
-    .catch(error => console.error('Error al enviar el log:', error));
+function logMessage(level, message, context = {}) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/log", true);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.setRequestHeader("X-CSRF-TOKEN", getCsrfToken());
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            //console.log('Log enviado con éxito:', JSON.parse(xhr.responseText));
+        } else if (xhr.readyState === 4) {
+            console.error('Error enviando el log:', xhr.responseText);
+        }
+    };
+
+    var data = JSON.stringify({
+        level: level,
+        message: message,
+        context: context
+    });
+
+    xhr.send(data);
 }

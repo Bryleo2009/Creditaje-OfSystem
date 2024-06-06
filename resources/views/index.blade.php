@@ -37,10 +37,6 @@ if ($current_language == 'es') {
 }
 
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-
 <head>
   <!--metadatos-->
   <?php if ($current_language == 'es') : ?>
@@ -429,12 +425,4 @@ if ($current_language == 'es') {
   </footer>
 
   <div id="WhatsBTN"></div>
-</body>
-
-</html>
-
-
-
-
-
 @endsection
