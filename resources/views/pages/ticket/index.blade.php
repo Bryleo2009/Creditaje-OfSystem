@@ -59,11 +59,12 @@
     <meta name="msapplication-square150x150logo" content="{{ asset('images/favicon/ms-icon-150x150.png') }}">
     <meta name="msapplication-wide310x150logo" content="{{ asset('images/favicon/ms-icon-310x150.png') }}">
     <meta name="msapplication-square310x310logo" content="{{ asset('images/favicon/ms-icon-310x310.png') }}">
-    
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.snow.css" rel="stylesheet" />
     <script src="{{ asset('js/log.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--título-->
     <title>Ticket | Of System</title>
+    <link rel="stylesheet" href="{{ asset('css/main.css')}}">
     <link rel="stylesheet" href="{{ asset('css/ticket.css')}}">
 
 </head>
@@ -87,9 +88,13 @@
             </div>
         </nav>
 </header>
+<div id="spinner" class="spinner">
+    <span class="loader"></span>
+</div>
     <main>
         @yield('content')
     </main>
+    <span id="year" style="display: none"></span>
     <script src="{{ asset('boostrap\js\bootstrap.js') }}"></script>
     <script src="{{ asset('js/popper.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
@@ -99,6 +104,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.2/dist/quill.js"></script>
 </body>
 
 </html>

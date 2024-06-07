@@ -10,6 +10,7 @@ use App\Models\tbTicketComentario;
 use App\Models\tbTicketPrioridad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class TicketController extends Controller
 {
@@ -201,40 +202,60 @@ class TicketController extends Controller
     }
 
     public function guardar(Request $request,$ofsys)
-    {
-        $id = explode('CLT', $ofsys)[0];
-        $ticket = new tbTicket();
-        $ticket->cliente_id = $id;
-        $ticket->asunto = $request->asunto;
-        $ticket->descripcion = $request->descripcion;
-        $ticket->prioridad = $request->prioridad;
-        $ticket->categoria = $request->categoria;
-        $ticket->save();
+    {        
+        try{
+            $id = explode('CLT', $ofsys)[0];
+            $ticket = new tbTicket();
+            $ticket->cliente_id = $id;
+            $ticket->asunto = $request->asunto;
+            $ticket->descripcion = $request->descripcion;
+            $ticket->prioridad = $request->prioridad;
+            $ticket->categoria = $request->categoria;
+            $ticket->estado = 1;
+            $ticket->save();
 
-        //guardar el arreglo de archivos adjuntos
-        $archivos = $request->archivos;
-        foreach ($archivos as $archivo) {
-            $adjunto = new tbTicketArchivoAdjunto();
-            $adjunto->ticket_id = $ticket->id;
-            $adjunto->nombre = $archivo['nombre'];
-            $adjunto->ruta = $archivo['ruta'];
-            $adjunto->save();
-        }
+            if($request->archivos){
+                $archivos = $request->archivos;
+                foreach ($archivos as $archivo) {
+                    $adjunto = new tbTicketArchivoAdjunto();
+                    $adjunto->ticket_id = $ticket->id;
+                    $adjunto->nombre = $archivo['nombre'];
+                    $adjunto->ruta = $archivo['ruta'];
+                    $adjunto->save();
+                }
+            }
 
-        //guardar el arreglo de comentarios
-        $comentarios = $request->comentarios;
-        foreach ($comentarios as $comentario) {
-            $coment = new tbTicketComentario();
-            $coment->ticket_id = $ticket->id;
-            $coment->comentario = $comentario['comentario'];
-            $coment->cliente_id = $id;
-            $coment->save();
-        }
+            if($request->comentarios){
+                $comentarios = $request->comentarios;
+                foreach ($comentarios as $comentario) {
+                    $coment = new tbTicketComentario();
+                    $coment->ticket_id = $ticket->id;
+                    $coment->comentario = $comentario['comentario'];
+                    $coment->cliente_id = $id;
+                    $coment->save();
+                }
+            }
 
-        if ($ticket->id) {
-            return response()->json(["status" => "success", "message" => $ticket->id]);
-        } else {
-            return response()->json(["status" => "error", "message" => "Error al guardar"]);
+            if ($ticket->id) {
+                return response()->json(["status" => "success", "message" => $ticket->id]);
+            }
+        }catch(\Exception $e){
+            return response()->json(["status" => "error", "message" => $e->getMessage()]);
         }
     }
+
+    
+
+public function uploadImage(Request $request)
+{
+    $image = $request->file('image');
+    $upload = Cloudinary::upload($image->getRealPath(), [
+        'folder' => 'your_folder', // Opcional: define una carpeta en Cloudinary
+        'public_id' => 'desired_public_id' // Opcional: define un ID público personalizado
+    ]);
+
+    // Aquí puedes manejar la respuesta de Cloudinary
+    // Por ejemplo, puedes almacenar la URL de la imagen en tu base de datos
+}
+
 }

@@ -36,6 +36,7 @@
           href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
         />
     <link rel="stylesheet" href="{{ asset('boostrap\css\bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/main.css')}}">
     
     
     <!-- Apple Touch Icons -->

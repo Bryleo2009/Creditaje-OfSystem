@@ -10,7 +10,8 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <form method="post" class="row justify-content-between" id="formTicket">
+            <form class="row justify-content-between" id="formTicket" enctype="multipart/form-data">
+                @csrf
                 <div class="mb-3 col-5">
                     <label for="cliente" class="form-label">Cliente</label>
                     <select class="form-select w-100" id="cliente" name="cliente" required>
@@ -43,7 +44,9 @@
                     <label for="descripcion" class="form-label">Descripción</label>
                     <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
                 </div>
-                <div class="mb-3 col-12">
+                {{-- <div class="mb-3 col-12">
+                    <div id="editor">
+                    </div>
                     <label for="archivo" class="form-label">Adjuntar archivo</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="archivo" name="archivo" multiple>
@@ -52,7 +55,7 @@
                     <div id="archivos-adjuntos" class="mt-3">
                         <!-- Aquí se mostrarán los archivos adjuntos -->
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary w-100">Enviar</button>
                 </div>

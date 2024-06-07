@@ -49,7 +49,16 @@ document.getElementById('descripcion').addEventListener('input', function() {
     this.style.height = (this.scrollHeight) + 'px'; // Ajusta la altura según el contenido
 });
 
+document.getElementById("formTicket").addEventListener("submit", function(e) {
+  e.preventDefault(); // Evita que el formulario se envíe de manera convencional
+	enviarTicket(); // Llama a la función enviarCorreo()
+});
+
+
+
 function enviarTicket() {
+  $("#spinner").show();
+  
   //obten de local storage los archivos adjuntos
   var archivosGuardados = JSON.parse(localStorage.getItem('archivos')) || [];
   var cliente_id = document.getElementById("cliente").value;
@@ -59,6 +68,41 @@ function enviarTicket() {
   var categoria = document.getElementById("categoria").value;
 
 
+  fetch('/tck/client/'+cliente_id+'CLT', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': csrfToken
+    },
+    body: JSON.stringify({
+      cliente_id: cliente_id,
+      asunto: asunto,
+      descripcion: descripcion,
+      prioridad: prioridad,
+      categoria: categoria,
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+
+    $("#spinner").hide();
+
+    if(data.status == 'success'){
+      Swal.fire({
+        title: "Registrado",
+        text: "Ticket creado con exito",
+        icon: "success"
+      });
+    }else{
+      Swal.fire({
+        title: "Error",
+        text: "Error al crear ticket",
+        icon: "error"
+      });
+      logMessage('error',data.message);
+    }
+  })
+  
 
 }
 

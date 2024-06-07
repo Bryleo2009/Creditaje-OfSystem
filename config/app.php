@@ -122,10 +122,5 @@ return [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
-    'providers' => [
-        // Otros proveedores de servicios
-
-        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
-    ],
 
 ];

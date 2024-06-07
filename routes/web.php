@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\Correo;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\UploadController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,6 +29,8 @@ Route::prefix('api')->group(function () {
     Route::controller(Correo::class)->group(function () {
         Route::post('/frm_contacto', 'enviarFrmContacto');
     });
+
+    Route::post('/upload',[UploadController::class,'upload']);
 });
 
 // Rutas protegidas por autenticación en la sección "admin-back"
@@ -48,7 +51,6 @@ Route::prefix('admin-back')->group(function () {
 
 Route::prefix('tck')->group(function () {
     Route::controller(TicketController::class)->group(function () {
-        // Route::get('/client', 'listar');
         Route::get('/client/{ofsys}', 'listarCliente')->name('client_tickets');
         Route::get('/client/{ofsys}/{id}', 'listarId');
         Route::put('/{id}', 'actualizar');
