@@ -52,10 +52,11 @@ Route::prefix('admin-back')->group(function () {
 Route::prefix('tck')->group(function () {
     Route::controller(TicketController::class)->group(function () {
         Route::get('/client/{ofsys}', 'listarCliente')->name('client_tickets');
-        Route::get('/client/{ofsys}/{id}', 'listarId')->name('ticket.show');
+        Route::get('/client/{ofsys}/{id}', 'frmTicket')->name('ticket.show');
         Route::put('/{id}', 'actualizar');
         Route::delete('/{id}', 'eliminar')->name('ticket.destroy');
         Route::post('/client/{ofsys}', 'guardar');
         Route::get('/new/{ofsys}','frmTicket')->name('new_ticket');
+        Route::post('/coment/{ofsys}/{idTck}', 'guardarComentario');
     });
 });

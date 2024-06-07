@@ -10,6 +10,8 @@ class tbTicketComentario extends Model
     use HasFactory;
 
     protected $table = 'tb_ticket_comentario';
+    protected $primaryKey = 'id';
+    protected $keyType = 'int';
 
     protected $fillable = [
         'id',
@@ -17,6 +19,7 @@ class tbTicketComentario extends Model
         'comentario',
         'cliente_id',
         'estado',
+        'created_at'
     ];
 
     public function ticket()

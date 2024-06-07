@@ -9,5 +9,8 @@ class tbTicketPrioridad extends Model
 {
     use HasFactory;
     protected $table = 'tb_ticket_prioridad';
+    protected $primaryKey = 'id';
+    protected $keyType = 'int';
     protected $fillable = ['id','descripcion', 'estado'];
+    
 }

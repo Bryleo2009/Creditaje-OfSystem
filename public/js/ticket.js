@@ -63,9 +63,6 @@ $(document).ready(function() {
         }
       });
     });
-
-
-
   });
 
 document.getElementById('descripcion').addEventListener('input', function() {
@@ -76,6 +73,12 @@ document.getElementById('descripcion').addEventListener('input', function() {
 document.getElementById("formTicket").addEventListener("submit", function(e) {
   e.preventDefault(); // Evita que el formulario se envíe de manera convencional
 	enviarTicket(); // Llama a la función enviarCorreo()
+});
+
+document.getElementById("formComentario").addEventListener("submit", function(e) {
+  e.preventDefault(); // Evita que el formulario se envíe de manera convencional
+  var ticketId = document.getElementById('ticket_id').value;
+  guardarComentario(ticketId); // Llama a la función enviarCorreo()
 });
 
 
@@ -142,11 +145,6 @@ function enviarTicket() {
 
 }
 
-$('.eliminar-ticket').click(function(event) {
-  console.log('Eliminar ticket');
-  
-});
-
 function eliminarTicket(ticketId) {
   $("#spinner").show();
   $.ajax({
@@ -169,6 +167,44 @@ function eliminarTicket(ticketId) {
       error: function(xhr, status, error) {
           logMessage('error', error);
       }
+  });
+}
+
+function guardarComentario (ticketId) {
+  $("#spinner").show();
+  var comentario = document.getElementById('comentario').value;
+  var cliente_id = document.getElementById("cliente").value;
+
+  if (comentario.trim() === '') {
+    Swal.fire({
+      title: 'Error',
+      text: 'El comentario no puede estar vacío',
+      icon: 'error'
+    });
+    return;
+  }
+
+  $.ajax({
+    url: '/tck/coment/' + cliente_id + '/' + ticketId,
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': csrfToken
+    },
+    type: 'POST',
+    data: JSON.stringify({ comentario: comentario }),
+    success: function(response) {
+      $("#spinner").hide();
+          Swal.fire({
+            title: "El comentario se ha registrado correctamente",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          window.location.reload();
+    },
+    error: function(xhr, status, error) {
+      logMessage('error', error);
+    }
   });
 }
 

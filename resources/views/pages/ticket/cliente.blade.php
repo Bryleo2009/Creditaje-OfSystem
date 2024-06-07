@@ -48,7 +48,7 @@
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item"
-                                            href="{{ route('ticket.show', ['ofsys' => $ticket->cliente_id, 'id' => $ticket->id]) }}">Visualizar</a>
+                                            href="{{ route('ticket.show', ['ofsys' => $ofsys, 'id' => $ticket->id]) }}">Visualizar</a>
                                     </li>
                                     @if ($ticket->estado->id !== 3 && $ticket->estado->id !== 4)
                                         <li>

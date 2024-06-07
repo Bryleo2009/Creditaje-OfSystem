@@ -9,6 +9,8 @@ class tbTicketCategoria extends Model
 {
     use HasFactory;
     protected $table = 'tb_ticket_categoria';
+    protected $primaryKey = 'id';
+    protected $keyType = 'int';
     protected $fillable = ['id','descripcion', 'estado'];
 
 }
