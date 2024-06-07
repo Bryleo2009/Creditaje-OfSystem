@@ -109,7 +109,11 @@
                             <i class="fa-solid fa-user"></i>
                         </div>
                         <div class="mt-2 text-center">
+                            @if (strlen($cliente->nombre) > 25)
+                            {{ $cliente->codigo }}
+                        @else
                             {{ $cliente->nombre }}
+                        @endif
                         </div>
                     </div>
                     <div class="col-1"></div>
@@ -128,7 +132,11 @@
                                             <i class="fa-solid fa-user"></i>
                                         </div>
                                         <div class="mt-2">
-                                            {{ $comentario->cliente_id->nombre }}
+                                            @if (strlen($comentario->cliente_id->nombre) > 25)
+                                                {{ $comentario->cliente_id->codigo }}
+                                            @else
+                                                {{ $comentario->cliente_id->nombre }}
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="col-8 comentario admin mt-4">
@@ -151,7 +159,11 @@
                                     <i class="fa-solid fa-user"></i>
                                 </div>
                                 <div class="mt-2 text-center">
-                                    {{ $comentario->cliente_id->nombre }}
+                                    @if (strlen($comentario->cliente_id->nombre) > 25)
+                                                {{ $comentario->cliente_id->codigo }}
+                                            @else
+                                                {{ $comentario->cliente_id->nombre }}
+                                            @endif
                                 </div>
                             </div>
                             <div class="col-1"></div>

@@ -9,6 +9,6 @@ class tbCliente extends Model
 {
     use HasFactory;
     protected $table = 'tb_cliente';
-    protected $fillable = ['id','nombre', 'email', 'estado'];
+    protected $fillable = ['id','nombre', 'email', 'estado','codigo'];
 
 }

@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('tb_cliente', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo', 10);
             $table->string('nombre', 500);
             $table->string('email', 300);
             $table->tinyInteger('estado')->default(1);
@@ -21,8 +22,8 @@ return new class extends Migration
         });
 
         // Ejecutar la consulta SQL para insertar datos
-        $sql_insert_cliente = "INSERT INTO tb_cliente (nombre, email, estado) VALUES
-                                    ('Of System', 'info@ofsystem.com.pe', 1)";
+        $sql_insert_cliente = "INSERT INTO tb_cliente (nombre, email, estado,codigo) VALUES
+                                    ('Of System', 'info@ofsystem.com.pe', 1, 'OFSYS')";
         DB::statement($sql_insert_cliente);
     }
 
