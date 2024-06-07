@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_ticket_archivo_adjunto', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ticket_id');
+            $table->string('ticket_id');
             $table->text('ruta');
             $table->tinyInteger('estado')->default(1);
             $table->string('nombre', 150)->nullable();

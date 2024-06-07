@@ -9,6 +9,7 @@ class LogController extends Controller
 {
     public function store(Request $request)
     {
+        date_default_timezone_set('America/Lima');
         // Valida la solicitud
         $request->validate([
             'level' => 'required|string',

@@ -10,6 +10,7 @@ class ContactoController extends Controller
     //CRUD CONTACTO
     public function guardar(Request $request)
     {
+        date_default_timezone_set('America/Lima');
         $contacto = new tbFrmContacto();
         $contacto->nombre = $request->nombre;
         $contacto->email = $request->email;
@@ -43,6 +44,7 @@ class ContactoController extends Controller
     public function actualizar(Request $request, $ofsys)
     {
         try{
+            date_default_timezone_set('America/Lima');
             $id = explode('CLT', $ofsys)[0];
             $contacto = tbFrmContacto::find($id);
             $contacto->estado_correo = $request->estado_correo;

@@ -10,6 +10,8 @@ class tbTicket extends Model
     use HasFactory;
 
     protected $table = 'tb_ticket';
+    protected $primaryKey = 'id';
+    protected $keyType = 'string';
 
     protected $fillable = [
         'id',
@@ -18,9 +20,7 @@ class tbTicket extends Model
         'descripcion',
         'prioridad',
         'categoria',
-        'estado',
-        'fecha_registro',
-        'fecha_actualizacion'
+        'estado'
     ];
 
     public function cliente()
@@ -31,6 +31,11 @@ class tbTicket extends Model
     public function prioridad()
     {
         return $this->belongsTo(TbTicketPrioridad::class, 'prioridad');
+    }
+
+    public function getPrioridadObjAttribute()
+    {
+        return TbTicketPrioridad::find($this->prioridad);
     }
 
     public function categoria()

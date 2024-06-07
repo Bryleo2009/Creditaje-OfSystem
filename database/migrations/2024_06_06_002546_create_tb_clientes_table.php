@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -18,6 +19,11 @@ return new class extends Migration
             $table->tinyInteger('estado')->default(1);
             $table->timestamps(); // Adds 'created_at' and 'updated_at' columns
         });
+
+        // Ejecutar la consulta SQL para insertar datos
+        $sql_insert_cliente = "INSERT INTO tb_cliente (nombre, email, estado) VALUES
+                                    ('Of System', 'info@ofsystem.com.pe', 1)";
+        DB::statement($sql_insert_cliente);
     }
 
     /**

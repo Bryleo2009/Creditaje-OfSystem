@@ -7,6 +7,7 @@ use App\Models\tbTicket;
 use App\Models\tbTicketArchivoAdjunto;
 use App\Models\tbTicketCategoria;
 use App\Models\tbTicketComentario;
+use App\Models\tbTicketEstado;
 use App\Models\tbTicketPrioridad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -54,8 +55,16 @@ class TicketController extends Controller
         $ofsys = $request->ofsys;
         $id = explode('CLT', $ofsys)[0];
         $tickets = tbTicket::where('cliente_id', $id)
-            ->where('estado', 1)
+            ->where('estado', '!=', 5)
+            ->orderBy('created_at', 'desc')
             ->get();
+
+        //recorre los tickets y agrega el objeto prioridad, estado, categoria
+        foreach ($tickets as $ticket) {
+            $ticket->prioridad = tbTicketPrioridad::find($ticket->prioridad);
+            $ticket->categoria = tbTicketCategoria::find($ticket->categoria);
+            $ticket->estado = tbTicketEstado::find($ticket->estado);
+        }
 
         return view('pages.ticket.cliente', [
             'tickets' => $tickets,
@@ -65,64 +74,66 @@ class TicketController extends Controller
 
     public function listarId($id)
     {
-        $tickets = DB::table('tb_ticket as tt')
-            ->select(
-                'tt.id',
-                'tt.asunto',
-                'tt.descripcion',
-                'tt.fecha_registro',
-                'tc.id as cliente_id',
-                'tc.nombre as cliente_nombre',
-                'ttp.descripcion as prioridad',
-                'ttc.descripcion as categoria',
-                'tte.descripcion as estado',
-                DB::raw('COALESCE(archivos.archivos, "[]") as archivos'),
-                DB::raw('COALESCE(comentarios.comentarios, "[]") as comentarios')
-            )
-            ->join('tb_cliente as tc', function ($join) {
-                $join->on('tc.id', '=', 'tt.cliente_id')
-                     ->where('tc.estado', '=', 1);
-            })
-            ->join('tb_ticket_prioridad as ttp', function ($join) {
-                $join->on('ttp.id', '=', 'tt.prioridad')
-                     ->where('ttp.estado', '=', 1);
-            })
-            ->join('tb_ticket_categoria as ttc', function ($join) {
-                $join->on('ttc.id', '=', 'tt.categoria')
-                     ->where('ttc.estado', '=', 1);
-            })
-            ->join('tb_ticket_estado as tte', function ($join) {
-                $join->on('tte.id', '=', 'tt.estado')
-                     ->where('tte.estado', '=', 1);
-            })
-            ->leftJoin(DB::raw('(
-                SELECT ticket_id, COALESCE(JSON_ARRAYAGG(
-                    JSON_OBJECT(
-                        "id", arc.id,
-                        "nombre", arc.nombre,
-                        "ruta", arc.ruta 
-                    )
-                ), "[]") AS archivos
-                FROM tb_ticket_archivo_adjunto arc
-                WHERE estado = 1
-                GROUP BY ticket_id
-            ) as archivos'), 'archivos.ticket_id', '=', 'tt.id')
-            ->leftJoin(DB::raw('(
-                SELECT ticket_id, COALESCE(JSON_ARRAYAGG(
-                    JSON_OBJECT(
-                        "id", coment.id,
-                        "texto", coment.comentario,
-                        "fecha", coment.fecha_registro,
-                        "cliente", coment.cliente_id
-                    )
-                ), "[]") AS comentarios
-                FROM tb_ticket_comentario coment
-                WHERE estado = 1
-                GROUP BY ticket_id
-            ) as comentarios'), 'comentarios.ticket_id', '=', 'tt.id')
-            ->where('tt.id', $id)
-            ->groupBy('tt.id')
-            ->get();
+        // $tickets = DB::table('tb_ticket as tt')
+        //     ->select(
+        //         'tt.id',
+        //         'tt.asunto',
+        //         'tt.descripcion',
+        //         'tt.created_at',
+        //         'tc.id as cliente_id',
+        //         'tc.nombre as cliente_nombre',
+        //         'ttp.descripcion as prioridad',
+        //         'ttc.descripcion as categoria',
+        //         'tte.descripcion as estado',
+        //         DB::raw('COALESCE(archivos.archivos, "[]") as archivos'),
+        //         DB::raw('COALESCE(comentarios.comentarios, "[]") as comentarios')
+        //     )
+        //     ->join('tb_cliente as tc', function ($join) {
+        //         $join->on('tc.id', '=', 'tt.cliente_id')
+        //              ->where('tc.estado', '=', 1);
+        //     })
+        //     ->join('tb_ticket_prioridad as ttp', function ($join) {
+        //         $join->on('ttp.id', '=', 'tt.prioridad')
+        //              ->where('ttp.estado', '=', 1);
+        //     })
+        //     ->join('tb_ticket_categoria as ttc', function ($join) {
+        //         $join->on('ttc.id', '=', 'tt.categoria')
+        //              ->where('ttc.estado', '=', 1);
+        //     })
+        //     ->join('tb_ticket_estado as tte', function ($join) {
+        //         $join->on('tte.id', '=', 'tt.estado')
+        //              ->where('tte.estado', '=', 1);
+        //     })
+        //     ->leftJoin(DB::raw('(
+        //         SELECT ticket_id, COALESCE(JSON_ARRAYAGG(
+        //             JSON_OBJECT(
+        //                 "id", arc.id,
+        //                 "nombre", arc.nombre,
+        //                 "ruta", arc.ruta 
+        //             )
+        //         ), "[]") AS archivos
+        //         FROM tb_ticket_archivo_adjunto arc
+        //         WHERE estado = 1
+        //         GROUP BY ticket_id
+        //     ) as archivos'), 'archivos.ticket_id', '=', 'tt.id')
+        //     ->leftJoin(DB::raw('(
+        //         SELECT ticket_id, COALESCE(JSON_ARRAYAGG(
+        //             JSON_OBJECT(
+        //                 "id", coment.id,
+        //                 "texto", coment.comentario,
+        //                 "fecha", coment.created_at,
+        //                 "cliente", coment.cliente_id
+        //             )
+        //         ), "[]") AS comentarios
+        //         FROM tb_ticket_comentario coment
+        //         WHERE estado = 1
+        //         GROUP BY ticket_id
+        //     ) as comentarios'), 'comentarios.ticket_id', '=', 'tt.id')
+        //     ->where('tt.id', $id)
+        //     ->groupBy('tt.id')
+        //     ->get();
+
+        $tickets = tbTicket::find($id);
 
         return response()->json($tickets);
     }
@@ -186,18 +197,23 @@ class TicketController extends Controller
 
     public function eliminar($id)
     {
-        $ticket = tbTicket::find($id);
-        $ticket->estado = 0;
-        $ticket->save();
-        $archivos = tbTicketArchivoAdjunto::where('ticket_id', $id)->get();
-        foreach ($archivos as $archivo) {
-            $archivo->estado = 0;
-            $archivo->save();
-        }
-        $comentarios = tbTicketComentario::where('ticket_id', $id)->get();
-        foreach ($comentarios as $comentario) {
-            $comentario->estado = 0;
-            $comentario->save();
+            try{
+            $ticket = tbTicket::find($id);
+            $ticket->estado = 5;
+            $ticket->save();
+            $archivos = tbTicketArchivoAdjunto::where('ticket_id', $id)->get();
+            foreach ($archivos as $archivo) {
+                $archivo->estado = 0;
+                $archivo->save();
+            }
+            $comentarios = tbTicketComentario::where('ticket_id', $id)->get();
+            foreach ($comentarios as $comentario) {
+                $comentario->estado = 0;
+                $comentario->save();
+            }
+            return response()->json(["status" => "success", "message" => "Eliminado"]);
+        }catch(\Exception $e){
+            return response()->json(["status" => "error", "message" => $e->getMessage()]);
         }
     }
 
@@ -205,7 +221,16 @@ class TicketController extends Controller
     {        
         try{
             $id = explode('CLT', $ofsys)[0];
+            //serie = timestamp hora peruana + id + TCK
+            date_default_timezone_set('America/Lima');
+            // Obtener la fecha y hora actual en Perú en el formato deseado
+            $hora_peruana = date('YmdHis');
+
+            // Ahora puedes concatenar $hora_peruana con $id y 'TCK' para formar tu serie
+            $serie = $hora_peruana . '-' . $id . 'TCK';
+
             $ticket = new tbTicket();
+            $ticket->id = $serie;
             $ticket->cliente_id = $id;
             $ticket->asunto = $request->asunto;
             $ticket->descripcion = $request->descripcion;
@@ -235,10 +260,7 @@ class TicketController extends Controller
                     $coment->save();
                 }
             }
-
-            if ($ticket->id) {
-                return response()->json(["status" => "success", "message" => $ticket->id]);
-            }
+            return response()->json(["status" => "success", "message" => $serie]);
         }catch(\Exception $e){
             return response()->json(["status" => "error", "message" => $e->getMessage()]);
         }

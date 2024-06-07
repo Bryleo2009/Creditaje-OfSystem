@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tb_ticket_comentario', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ticket_id');
+            $table->string('ticket_id');
             $table->text('comentario');
             $table->unsignedBigInteger('cliente_id');
             $table->tinyInteger('estado')->default(1);

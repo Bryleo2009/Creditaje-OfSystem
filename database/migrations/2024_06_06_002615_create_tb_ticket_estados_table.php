@@ -24,7 +24,8 @@ return new class extends Migration
                                     ('Pendiente', 1),
                                     ('Abierto', 1),
                                     ('En proceso', 1),
-                                    ('Cerrado', 1)";
+                                    ('Cerrado', 1),
+                                    ('Eliminado', 1);";
         DB::statement($sql_insert_ticket_estado);
     }
 

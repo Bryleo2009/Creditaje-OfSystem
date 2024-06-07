@@ -42,6 +42,30 @@ $(document).ready(function() {
 
     // Mostrar los archivos guardados al cargar la página
     mostrarArchivosGuardados();
+
+
+
+    $('.eliminar-ticket').click(function(event) {
+      event.preventDefault(); // Prevenir la acción predeterminada del enlace      
+      var ticketId = $(this).data('ticket-id'); // Obtener el ID del ticket desde el atributo data
+
+      Swal.fire({
+        title: '¿Estás seguro?',
+        text: "Al eliminar este ticket no se podrá revertir dicha acción",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          eliminarTicket(ticketId); // Llamar a la función para eliminar el ticket con el ID obtenido
+        }
+      });
+    });
+
+
+
   });
 
 document.getElementById('descripcion').addEventListener('input', function() {
@@ -85,14 +109,26 @@ function enviarTicket() {
   .then(response => response.json())
   .then(data => {
 
+    console.log(data);
     $("#spinner").hide();
 
     if(data.status == 'success'){
       Swal.fire({
         title: "Registrado",
-        text: "Ticket creado con exito",
+        text: "Su ticket ha sido registrado exitosamente. Su código de seguimiento es " + data.message ,
         icon: "success"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          //limpiar los campos
+          document.getElementById("asunto").value = "";
+          document.getElementById("descripcion").value = "";
+
+          //redireccionar a la pagina de tickets
+          window.location.href = "/tck/client/" + cliente_id + "CLT";
+        }
       });
+
+      
     }else{
       Swal.fire({
         title: "Error",
@@ -104,6 +140,36 @@ function enviarTicket() {
   })
   
 
+}
+
+$('.eliminar-ticket').click(function(event) {
+  console.log('Eliminar ticket');
+  
+});
+
+function eliminarTicket(ticketId) {
+  $("#spinner").show();
+  $.ajax({
+      url: '/tck/' + ticketId, // URL de la ruta para eliminar el ticket
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': csrfToken
+      },
+      type: 'DELETE', // Método HTTP DELETE
+      success: function(response) {
+          $("#spinner").hide();
+          Swal.fire({
+            title: "El ticket ha sido eliminado correctamente",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
+          });
+          window.location.reload();
+      },
+      error: function(xhr, status, error) {
+          logMessage('error', error);
+      }
+  });
 }
 
 
