@@ -41,7 +41,7 @@ Route::prefix('admin-back')->group(function () {
     Route::controller(LoginController::class)->group(function () {
         Route::get('/login', 'showLoginForm')->name('login');
         Route::post('/login', 'login');
-        Route::post('/logout', 'logout')->name('logout');
+        Route::get('/logout', 'logout')->name('logout');
     });
 
     Route::controller(RegisterController::class)->group(function () {
@@ -52,7 +52,7 @@ Route::prefix('admin-back')->group(function () {
     // Rutas accesibles solo para usuarios autenticados
     Route::middleware('auth')->group(function () {
         Route::get('dash', 'DashController@index')->name('dash');
-        
+
         Route::prefix('tck')->group(function () {
             Route::controller(TicketController::class)->group(function () {
                 Route::get('/client/{ofsys}', 'listarCliente')->name('client_tickets');
@@ -62,6 +62,7 @@ Route::prefix('admin-back')->group(function () {
                 Route::post('/client/{ofsys}', 'guardar');
                 Route::get('/new/{ofsys}','frmTicket')->name('new_ticket');
                 Route::post('/coment/{ofsys}/{idTck}', 'guardarComentario');
+                Route::get('/clientes','listar')->name('tickets');
             });
         });
     });

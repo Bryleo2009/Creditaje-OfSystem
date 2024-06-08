@@ -19,20 +19,32 @@ class TicketController extends Controller
     public function frmTicket(Request $request)
     {
         $ofsys = $request->ofsys;
+        if($ofsys == 0){
+            $ofsys = '1CLT';
+        }
         $idCLT = explode('CLT', $ofsys)[0];
         $view = false;
+        $admin = false;
         if ($request->id) {
             $idTck = $request->id;
             //listar solo 1 ticket
             $ticket = tbTicket::find($idTck);
-            $categorias = tbTicketCategoria::find($ticket->categoria);
-            $prioridades = tbTicketPrioridad::find($ticket->prioridad);
-            $estado = tbTicketEstado::find($ticket->estado);
             $cliente = tbCliente::find($idCLT);
             $archivos = tbTicketArchivoAdjunto::where('ticket_id', $idTck)->where('estado', 1)->get();
             $comentarios = tbTicketComentario::where('ticket_id', $idTck)->where('estado', 1)
             ->orderBy('created_at', 'desc')
             ->get();
+
+            if($ofsys == '1CLT'){
+                $categorias = tbTicketCategoria::where('estado', 1)->get();
+                $prioridades = tbTicketPrioridad::where('estado', 1)->get();
+                $estado = tbTicketEstado::where('id', '!=' ,5)->get();
+                $admin = true;
+            } else {
+                $categorias = tbTicketCategoria::find($ticket->categoria);
+                $prioridades = tbTicketPrioridad::find($ticket->prioridad);
+                $estado = tbTicketEstado::find($ticket->estado);
+            }
 
             //recorre los comentarios y agrega el objeto cliente
             foreach ($comentarios as $comentario) {
@@ -44,6 +56,7 @@ class TicketController extends Controller
             //crear nuevo ticket
             $categorias = tbTicketCategoria::where('estado', 1)->get();
             $prioridades = tbTicketPrioridad::where('estado', 1)->get();
+            $estado = tbTicketEstado::where('id', '!=' ,5)->get();
             //si id es un numero
             if (!is_numeric($idCLT)) {
                 $cliente = new tbCliente();
@@ -55,12 +68,16 @@ class TicketController extends Controller
 
             $ticket = new tbTicket();
             $ticket->id = 0;
+            $ticket->estado = 0;
+            $ticket->categoria = 0;
+            $ticket->prioridad = 0;
             $estado = new tbTicketEstado();
             $estado->id = 0;
             $archivos = [];
             $comentarios = [];
         }
 
+        $ofsys = $cliente->id . 'CLT';
         return view('pages.ticket.ticket', [
             'ticket' => $ticket,
             'categorias' => $categorias,
@@ -70,13 +87,26 @@ class TicketController extends Controller
             'archivos' => $archivos,
             'comentarios' => $comentarios,
             'ofsys' => $ofsys,
-            'view' => $view 
+            'view' => $view ,
+            'admin' => $admin
         ]);
     }
 
     public function listar()
     {
-        $ticket = tbTicket::where('estado', 1)->get();
+        $tickets = tbTicket::where('estado','!=' ,5)->get();
+        //recorre los tickets y agrega el objeto prioridad, estado, categoria
+        foreach ($tickets as $ticket) {
+            $ticket->prioridad = tbTicketPrioridad::find($ticket->prioridad);
+            $ticket->categoria = tbTicketCategoria::find($ticket->categoria);
+            $ticket->estado = tbTicketEstado::find($ticket->estado);
+            $ticket->cliente_id = tbCliente::find($ticket->cliente_id);
+        }
+
+        return view('pages.ticket.cliente', [
+            'tickets' => $tickets,
+            'ofsys' => 1 . 'CLT'
+        ]);
         return response()->json($ticket);
     }
 
@@ -88,16 +118,22 @@ class TicketController extends Controller
             return redirect('/');
         }
         $id = explode('CLT', $ofsys)[0];
-        $tickets = tbTicket::where('cliente_id', $id)
+
+        if($id == 1){
+            return redirect('/');
+        } else {
+            $tickets = tbTicket::where('cliente_id', $id)
             ->where('estado', '!=', 5)
             ->orderBy('created_at', 'desc')
             ->get();
+        }       
 
         //recorre los tickets y agrega el objeto prioridad, estado, categoria
         foreach ($tickets as $ticket) {
             $ticket->prioridad = tbTicketPrioridad::find($ticket->prioridad);
             $ticket->categoria = tbTicketCategoria::find($ticket->categoria);
             $ticket->estado = tbTicketEstado::find($ticket->estado);
+            $ticket->cliente_id = tbCliente::find($ticket->cliente_id);
         }
 
         return view('pages.ticket.cliente', [
@@ -194,41 +230,58 @@ class TicketController extends Controller
             // Obtener la fecha y hora actual en Perú en el formato deseado
             $hora_peruana = date('YmdHis');
 
-            // Ahora puedes concatenar $hora_peruana con $id y 'TCK' para formar tu serie
-            $serie = $hora_peruana . '-' . $id . 'TCK';
+            $resultado = "";
 
-            $ticket = new tbTicket();
-            $ticket->id = $serie;
-            $ticket->cliente_id = $id;
-            $ticket->asunto = $request->asunto;
-            $ticket->descripcion = $request->descripcion;
-            $ticket->prioridad = $request->prioridad;
-            $ticket->categoria = $request->categoria;
-            $ticket->estado = 1;
-            $ticket->save();
+            if($id == 1){
+                //buscar ticket por id
+                $ticket = tbTicket::find($request->idTck);
+                $ticket->asunto = $request->asunto;
+                $ticket->descripcion = $request->descripcion;
+                $ticket->prioridad = $request->prioridad;
+                $ticket->categoria = $request->categoria;
+                $ticket->estado = $request->estado;
+                $ticket->save();
 
-            if ($request->archivos) {
-                $archivos = $request->archivos;
-                foreach ($archivos as $archivo) {
-                    $adjunto = new tbTicketArchivoAdjunto();
-                    $adjunto->ticket_id = $ticket->id;
-                    $adjunto->nombre = $archivo['nombre'];
-                    $adjunto->ruta = $archivo['ruta'];
-                    $adjunto->save();
+                $resultado = "Ticket actualizado exitosamente.";
+            } else {
+                // Ahora puedes concatenar $hora_peruana con $id y 'TCK' para formar tu serie
+                $serie = $hora_peruana . '-' . $id . 'TCK';
+
+                $ticket = new tbTicket();
+                $ticket->id = $serie;
+                $ticket->cliente_id = $id;
+                $ticket->asunto = $request->asunto;
+                $ticket->descripcion = $request->descripcion;
+                $ticket->prioridad = $request->prioridad;
+                $ticket->categoria = $request->categoria;
+                $ticket->estado = 1;
+                $ticket->save();
+
+                if ($request->archivos) {
+                    $archivos = $request->archivos;
+                    foreach ($archivos as $archivo) {
+                        $adjunto = new tbTicketArchivoAdjunto();
+                        $adjunto->ticket_id = $ticket->id;
+                        $adjunto->nombre = $archivo['nombre'];
+                        $adjunto->ruta = $archivo['ruta'];
+                        $adjunto->save();
+                    }
                 }
-            }
 
-            if ($request->comentarios) {
-                $comentarios = $request->comentarios;
-                foreach ($comentarios as $comentario) {
-                    $coment = new tbTicketComentario();
-                    $coment->ticket_id = $ticket->id;
-                    $coment->comentario = $comentario['comentario'];
-                    $coment->cliente_id = $id;
-                    $coment->save();
+                if ($request->comentarios) {
+                    $comentarios = $request->comentarios;
+                    foreach ($comentarios as $comentario) {
+                        $coment = new tbTicketComentario();
+                        $coment->ticket_id = $ticket->id;
+                        $coment->comentario = $comentario['comentario'];
+                        $coment->cliente_id = $id;
+                        $coment->save();
+                    }
                 }
-            }
-            return response()->json(["status" => "success", "message" => $serie]);
+
+                $resultado = "Su ticket ha sido registrado exitosamente. Su código de seguimiento es ".$serie;
+            }            
+            return response()->json(["status" => "success", "message" => $resultado]);
         } catch (\Exception $e) {
             return response()->json(["status" => "error", "message" => $e->getMessage()]);
         }
@@ -250,6 +303,7 @@ class TicketController extends Controller
 
     public function guardarComentario(Request $request,$ofsys, $idTck)
     {
+        date_default_timezone_set('America/Lima');
         try {
             $comentario = new tbTicketComentario();
             $comentario->ticket_id = $idTck;

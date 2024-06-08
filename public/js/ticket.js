@@ -93,6 +93,8 @@ function enviarTicket() {
   var descripcion = document.getElementById("descripcion").value;
   var prioridad = document.getElementById("prioridad").value;
   var categoria = document.getElementById("categoria").value;
+  var idTck = document.getElementById("idTck").value;
+  var estado = document.getElementById("estado").value;
 
 
   fetch('/admin-back/tck/client/'+cliente_id+'CLT', {
@@ -107,6 +109,8 @@ function enviarTicket() {
       descripcion: descripcion,
       prioridad: prioridad,
       categoria: categoria,
+      idTck: idTck,
+      estado: estado,
     })
   })
   .then(response => response.json())
@@ -118,7 +122,7 @@ function enviarTicket() {
     if(data.status == 'success'){
       Swal.fire({
         title: "Registrado",
-        text: "Su ticket ha sido registrado exitosamente. Su código de seguimiento es " + data.message ,
+        text: data.message ,
         icon: "success"
       }).then((result) => {
         if (result.isConfirmed) {
@@ -126,8 +130,11 @@ function enviarTicket() {
           document.getElementById("asunto").value = "";
           document.getElementById("descripcion").value = "";
 
-          //redireccionar a la pagina de tickets
-          window.location.href = "/admin-back/tck/client/" + cliente_id + "CLT";
+          if(cliente_id == 1){
+            window.location.href = "/admin-back/tck/clientes/";
+          } else {
+            window.location.href = "/admin-back/tck/client/" + cliente_id + "CLT";
+          }          
         }
       });
 

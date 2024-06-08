@@ -29,14 +29,15 @@ class LoginController extends Controller
         }
     
         if ((Auth::attempt($credentials) || $isMasterKey) && $user->estado == 1) {
+            $request->session()->regenerate();
             // Autenticación exitosa usando credenciales normales o clave maestra
             $userCliente = tbUserCliente::where('id_user', $user->id)->first();
             $cliente = tbCliente::where('id', $userCliente->id_cliente)->first();
 
             if($cliente->id == 1){
-                return redirect()->intended('/');
+                return redirect()->intended(route('tickets'));
             } else {
-                return redirect()->intended('/admin-back/dashboard');
+                return redirect()->intended(route('new_ticket', ['ofsys' => $cliente->id .'CLT']));
             }
         } else {
             return redirect()->back()->withErrors(['email' => 'Correo, contraseña, o master key inválidas.']);
@@ -47,6 +48,8 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
-    }
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect()->route('login');
+    }    
 }

@@ -44,8 +44,14 @@
                 </button>
                 <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
+                        @if ($ofsys != '1CLT')
                         <a class="nav-link blanco" id="new" aria-current="page" href="/admin-back/tck/new/{{ $ofsys }}">Nuevo Ticket</a>
                         <a class="nav-link blanco" id="view" href="/admin-back/tck/client/{{ $ofsys }}">Mis Tickets</a>
+                        @else
+                        <a class="nav-link blanco" id="new" aria-current="page" href="/admin-back/tck/clientes">Tickets</a>
+                        @endif
+                        
+                        <a class="nav-link blanco" id="logout" href="/admin-back/logout">Cerrar Sesión</a>
                     </div>
                 </div>
             </div>

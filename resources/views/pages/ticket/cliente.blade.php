@@ -10,6 +10,7 @@
                     <th>Titulo</th>
                     <th style="width: 6%">Prioridad</th>
                     <th style="width: 10%">Categoría</th>
+                    <th style="width: 10%">Cliente</th>
                     <th style="width: 10%">Ult. Actualización</th>
                     <th style="width: 10%"></th>
                 </tr>
@@ -39,6 +40,7 @@
                                 <span style="color: green"><i class="fa-solid fa-down-long"></i></span>
                             @endif
                         <td>{{ $ticket->categoria->descripcion }}</td>
+                        <td>{{ $ticket->cliente_id->nombre }}</td>
                         <td>{{ $ticket->updated_at->format('d/m/Y H:i') }}</td>
                         <td>
                             <div class="btn-group dropend w-100">
@@ -57,6 +59,7 @@
                                     @endif                                    
                                 </ul>
                             </div>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
