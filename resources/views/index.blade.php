@@ -387,6 +387,7 @@ if ($current_language == 'es') {
             <a class="primary" href="#beneficios"><?php echo $translations['beneficios']; ?></a>
             <a class="primary" href="#clientes"><?php echo $translations['clientes']; ?></a>
             <a class="primary" href="/creditos"><?php echo $translations['creditaje']; ?></a>
+            <a class="primary" href="/admin-back/login"><?php echo $translations['ticket']; ?></a>
           </div>
           <div class="footer-social gap-2">
             <a class="primary" href="https://www.facebook.com/OfSystem/" target="_blank"><i class='bx bxl-facebook-circle'></i></a>

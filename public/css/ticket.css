@@ -149,3 +149,23 @@ button.close {
 .comentario {
     padding: 25px;
 }
+
+.frmTicket{
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse{
+        display: none !important;
+    }
+    
+    .frmTicket {
+        flex-direction: column;
+        gap: 3em;
+    }
+
+    .frmTicket > div {
+        width: 100%;
+    }
+}

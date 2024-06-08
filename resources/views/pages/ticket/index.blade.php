@@ -49,6 +49,7 @@
                         <a class="nav-link blanco" id="view" href="/admin-back/tck/client/{{ $ofsys }}">Mis Tickets</a>
                         @else
                         <a class="nav-link blanco" id="new" aria-current="page" href="/admin-back/tck/clientes">Tickets</a>
+                        <a class="nav-link blanco" id="view" href="/admin-back/register">Registrar Cliente</a>
                         @endif
                         
                         <a class="nav-link blanco" id="logout" href="/admin-back/logout">Cerrar Sesión</a>

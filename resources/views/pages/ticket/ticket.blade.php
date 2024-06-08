@@ -1,7 +1,7 @@
 @extends('pages.ticket.index')
 
 @section('content')
-    <div class="d-flex flex-wrap" style="width: 90%;">
+    <div class="frmTicket" style="width: 90%;">
         <div class="container {{ $view ? 'col-5' : 'col-12' }}" style="{{ $view ? 'max-height: 60vh;' : '' }}">
             <div class="row">
                 <div class="col-12">

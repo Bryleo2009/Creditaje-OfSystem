@@ -7,12 +7,16 @@ use App\Models\tbCliente;
 use App\Models\tbUserCliente;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
     public function showRegistrationForm()
     {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
         return view('auth.register');
     }
 
@@ -29,6 +33,7 @@ class RegisterController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
+                'token_url' => md5($request->email),
             ]);
 
             $cliente = new tbCliente();
@@ -42,7 +47,7 @@ class RegisterController extends Controller
             $usuarioCliente->id_cliente = $cliente->id;
             $usuarioCliente->save();
 
-            return redirect('/admin-back/login')->with('success', 'Registration successful. Please login.');
+            return redirect()->route('login');
     }
         
 }

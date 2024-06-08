@@ -42,6 +42,7 @@ Route::prefix('admin-back')->group(function () {
         Route::get('/login', 'showLoginForm')->name('login');
         Route::post('/login', 'login');
         Route::get('/logout', 'logout')->name('logout');
+        Route::get('/autenticar', 'autenticar');
     });
 
     Route::controller(RegisterController::class)->group(function () {

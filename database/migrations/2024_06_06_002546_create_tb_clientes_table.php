@@ -24,7 +24,7 @@ return new class extends Migration
         // Ejecutar la consulta SQL para insertar datos
         $sql_insert_cliente = "INSERT INTO tb_cliente (nombre, email, estado,codigo) VALUES
                                     ('Of System', 'info@ofsystem.com.pe', 1, 'OFSYS')";
-        DB::statement($sql_insert_cliente);
+        //DB::statement($sql_insert_cliente);
     }
 
     /**

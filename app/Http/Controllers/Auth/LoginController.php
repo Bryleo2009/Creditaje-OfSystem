@@ -14,6 +14,9 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
         return view('auth.login');
     }
 
@@ -51,5 +54,26 @@ class LoginController extends Controller
         request()->session()->invalidate();
         request()->session()->regenerateToken();
         return redirect()->route('login');
-    }    
+    }   
+    
+    public function autenticar(Request $request){
+        $token = $request->query('tkurl');
+        //busca usuario por token_url
+        $user = User::where('token_url', $token)->first();
+        if($user){
+            Auth::login($user);
+            $request->session()->regenerate();
+            // Autenticación exitosa usando credenciales normales o clave maestra
+            $userCliente = tbUserCliente::where('id_user', $user->id)->first();
+            $cliente = tbCliente::where('id', $userCliente->id_cliente)->first();
+
+            if($cliente->id == 1){
+                return redirect()->intended(route('tickets'));
+            } else {
+                return redirect()->intended(route('new_ticket', ['ofsys' => $cliente->id .'CLT']));
+            }
+        } else {
+            return redirect()->route('login');
+        }
+    }
 }

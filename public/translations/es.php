@@ -55,5 +55,6 @@ return [
     'selecciona' => 'Selecciona un servicio',
     'indeciso' => 'Aun no estoy seguro',
     'enviar' => 'Enviar',
-    'derechos' => 'Todos los derechos reservados '
+    'derechos' => 'Todos los derechos reservados ',
+    'ticket' => 'Soporte',
 ];
