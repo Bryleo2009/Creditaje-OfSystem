@@ -26,7 +26,7 @@
     <script src="{{ asset('js/log.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!--título-->
-    <title>Ticket | Of System</title>
+    <title>Login | Of System</title>
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
     <link rel="stylesheet" href="{{ asset('css/ticket.css')}}">
 
@@ -35,19 +35,10 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
+            <div class=" d-flex justify-content-center w-100">
                 <a class="navbar-brand" href="https://ofsystem.com.pe" target="_blank">
                     <img src="{{ asset('images/logo/texto-logo-v2.png')}}" alt="logo-ofsystem" width="170" class="d-inline-block align-text-top">
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link blanco" id="new" aria-current="page" href="/admin-back/tck/new/{{ $ofsys }}">Nuevo Ticket</a>
-                        <a class="nav-link blanco" id="view" href="/admin-back/tck/client/{{ $ofsys }}">Mis Tickets</a>
-                    </div>
-                </div>
             </div>
         </nav>
 </header>
@@ -63,7 +54,6 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/endpoints.js') }}"></script>
     <script src="{{ asset('js/contacto.js') }}"></script>
-    <script src="{{ asset('js/ticket.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

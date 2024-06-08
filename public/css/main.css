@@ -52,4 +52,23 @@
     width: 100vw;
     height: 100vh;
     background-color: #00000054;
+    z-index: 1000;
+  }
+
+  .login {
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-login{
+    width: 300px;
+    height: 300px;
+    margin-bottom: 20px;
+  }
+
+  .logo-login img{
+    width: 100%;
   }

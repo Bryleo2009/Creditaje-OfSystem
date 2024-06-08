@@ -95,7 +95,7 @@ function enviarTicket() {
   var categoria = document.getElementById("categoria").value;
 
 
-  fetch('/tck/client/'+cliente_id+'CLT', {
+  fetch('/admin-back/tck/client/'+cliente_id+'CLT', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ function enviarTicket() {
           document.getElementById("descripcion").value = "";
 
           //redireccionar a la pagina de tickets
-          window.location.href = "/tck/client/" + cliente_id + "CLT";
+          window.location.href = "/admin-back/tck/client/" + cliente_id + "CLT";
         }
       });
 
@@ -148,7 +148,7 @@ function enviarTicket() {
 function eliminarTicket(ticketId) {
   $("#spinner").show();
   $.ajax({
-      url: '/tck/' + ticketId, // URL de la ruta para eliminar el ticket
+      url: '/admin-back/tck/' + ticketId, // URL de la ruta para eliminar el ticket
       headers: {
         'Content-Type': 'application/json',
         'X-CSRF-TOKEN': csrfToken
@@ -185,7 +185,7 @@ function guardarComentario (ticketId) {
   }
 
   $.ajax({
-    url: '/tck/coment/' + cliente_id + '/' + ticketId,
+    url: '/admin-back/tck/coment/' + cliente_id + '/' + ticketId,
     headers: {
       'Content-Type': 'application/json',
       'X-CSRF-TOKEN': csrfToken

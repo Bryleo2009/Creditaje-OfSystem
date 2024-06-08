@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\Correo;
 use App\Http\Controllers\LogController;
@@ -35,28 +37,33 @@ Route::prefix('api')->group(function () {
 
 // Rutas protegidas por autenticación en la sección "admin-back"
 Route::prefix('admin-back')->group(function () {
-    // Ruta de inicio de sesión
-    Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-    // Ruta para procesar el inicio de sesión
-    Route::post('login', 'Auth\LoginController@login');
-    // Ruta para cerrar sesión
-    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+
+    Route::controller(LoginController::class)->group(function () {
+        Route::get('/login', 'showLoginForm')->name('login');
+        Route::post('/login', 'login');
+        Route::post('/logout', 'logout')->name('logout');
+    });
+
+    Route::controller(RegisterController::class)->group(function () {
+        Route::get('/register', 'showRegistrationForm')->name('register');
+        Route::post('/register', 'register');
+    });  
 
     // Rutas accesibles solo para usuarios autenticados
     Route::middleware('auth')->group(function () {
-        // Ruta del panel de control
         Route::get('dash', 'DashController@index')->name('dash');
+        
+        Route::prefix('tck')->group(function () {
+            Route::controller(TicketController::class)->group(function () {
+                Route::get('/client/{ofsys}', 'listarCliente')->name('client_tickets');
+                Route::get('/client/{ofsys}/{id}', 'frmTicket')->name('ticket.show');
+                Route::put('/{id}', 'actualizar');
+                Route::delete('/{id}', 'eliminar')->name('ticket.destroy');
+                Route::post('/client/{ofsys}', 'guardar');
+                Route::get('/new/{ofsys}','frmTicket')->name('new_ticket');
+                Route::post('/coment/{ofsys}/{idTck}', 'guardarComentario');
+            });
+        });
     });
 });
 
-Route::prefix('tck')->group(function () {
-    Route::controller(TicketController::class)->group(function () {
-        Route::get('/client/{ofsys}', 'listarCliente')->name('client_tickets');
-        Route::get('/client/{ofsys}/{id}', 'frmTicket')->name('ticket.show');
-        Route::put('/{id}', 'actualizar');
-        Route::delete('/{id}', 'eliminar')->name('ticket.destroy');
-        Route::post('/client/{ofsys}', 'guardar');
-        Route::get('/new/{ofsys}','frmTicket')->name('new_ticket');
-        Route::post('/coment/{ofsys}/{idTck}', 'guardarComentario');
-    });
-});

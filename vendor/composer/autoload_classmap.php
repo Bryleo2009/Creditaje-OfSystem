@@ -12,6 +12,7 @@ return array(
     'App\\Http\\Controllers\\DashController' => $baseDir . '/app/Http/Controllers/DashController.php',
     'App\\Http\\Controllers\\LogController' => $baseDir . '/app/Http/Controllers/LogController.php',
     'App\\Http\\Controllers\\TicketController' => $baseDir . '/app/Http/Controllers/TicketController.php',
+    'App\\Http\\Controllers\\UploadController' => $baseDir . '/app/Http/Controllers/UploadController.php',
     'App\\Models\\RefererLog' => $baseDir . '/app/Models/RefererLog.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\tbCliente' => $baseDir . '/app/Models/tbCliente.php',
