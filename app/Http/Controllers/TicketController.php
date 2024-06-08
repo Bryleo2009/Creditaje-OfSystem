@@ -94,7 +94,10 @@ class TicketController extends Controller
 
     public function listar()
     {
-        $tickets = tbTicket::where('estado','!=' ,5)->get();
+        //paginado de 10 en 10
+        $tickets = tbTicket::where('estado', '!=', 5)
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
         //recorre los tickets y agrega el objeto prioridad, estado, categoria
         foreach ($tickets as $ticket) {
             $ticket->prioridad = tbTicketPrioridad::find($ticket->prioridad);
@@ -125,7 +128,7 @@ class TicketController extends Controller
             $tickets = tbTicket::where('cliente_id', $id)
             ->where('estado', '!=', 5)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(10);
         }       
 
         //recorre los tickets y agrega el objeto prioridad, estado, categoria

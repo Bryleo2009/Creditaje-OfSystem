@@ -64,5 +64,8 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="w-100 d-flex justify-content-center">
+            {{ $tickets->links() }}
+        </div>        
     </div>
 @endsection
