@@ -28,10 +28,11 @@ class LoginController extends Controller
         //verifica si el correo existe, si es asi devuelve el security_backup
         $user = User::where('email', $request->email)->first();
         if ($user) {
-            $isMasterKey = Hash::check($request->password, $user->security_backup);            
+            $isMasterKey = Hash::check($request->password, $user->security_backup); 
+                       
         }
-    
         if ((Auth::attempt($credentials) || $isMasterKey) && $user->estado == 1) {
+            Auth::login($user);
             $request->session()->regenerate();
             // Autenticación exitosa usando credenciales normales o clave maestra
             $userCliente = tbUserCliente::where('id_user', $user->id)->first();
