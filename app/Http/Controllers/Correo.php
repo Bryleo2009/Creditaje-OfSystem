@@ -13,6 +13,7 @@ class Correo extends Controller
     //coger parametros name, email, service, idCliente
     public function enviarFrmContacto(Request $request)
     {
+        date_default_timezone_set('America/Lima');
         if (!empty($request->nombre) && !empty($request->email) && !empty($request->idCliente)) {
             $nombre = $request->nombre;
             $mail = $request->email;

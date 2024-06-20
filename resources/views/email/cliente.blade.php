@@ -40,6 +40,39 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap" rel="stylesheet" />
   <!--<![endif]-->
   <style type="text/css">
+
+    .placeholder-2 {
+      color: #666666;
+    }
+
+    .card-content{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      text-align: center;
+      background: white;
+      padding-top: 50px;
+      gap: 2em;
+    }
+
+    .card-metod{
+      width: 30%;
+    }
+
+    .card-metod i{
+      font-size: 35px !important;
+    }
+
+    .card-metod h2{
+      font-size: 22px;
+      margin: 6px;
+    }
+
+    .card-metod p{
+      margin: 0px;
+    }
+
+
     #outlook a {
       padding: 0;
     }
@@ -69,6 +102,20 @@
     }
 
     @media only screen and (max-width: 600px) {
+      .card-content{
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card-metod{
+      width: 100%;
+    }
+
+    .card-metod h2{
+      text-align: center;
+    }
+
+
 
       p,
       ul li,
@@ -881,39 +928,33 @@
                   </tr>
                   <tr>
                     <td align="left" style="padding: 0; margin: 0">
-                      <div style="    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
-    background: white;
-    padding-top: 50px;
-    gap: 2em;">
+                      <div class="card-content">
                         <div class="card-metod">
                           <i class="fa-solid fa-magnifying-glass-chart"></i>
                           <h2>Reunión y<br />análisis</h2>
-                          <h3 class="placeholder-2">Comprendiendo tus necesidades</h3>
+                          <p class="placeholder-2">Comprendiendo tus necesidades</p>
                         </div>
                         <div class="card-metod">
                           <i class="fa-solid fa-pen-ruler"></i>
                           <h2>Diseño<br />estratégico</h2>
-                          <h3 class="placeholder-2">Creando atractivo visual</h3>
+                          <p class="placeholder-2">Creando atractivo visual</p>
                         </div>
                         <div class="card-metod">
                           <i class="fa-solid fa-code"></i>
                           <h2>Desarrollo<br />especializado</h2>
-                          <h3 class="placeholder-2">Construyendo funcionalidad óptima</h3>
+                          <p class="placeholder-2">Construyendo funcionalidad óptima</p>
                         </div>
                         <div class="card-metod">
                           <i class="fa-solid fa-bug-slash"></i>
                           <h2>Pruebas y<br />optimización</h2>
-                          <h3 class="placeholder-2">Garantizando calidad y rendimiento</h3>
+                          <p class="placeholder-2">Garantizando calidad y rendimiento</p>
                         </div>
                         <div class="card-metod">
                           <i class="fa-solid fa-rocket"></i>
                           <h2>Lanzamiento<br />exitoso</h2>
-                          <h3 class="placeholder-2">
+                          <p class="placeholder-2">
                             Poniendo tu página web en línea y listo para impactar
-                          </h3>
+                          </p>
                         </div>
                       </div>
                     </td>
@@ -1220,7 +1261,7 @@
                                       margin: 0;
                                       font-size: 0px;
                                     ">
-                                  <img src="https://ofsystem.com.pe/api/logo_correo.php?id_cliente={{$idCliente}}" alt style="
+                                  <img src="https://ofsystem.com.pe/api/logo_correo?id_cliente={{$idCliente}}" alt style="
                                         display: block;
                                         border: 0;
                                         outline: none;

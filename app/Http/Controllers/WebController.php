@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\tbCategoria;
+use App\Models\tbFrmContacto;
 use App\Models\tbPlanService;
 use App\Models\tbService;
 use Illuminate\Http\Request;
@@ -53,5 +54,21 @@ class WebController extends Controller
 
 
         return view('index', compact('servicios'));
+    }
+
+    public function logoCorreo(Request $request){
+        date_default_timezone_set('America/Lima');
+        $id = $request->input('id_cliente');
+        $estadoCorreo = 'READ';
+
+        //en la tabla frm_contacto, buscar el id y actualizar el estado de correo
+        $correo = tbFrmContacto::find($id);
+        $correo->estado_correo = $estadoCorreo;
+        $correo->fecha_lectura = date('Y-m-d H:i:s', time());
+        $correo->save();
+
+
+        $path = public_path('images/logo/logo-v1.png');
+        return response()->file($path);
     }
 }

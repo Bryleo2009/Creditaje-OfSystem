@@ -19,6 +19,11 @@ Route::post('/log', [LogController::class, 'store']);
 
 //crud de contacto | ofsys -> id + CLT
 Route::prefix('api')->group(function () {
+    Route::controller(WebController::class)->group(function () {
+        Route::get('/logo_correo', 'logoCorreo');
+    });
+
+
     Route::controller(ContactoController::class)->group(function () {
         Route::post('/contacto', 'guardar');
         Route::get('/contacto', 'listar');
