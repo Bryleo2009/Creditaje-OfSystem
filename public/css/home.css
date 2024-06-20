@@ -137,6 +137,15 @@ a:hover {
     font-size: var(--texto-footer);
 }
 
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+
 /*******************/
 .s-footer-social-copy,
 ofsystem>a:link,
@@ -348,7 +357,116 @@ header {
 
 
 /* Servicios sections */
-.card-service {
+.content-services{
+    background-color: #F5F5F5;
+    padding: 15px;
+    border-radius: 40px;
+}
+
+.card-servicio {    
+    padding: 15px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.tarjeta {
+    position: relative; /* Necesario para posicionar el distintivo de oferta */
+}
+
+.offer-badge {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: var(--tertiary-color); /* Color de fondo del distintivo */
+    color: white; /* Color del texto */
+    padding: 5px 10px; /* Espaciado interno */
+    font-size: 14px; /* Tamaño de la fuente */
+    border-radius: 0 19px 0 0; /* Bordes redondeados */
+    z-index: 1;
+}
+
+.card-inactive {
+    background-color: var(--secondary-color);
+    color: var(--black-color);
+}
+
+.card-active {
+    background-color: var(--white-color);
+    color: var(--primary-color);
+}
+
+.tarjeta {
+  height: auto;
+  padding: 0;
+  border-radius: 19px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  border: solid 1px #b0b0b4;
+  background-color: #fff;
+}
+
+.card-cuerpo {
+    height: 100%;
+    margin: 40px 25px 25px 25px;
+}
+
+.footer-card {
+height: 61px;
+flex-grow: 0;
+margin: 15px 0 0;
+border-radius: 0 0 19px 19px;
+padding: 15px 37px 16px 20px;
+background-image: linear-gradient(100deg, #5efce8 0%, #736efe);
+}
+
+.custom-list {
+    list-style-type: none; /* Elimina las viñetas predeterminadas */
+    padding: 0px 0px 0px 15px; /* Elimina el padding predeterminado */
+}
+
+.custom-list li {
+    position: relative; /* Necesario para posicionar el pseudo-elemento */
+    padding-left: 25px; /* Espacio para el icono */
+}
+
+.custom-list li p{
+    font-size: 17px !important;
+    margin-bottom: 9px;
+}
+
+
+.custom-list li::before {
+    content: "\f06d"; /* Código Unicode del icono de Font Awesome */
+    font-family: "Font Awesome 6 Free"; /* Especifica la fuente de Font Awesome */
+    font-weight: 900; /* Asegúrate de que el icono se muestre correctamente */
+    position: absolute; /* Posiciona el icono */
+    left: 0; /* Alinea el icono a la izquierda */
+    top: 50%; /* Centra verticalmente el icono */
+    transform: translateY(-50%); /* Ajusta la posición vertical */
+    color: var(--placeholder-2-color); /* Color del icono */
+}
+
+.precio {
+    text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Alatsi;
+  font-size: 19px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: right;
+  color: #fff;
+}
+
+.degradado-3 {
+    background-image: linear-gradient(109deg, #4395ff 0%, #9708cc);
+}
+
+.servicio {
+    padding-bottom: 200px;
+} 
+
+/* .card-service {
     padding: 23px 9px 20.6px 20px;
     border-radius: 20px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -358,12 +476,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.degradado-3 {
-    background-image: linear-gradient(109deg, #4395ff 0%, #9708cc);
-}
-
+} */
 .ellipse {
     width: 56px;
     height: 52.8px;
@@ -375,7 +488,7 @@ header {
     font-size: var(--text-h2);
 }
 
-.card-cabecera {
+/* .card-cabecera {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -389,6 +502,7 @@ header {
     align-items: center;
     margin-right: 13px;
 }
+    */
 
 .btn-2 {
     width: 120px;
@@ -407,9 +521,6 @@ header {
     box-shadow: 0px 7px 10px 4px rgba(0, 0, 0, 0.26)
 }
 
-.servicio {
-    padding-bottom: 200px;
-}
 
 /* Metodología sections */
 .metodologia {
@@ -506,7 +617,7 @@ header {
     left: 0;
     content: "";
     width: 23.958%;
-    height: 250px;
+    height: 400px;
     background: linear-gradient(-90deg, hsla(0, 0%, 96.9%, 0), var(--primary-color));
 }
 
@@ -515,7 +626,7 @@ header {
     right: 0;
     content: "";
     width: 23.958%;
-    height: 250px;
+    height: 400px;
     background: linear-gradient(90deg,
             hsla(0, 0%, 96.9%, 0),
             var(--primary-color) 99%);

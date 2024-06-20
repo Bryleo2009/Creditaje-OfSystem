@@ -4,10 +4,12 @@
 function enviarCorreo() {
     var nombre = document.getElementById("name").value;
     var correo = document.getElementById("email").value;
-    var mensaje = document.getElementById("service").value;
+    //obten el data-id-service del elemento con id plan
+    var id_service = document.getElementById("plan").getAttribute('data-id-service');
+    var id_catego = document.getElementById("plan").getAttribute('data-id-catego');
 
     //si alguno es nulo
-    if (nombre == "" || correo == "" || mensaje == "") {
+    if (nombre == "" || correo == "") {
         Swal.fire({
             title: "Error",
             text: "Por favor llene todos los campos",
@@ -18,13 +20,14 @@ function enviarCorreo() {
 
 
     // Llamar a enviarContacto para crear el cliente y obtener su ID
-    nuevoContacto(nombre, correo, mensaje)
+    nuevoContacto(nombre, correo, id_service,id_catego)
         .then(function (idContact) {
             // Envío del correo
             var parametros = {
                 "nombre": nombre,
                 "email": correo,
-                "servicio": mensaje,
+                "id_service": id_service,
+                "id_catego": id_catego,
                 "idCliente": idContact
             };
 
@@ -46,6 +49,7 @@ function enviarCorreo() {
                     idContact = idContact + 'CLT';
                     actualizarEstadoCorreo(idContact, 'SENT')
                         .then(function () {
+                            $("#spinner").hide();
                             // Mostrar mensaje de éxito al usuario
                             Swal.fire({
                                 title: "Enviado",
@@ -55,10 +59,10 @@ function enviarCorreo() {
                                 // Limpiar campos del formulario
                                 document.getElementById("name").value = "";
                                 document.getElementById("email").value = "";
-                                document.getElementById("service").value = "";
                             });
                         })
                         .catch(function (error) {
+                            $("#spinner").hide();
                             Swal.fire({
                                 title: "Error de envío",
                                 text: "Hubo un error al actualizar el estado del correo, por favor inténtalo de nuevo más tarde.",

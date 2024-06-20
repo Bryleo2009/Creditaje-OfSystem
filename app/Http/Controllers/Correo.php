@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tbCategoria;
+use App\Models\tbService;
 use Illuminate\Support\Facades\Log;
 
 use Illuminate\Http\Request;
@@ -11,12 +13,26 @@ class Correo extends Controller
     //coger parametros name, email, service, idCliente
     public function enviarFrmContacto(Request $request)
     {
-        if (!empty($request->nombre) && !empty($request->email) && !empty($request->servicio)  && !empty($request->idCliente)) {
+        if (!empty($request->nombre) && !empty($request->email) && !empty($request->idCliente)) {
             $nombre = $request->nombre;
             $mail = $request->email;
-            $servicio = $request->servicio;
+            $id_service = $request->id_service;
+            $id_catego = $request->id_catego;
             $idCliente = $request->idCliente;
             $fecha = date('d/m/Y', time());
+
+            $servicio = tbService::find($id_service)->name;
+            if($servicio){
+                $servicio = " | ".$servicio;
+            } else {
+                $servicio = "";
+            }
+            $categoria = tbCategoria::find($id_catego)->name;
+            if($categoria){
+                $categoria = " - ".$categoria;
+            } else {
+                $categoria = "";
+            }
 
             try {
 
@@ -24,7 +40,7 @@ class Correo extends Controller
 
                 //variables del e-mail
                 $correoDestino = $correoBase;
-                $asunto = "Solicitud de Servicio - " . $servicio;
+                $asunto = "Solicitud de Servicio" . $servicio. $categoria;
 
                 //cuerpo del e-mail
                 //$html_reclutador = require('email/reclutador.php');

@@ -14,7 +14,8 @@ class ContactoController extends Controller
         $contacto = new tbFrmContacto();
         $contacto->nombre = $request->nombre;
         $contacto->email = $request->email;
-        $contacto->servicio = $request->servicio;
+        $contacto->id_service = $request->id_service;
+        $contacto->id_catego = $request->id_catego;
         $contacto->estado_correo = 'NOSEN';
         $contacto->fecha_lectura = null;
         $contacto->save();

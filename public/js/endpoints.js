@@ -1,7 +1,7 @@
 const csrfToken = getCsrfToken();
 
 
-async function nuevoContacto(nombre, email, servicio) {
+async function nuevoContacto(nombre, email, id_service,id_catego) {
     //manda solicitud axaj a la url /api/frm_contacto
     const response = await fetch('/api/contacto', {
         method: 'POST',
@@ -9,7 +9,7 @@ async function nuevoContacto(nombre, email, servicio) {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': csrfToken
         },
-        body: JSON.stringify({ nombre: nombre, email: email, servicio: servicio })
+        body: JSON.stringify({ nombre: nombre, email: email, id_service: id_service, id_catego: id_catego })
     });
 
     const result = await response.json();

@@ -7,11 +7,10 @@ use App\Http\Controllers\Correo;
 use App\Http\Controllers\LogController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [WebController::class, 'index']);
 
 Route::get('/moran_vega', function () {return view('pages.perfil');});
 Route::get('/creditos', function () {return view('pages.creditaje');});
