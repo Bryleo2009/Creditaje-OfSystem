@@ -22,13 +22,13 @@ class Correo extends Controller
             $idCliente = $request->idCliente;
             $fecha = date('d/m/Y', time());
 
-            $servicio = tbService::find($id_service)->name;
+            $servicio = tbService::find($id_service)->nombre_es;
             if($servicio){
                 $servicio = " | ".$servicio;
             } else {
                 $servicio = "";
             }
-            $categoria = tbCategoria::find($id_catego)->name;
+            $categoria = tbCategoria::find($id_catego)->nombre_es;
             if($categoria){
                 $categoria = " - ".$categoria;
             } else {
