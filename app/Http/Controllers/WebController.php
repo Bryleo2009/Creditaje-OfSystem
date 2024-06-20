@@ -61,11 +61,12 @@ class WebController extends Controller
         $id = $request->input('id_cliente');
         $estadoCorreo = 'READ';
 
-        //en la tabla frm_contacto, buscar el id y actualizar el estado de correo
         $correo = tbFrmContacto::find($id);
-        $correo->estado_correo = $estadoCorreo;
-        $correo->fecha_lectura = date('Y-m-d H:i:s', time());
-        $correo->save();
+        if ($correo && $correo->estado_correo !== 'READ') {
+            $correo->estado_correo = $estadoCorreo; // Asume que $estadoCorreo es una variable que ya tienes definida
+            $correo->fecha_lectura = now(); // Laravel proporciona un helper now() que es equivalente a date('Y-m-d H:i:s')
+            $correo->save();
+        }
 
 
         $path = public_path('images/logo/logo-v1.png');
