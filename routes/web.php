@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index']);
 
+Route::get('/prueba', function () {
+    $nombre = "Juan";
+    $idCliente = 0;
+    return view('email.cliente', ['nombre' => $nombre, 'idCliente' => $idCliente]);
+});
+
 Route::get('/moran_vega', function () {return view('pages.perfil');});
 Route::get('/creditos', function () {return view('pages.creditaje');});
 // Route::post('/api/frm_contacto', [Correo::class, 'enviarFrmContacto'])->name('correo.frm_contacto');

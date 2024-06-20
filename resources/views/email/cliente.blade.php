@@ -930,27 +930,37 @@
                     <td align="left" style="padding: 0; margin: 0">
                       <div class="card-content">
                         <div class="card-metod">
-                          <i class="fa-solid fa-magnifying-glass-chart"></i>
+                          <div class="w-100">
+                            <img src="https://ofsystem.com.pe/images/icons/magnifying-glass-chart-solid.svg" alt="Reunión y análisis" style="width: 20%;">
+                          </div>
                           <h2>Reunión y<br />análisis</h2>
                           <p class="placeholder-2">Comprendiendo tus necesidades</p>
                         </div>
                         <div class="card-metod">
-                          <i class="fa-solid fa-pen-ruler"></i>
+                          <div class="w-100">
+                            <img src="https://ofsystem.com.pe/images/icons/pen-ruler-solid.svg" alt="Diseño estratégico" style="width: 20%;">
+                          </div>
                           <h2>Diseño<br />estratégico</h2>
                           <p class="placeholder-2">Creando atractivo visual</p>
                         </div>
                         <div class="card-metod">
-                          <i class="fa-solid fa-code"></i>
+                          <div class="w-100">
+                            <img src="https://ofsystem.com.pe/images/icons/code-solid.svg" alt="Desarrollo Especializado" style="width: 20%;">
+                          </div>
                           <h2>Desarrollo<br />especializado</h2>
                           <p class="placeholder-2">Construyendo funcionalidad óptima</p>
                         </div>
                         <div class="card-metod">
-                          <i class="fa-solid fa-bug-slash"></i>
+                          <div class="w-100">
+                            <img src="https://ofsystem.com.pe/images/icons/magnifying-glass-chart-solid.svg" alt="Pruebas y optimización" style="width: 20%;">
+                          </div>
                           <h2>Pruebas y<br />optimización</h2>
                           <p class="placeholder-2">Garantizando calidad y rendimiento</p>
                         </div>
                         <div class="card-metod">
-                          <i class="fa-solid fa-rocket"></i>
+                          <div class="w-100">
+                            <img src="https://ofsystem.com.pe/images/icons/bug-slash-solid.svg" alt="Lanzamiento exitoso" style="width: 20%;">
+                          </div>
                           <h2>Lanzamiento<br />exitoso</h2>
                           <p class="placeholder-2">
                             Poniendo tu página web en línea y listo para impactar
