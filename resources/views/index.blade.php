@@ -99,7 +99,10 @@
                 <div class="espaciado center">
                     <div class="video-container">
                         <div class="sec-video">
-                            <img src="{{ asset('images/landing/video_ofsystem.gif') }}" alt="">
+                            <video id="video" loop muted>
+                                <source src="{{ asset('images/landing/video_ofsystem.mp4') }}" type="video/mp4">
+                                Tu navegador no soporta el elemento video.
+                            </video>
                         </div>
                         <span class="vector">
                             <svg viewBox="0 0 1034 545" fill="none" xmlns="http://www.w3.org/2000/svg">

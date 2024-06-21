@@ -68,4 +68,24 @@ function showCategories(servicioId) {
 }
 
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+var video = document.getElementById('video');
+
+var options = {
+	root: null, // viewport
+	rootMargin: '0px',
+	threshold: 0.5 // Play video when 50% of it is visible
+};
+
+var observer = new IntersectionObserver(function(entries, observer) {
+	entries.forEach(entry => {
+		if (entry.isIntersecting) {
+			video.play();
+		} else {
+			video.pause();
+		}
+	});
+}, options);
+
+observer.observe(video);
