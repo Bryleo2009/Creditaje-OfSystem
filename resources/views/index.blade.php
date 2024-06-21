@@ -97,17 +97,22 @@
             </section>
             <section class="video">
                 <div class="espaciado center">
-                    <span class="vector">
-                        <svg viewBox="0 0 1034 545" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="63.8293" y="0.25" width="906.341" height="525.223" rx="16" fill="black" />
-                            <path
-                                d="M-0.00634766 517.888H1034.01V531.477C1034.01 531.477 1025.16 544.75 1008.41 544.75C991.66 544.75 517 544.75 517 544.75C517 544.75 46.7644 544.75 27.4873 544.75C8.21014 544.75 -0.00634766 531.477 -0.00634766 531.477V517.888Z"
-                                fill="#9A9996" />
-                            <path
-                                d="M441.788 517.888H592.212C592.212 526.266 585.421 533.057 577.044 533.057H456.956C448.579 533.057 441.788 526.266 441.788 517.888Z"
-                                fill="#77767B" />
-                        </svg>
-                    </span>
+                    <div class="video-container">
+                        <div class="sec-video">
+                            <img src="{{ asset('images/landing/video_ofsystem.gif') }}" alt="">
+                        </div>
+                        <span class="vector">
+                            <svg viewBox="0 0 1034 545" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="63.8293" y="0.25" width="906.341" height="525.223" rx="16" fill="black" />
+                                <path
+                                    d="M-0.00634766 517.888H1034.01V531.477C1034.01 531.477 1025.16 544.75 1008.41 544.75C991.66 544.75 517 544.75 517 544.75C517 544.75 46.7644 544.75 27.4873 544.75C8.21014 544.75 -0.00634766 531.477 -0.00634766 531.477V517.888Z"
+                                    fill="#9A9996" />
+                                <path
+                                    d="M441.788 517.888H592.212C592.212 526.266 585.421 533.057 577.044 533.057H456.956C448.579 533.057 441.788 526.266 441.788 517.888Z"
+                                    fill="#77767B" />
+                            </svg>
+                        </span>
+                    </div>                    
                     <div class="d-flex flex-column mt-5" data-aos="zoom-in">
                         <h1 class="degradado degradado-2"><?php echo $translations['marca']; ?></h1>
                         <p class="blanco"><?php echo $translations['parrafo_marca']; ?>
@@ -132,7 +137,7 @@
                     </h1>
                 </div>
                 <div class="d-flex flex-column gap-2 justify-content-center mt-5">
-                    <div class="d-flex gap-2 justify-content-evenly content-services" data-aos="zoom-out">
+                    <div class="d-flex gap-2 justify-content-evenly content-services">
                         @foreach ($servicios as $servicio)
                             <div class="card-servicio col text-center card-inactive" data-id={{ $servicio->id }}
                                 onclick="showCategories({{ $servicio->id }})">

@@ -324,6 +324,31 @@ header {
     padding-bottom: 62px;
 }
 
+.video-container {
+    position: relative;
+    width: max-content; /* Ajusta según el tamaño del SVG o del GIF */
+    width: 100%;
+}
+
+.sec-video {
+    position: absolute;
+    width: 85%;
+    top: 3%;
+    left: 7%;
+    z-index: 10; /* Asegúrate de que el GIF esté sobre el SVG */
+}
+
+.vector {
+    position: relative;
+    z-index: 1;
+}
+
+.sec-video img {
+    width: 100%;
+    border-radius: 15px;
+}
+
+
 .espaciado {
     padding-top: 100px;
 }
