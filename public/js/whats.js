@@ -15,7 +15,7 @@
           autoOpenTimeout: 0,
           headerColor: "#128C7E",
           headerTitle: "WhatsApp Chat",
-          zIndex: 0,
+          zIndex: 10,
           rightPosition: "5px", // Sobrescribe la posición derecha predeterminada
           bottomPosition: "77px", // Sobrescribe la posición inferior predeterminada
           buttonImage:
