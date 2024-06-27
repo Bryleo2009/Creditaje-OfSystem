@@ -37,7 +37,7 @@ document.getElementById("formContacto").addEventListener("submit", function (e) 
 	enviarCorreo(); // Llama a la función enviarCorreo()
 });
 
-showCategories(2);
+showCategories(4);
 
 function showCategories(servicioId) {
 
