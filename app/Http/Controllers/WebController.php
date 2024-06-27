@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RefererLog;
 use App\Models\tbCategoria;
 use App\Models\tbFrmContacto;
 use App\Models\tbPlanService;
@@ -10,7 +11,7 @@ use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         //listar servicios con estado 1;
         $servicios = tbService::where('estado', 1)->get();
@@ -51,9 +52,19 @@ class WebController extends Controller
             $servicio->categorias = $categoriasServicio;
         }
 
+        $referer = $request->header('referer');
+        $this->procesarReferer($referer);
 
 
         return view('index', compact('servicios'));
+    }
+
+    public function credito(Request $request)
+    {
+        $referer = $request->header('referer');
+        $this->procesarReferer($referer);
+
+        return view('pages.creditos');
     }
 
     public function logoCorreo(Request $request){
@@ -71,5 +82,27 @@ class WebController extends Controller
 
         $path = public_path('images/logo/logo-v1.png');
         return response()->file($path);
+    }
+
+    protected function procesarReferer($referer)
+    {
+        date_default_timezone_set('America/Lima');
+        if($referer){
+            $referer = $referer;
+        } else {
+            $referer = 'No Referer';
+        }
+        $refererLog = RefererLog::where('referer', $referer)->first();        
+
+        if ($refererLog) {
+            // Si el referer existe, actualizar el contador
+            $refererLog->increment('counter');
+        } else {
+            // Si el referer no existe, crear un nuevo registro
+            RefererLog::create([
+                'referer' => $referer,
+                'counter' => 1,
+            ]);
+        }
     }
 }

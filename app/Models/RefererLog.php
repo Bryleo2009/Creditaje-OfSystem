@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class RefererLog extends Model
 {
     use HasFactory;
+    protected $table = 'tb_referer_log';
+    protected $fillable = ['referer', 'estado', 'counter'];
 }

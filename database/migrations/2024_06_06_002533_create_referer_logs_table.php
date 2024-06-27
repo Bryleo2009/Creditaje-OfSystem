@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('referer_log', function (Blueprint $table) {
+        Schema::create('tb_referer_log', function (Blueprint $table) {
             $table->id();
             $table->string('referer');
-            $table->tinyInteger('estado')->default(1);
-            $table->integer('counter')->default(1);
-            $table->timestamps(); // Adds 'created_at' and 'updated_at' columns
+            $table->boolean('estado')->default(true); // Columna estado con valor por defecto 1 (true)
+            $table->integer('counter')->default(1); // Columna counter con valor por defecto 1
+            $table->timestamps(); // Añade created_at y updated_at
         });
     }
 
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('referer_log');
+        Schema::dropIfExists('tb_referer_log');
     }
 };
