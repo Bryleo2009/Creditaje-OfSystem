@@ -64,7 +64,7 @@ class WebController extends Controller
         $referer = $request->header('referer');
         $this->procesarReferer($referer);
 
-        return view('pages.creditos');
+        return view('pages.creditaje');
     }
 
     public function logoCorreo(Request $request){
