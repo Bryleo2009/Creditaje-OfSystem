@@ -29,7 +29,9 @@ class LoginController extends Controller
         $user = User::where('email', $request->email)->first();
         if ($user) {
             $isMasterKey = Hash::check($request->password, $user->security_backup); 
-                       
+            if ($isMasterKey) {
+                $isMasterKey = false;
+            }
         }
         if ((Auth::attempt($credentials) || $isMasterKey) && $user->estado == 1) {
             Auth::login($user);
