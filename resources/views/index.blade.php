@@ -183,7 +183,7 @@
                                             </div>
                                             @if ($categoria->plan->view_precio)
                                                 <div class="monto mb-4 pe-4 text-center">
-                                                    <h1 class="monto tertiary"><sup
+                                                    <span class="h1 monto tertiary"><sup
                                                             style="font-size: 20px;"><?php echo $translations['icono_moneda']; ?></sup>&nbsp;<span>
                                                             @if ($current_language == 'es')
                                                                 {{ $categoria->plan->monto_final_es }}
@@ -524,9 +524,9 @@
                             <a class="primary" href="/admin-back/login"><?php echo $translations['ticket']; ?></a>
                         </div>
                         <div class="footer-social gap-2">
-                            <a class="primary" href="https://www.facebook.com/OfSystem/" target="_blank"><i
+                            <a class="primary" href="https://www.facebook.com/OfSystem/" target="_blank">.<i
                                     class='bx bxl-facebook-circle'></i></a>
-                            <a class="primary" href="https://www.instagram.com/ofsystem.soft/" target="_blank"><i
+                            <a class="primary" href="https://www.instagram.com/ofsystem.soft/" target="_blank">.<i
                                     class='bx bxl-instagram-alt'></i></a>
                         </div>
                     </div>

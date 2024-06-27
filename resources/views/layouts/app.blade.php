@@ -33,6 +33,7 @@
     <meta name="author" content="Bryan A. Morán Vega">
     <meta name="copyright" content="Of System ®">
     <meta name="theme-color" content="#302b63">
+    <link rel="canonical" href="https://www.ofsystem.com.pe" />
     <script src="https://kit.fontawesome.com/e3a4a2320e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -68,7 +69,7 @@
 
     <script src="{{ asset('js/log.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Of System</title>
+    <title>Of System | Agencia de Desarrollo Web</title>
 </head>
 
 <body>

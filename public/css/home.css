@@ -110,7 +110,7 @@ p {
     font-size: var(--text-parrafo);
 }
 
-h1 {
+h1, .h1 {
     font-family: Alatsi;
     font-weight: Regular;
     font-size: var(--text-h1);
