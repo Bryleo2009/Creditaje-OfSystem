@@ -12,7 +12,7 @@ header("Pragma: no-cache");
 //include 'api/referer.php';
 ?>
 	<head>
-		<title>Of System</title>		
+		<title>Of System | Creditaje</title>		
 		<meta name="description" content="Soluciones web personalizadas para impulsar tu presencia en línea y alcanzar el éxito digital.">
 		<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	</head>
