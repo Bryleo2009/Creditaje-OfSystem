@@ -23,16 +23,14 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        
+        $isMasterKey = false;
         // Verificar si el usuario ha proporcionado la clave maestra
         //verifica si el correo existe, si es asi devuelve el security_backup
         $user = User::where('email', $request->email)->first();
         if ($user) {
             $isMasterKey = Hash::check($request->password, $user->security_backup); 
-            if ($isMasterKey) {
-                $isMasterKey = false;
-            }
         }
+
         if ((Auth::attempt($credentials) || $isMasterKey) && $user->estado == 1) {
             Auth::login($user);
             $request->session()->regenerate();
