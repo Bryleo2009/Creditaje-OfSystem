@@ -3,11 +3,11 @@
     RewriteBase /
 
     # Redirige todas las solicitudes que no son para un archivo existente a "public"
-    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteCond %{REQUEST_URI} !^/resources/
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ /public/$1 [L]
+    RewriteRule ^(.*)$ /resources/$1 [L]
 
     # Redirige la raíz del dominio a "public/index.php"
-    RewriteRule ^$ /public/index.php [L]
+    RewriteRule ^$ /resources/index.blade.php [L]
 </IfModule>
